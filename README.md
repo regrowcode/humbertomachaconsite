@@ -8,18 +8,16 @@ Inspirado en la estética *"Quiet Luxury"* de portales de referencia como **Drum
 
 ## 🌟 Características Principales
 
-- **100% Bilingüe (Español / Inglés):** Selector de idioma fluido (`ES | EN`) con guardado automático en `localStorage`.
-- **Estética de Lujo Editorial (Drumelia Style):**
-  - Tipografía combinada: *Cormorant Garamond* (titulares editoriales) + *Plus Jakarta Sans* (lectura moderna y ágil).
-  - Efecto *Frosted Glass* en cabecera sticky con transiciones suaves.
-  - Paleta de colores: Carbón obsidiana, marfil suave, oro/bronce champán y detalles en terracota mediterránea.
-- **Enfoque de Marca Personal (Sin Venta Directa):**
-  - Posicionamiento como asesor personal y de confianza, independiente y en alianza con agencia colaboradora.
-  - Servicios enfocados en *Personal Shopper (Compradores VIP)*, *Inversión Patrimonial*, *Acompañamiento a Vendedores* y *Relocation/Expat Concierge*.
-  - Guía visual de zonas nobles de Málaga (*Centro Histórico, El Limonar & Pedregalejo, La Malagueta, Costa del Sol Prime*).
-  - Comparativa de valor: *¿Por qué un Asesor Personal frente a una agencia convencional?*
-  - Testimonios con enfoque internacional (Reino Unido, Alemania, propietarios locales).
-  - Preguntas frecuentes interactivas (FAQ en acordeón).
+- **Arquitectura Multi-Página (5 Páginas Independientes):**
+  - **Inicio (`/`):** Portada editorial, propuesta de valor, resumen del asesor, adelanto de servicios, enclaves destacados y llamadas a la acción.
+  - **Sobre Mí (`/sobre-mi.html`):** Biografía detallada, valores, por qué un asesor personal, testimonios y nota de acreditación profesional.
+  - **Servicios (`/servicios.html`):** Los 4 servicios boutique en profundidad, metodología de trabajo en 4 fases y sección de FAQ.
+  - **Zonas de Málaga (`/zonas.html`):** Guía visual y de inversión en el Centro Histórico, El Limonar, La Malagueta y Costa del Sol Prime.
+  - **Contacto (`/contacto.html`):** Canales directos, WhatsApp oficial y formulario privado de agendamiento.
+- **100% Bilingüe (Español / Inglés):** Selector de idioma fluido (`ES | EN`) compartido en todas las páginas con guardado automático en `localStorage`.
+- **Cabecera Rediseñada "Quiet Luxury":**
+  - Navegación espaciosa y equilibrada de 5 enlaces con indicador visual de página activa.
+  - Selector de idioma y botón *"Agendar Cita"* milimétricamente alineados con altura idéntica (34px) y estilo minimalista.
 - **Canales de Conversión Inmediata:**
   - Botón directo de **WhatsApp** con saludo personalizado según idioma.
   - Botón flotante de WhatsApp siempre accesible.

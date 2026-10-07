@@ -11,7 +11,7 @@
     <meta name="keywords" content="asesor inmobiliario malaga, real estate advisor malaga, personal shopper inmobiliario costa del sol, comprar casa malaga, invertir en malaga, lujo malaga" />
     <meta name="author" content="Humberto Machacón" />
     
-    <!-- Open Graph / Facebook / LinkedIn -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Humberto Machacón | Asesor Inmobiliario Personal en Málaga" />
     <meta property="og:description" content="Asesoramiento boutique de alta confianza para adquirir o invertir en propiedades de prestigio en Málaga y Costa del Sol." />
@@ -26,23 +26,22 @@
     <!-- Site Header -->
     <header class="site-header" id="site-header">
       <div class="container nav-container">
-        <a href="#hero" class="brand-logo" id="brand-logo">
+        <a href="/" class="brand-logo" id="brand-logo">
           <div class="brand-monogram">HM</div>
           <div class="brand-info">
             <span class="brand-name">Humberto Machacón</span>
-            <span class="brand-subtitle" data-i18n="hero.badge">MÁLAGA & COSTA DEL SOL</span>
+            <span class="brand-subtitle">MÁLAGA · REAL ESTATE</span>
           </div>
         </a>
 
-        <!-- Main Navigation Links -->
+        <!-- Main Navigation Links (Clean 5 items) -->
         <nav>
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="#about" class="nav-link" data-i18n="nav.about">Sobre Mí</a></li>
-            <li><a href="#services" class="nav-link" data-i18n="nav.services">Servicios</a></li>
-            <li><a href="#locations" class="nav-link" data-i18n="nav.locations">Zonas de Málaga</a></li>
-            <li><a href="#why-me" class="nav-link" data-i18n="nav.whyMe">¿Por Qué un Asesor?</a></li>
-            <li><a href="#testimonials" class="nav-link" data-i18n="nav.testimonials">Testimonios</a></li>
-            <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
+            <li><a href="/" class="nav-link active" data-i18n="nav.home">Inicio</a></li>
+            <li><a href="/sobre-mi.html" class="nav-link" data-i18n="nav.about">Sobre Mí</a></li>
+            <li><a href="/servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a></li>
+            <li><a href="/zonas.html" class="nav-link" data-i18n="nav.locations">Zonas de Málaga</a></li>
+            <li><a href="/contacto.html" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
 
@@ -52,7 +51,7 @@
             <button type="button" class="lang-btn active" id="lang-btn-es" data-lang="es">ES</button>
             <button type="button" class="lang-btn" id="lang-btn-en" data-lang="en">EN</button>
           </div>
-          <a href="#contact" class="btn-header-cta" id="btn-header-cta" data-i18n="nav.cta">Agendar Consulta</a>
+          <a href="/contacto.html" class="btn-header-cta" id="btn-header-cta" data-i18n="nav.cta">Agendar Cita</a>
           <button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">☰</button>
         </div>
       </div>
@@ -81,10 +80,10 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#contact" class="btn-primary" id="btn-hero-primary" data-i18n="hero.ctaPrimary">
+          <a href="/contacto.html" class="btn-primary" id="btn-hero-primary" data-i18n="hero.ctaPrimary">
             Iniciar Consulta Privada
           </a>
-          <a href="#services" class="btn-secondary" id="btn-hero-secondary" data-i18n="hero.ctaSecondary">
+          <a href="/servicios.html" class="btn-secondary" id="btn-hero-secondary" data-i18n="hero.ctaSecondary">
             Conocer Mis Servicios
           </a>
         </div>
@@ -111,10 +110,9 @@
       </div>
     </section>
 
-    <!-- About / Personal Brand Section -->
-    <section class="about-section" id="about">
+    <!-- Brief Advisor Spotlight (Home Section) -->
+    <section class="about-section" id="about-preview">
       <div class="container about-grid">
-        <!-- Media Column: Brother's Portrait Template -->
         <div class="about-media-col">
           <div class="advisor-card-frame">
             <img 
@@ -138,7 +136,6 @@
           </div>
         </div>
 
-        <!-- Narrative Column -->
         <div class="about-text-col">
           <span class="section-tag" data-i18n="about.tag">CONFIANZA & CRITERIO</span>
           <h2 class="section-heading" data-i18n="about.title">Humberto Machacón</h2>
@@ -159,18 +156,20 @@
             «No se trata de vender una propiedad, sino de proteger tu patrimonio y encontrar el espacio donde tu estilo de vida cobre su máxima expresión.»
           </div>
 
-          <div class="about-affiliation">
-            <span class="affiliation-icon">🏛️</span>
-            <span data-i18n="about.affiliationNote">
-              Operando como Asesor Inmobiliario Senior en estrecha colaboración con firma líder del sector en Málaga y Costa del Sol.
-            </span>
+          <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="/sobre-mi.html" class="btn-primary" style="padding: 0.85rem 1.8rem; font-size: 0.8rem;">
+              Conoce Mi Trayectoria &rarr;
+            </a>
+            <a href="/contacto.html" class="btn-secondary" style="padding: 0.85rem 1.8rem; font-size: 0.8rem;">
+              Agendar Conversación
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section" id="services">
+    <!-- Services Overview (Home Section) -->
+    <section class="services-section" id="services-preview">
       <div class="container">
         <div class="services-header">
           <span class="section-tag" data-i18n="services.tag">SOLUCIONES A MEDIDA</span>
@@ -181,7 +180,7 @@
         </div>
 
         <div class="services-grid">
-          <!-- Service 1: Buyers / Personal Shopper -->
+          <!-- Service 1 -->
           <div class="service-card">
             <div class="service-card-top">
               <div class="service-icon-wrap">
@@ -195,12 +194,10 @@
                 Búsqueda a medida de tu residencia ideal o segunda vivienda en Málaga. Acceso a propiedades off-market, filtrado riguroso, visitas técnicas y negociación experta.
               </p>
             </div>
-            <ul class="service-points" id="s1-points">
-              <!-- Dynamically populated by JS translations -->
-            </ul>
+            <ul class="service-points" id="s1-points"></ul>
           </div>
 
-          <!-- Service 2: Wealth & Investment -->
+          <!-- Service 2 -->
           <div class="service-card">
             <div class="service-card-top">
               <div class="service-icon-wrap">
@@ -214,71 +211,32 @@
                 Identificación de activos con alto potencial de revalorización o rentabilidad por alquiler (residencial prime y Golden Visa). Análisis de métricas financieras reales.
               </p>
             </div>
-            <ul class="service-points" id="s2-points">
-              <!-- Dynamically populated by JS translations -->
-            </ul>
+            <ul class="service-points" id="s2-points"></ul>
           </div>
+        </div>
 
-          <!-- Service 3: Sellers -->
-          <div class="service-card">
-            <div class="service-card-top">
-              <div class="service-icon-wrap">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-              </div>
-              <h3 class="service-title" data-i18n="services.s3Title">Asesoramiento para Propietarios (Venta)</h3>
-              <p class="service-desc" data-i18n="services.s3Desc">
-                Acompañamiento a propietarios que desean vender al máximo valor de mercado. Valoración realista, estrategia de posicionamiento discreto y filtro de compradores reales.
-              </p>
-            </div>
-            <ul class="service-points" id="s3-points">
-              <!-- Dynamically populated by JS translations -->
-            </ul>
-          </div>
-
-          <!-- Service 4: Relocation & Expats -->
-          <div class="service-card">
-            <div class="service-card-top">
-              <div class="service-icon-wrap">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </div>
-              <h3 class="service-title" data-i18n="services.s4Title">Relocation & Asesoría para Extranjeros</h3>
-              <p class="service-desc" data-i18n="services.s4Desc">
-                Servicio integral de aterrizaje en Málaga para compradores internacionales, nómadas digitales y familias que buscan reubicarse sin fricciones.
-              </p>
-            </div>
-            <ul class="service-points" id="s4-points">
-              <!-- Dynamically populated by JS translations -->
-            </ul>
-          </div>
+        <div style="text-align: center; margin-top: 3.5rem;">
+          <a href="/servicios.html" class="btn-secondary" style="padding: 0.85rem 2rem; font-size: 0.82rem;">
+            Ver Todos los Servicios & Metodología &rarr;
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Locations Section: Málaga Prime Enclaves -->
-    <section class="locations-section" id="locations">
+    <!-- Malaga Prime Locations Teaser -->
+    <section class="locations-section" id="locations-preview">
       <div class="container">
         <div class="locations-header">
           <div>
             <span class="section-tag" data-i18n="locations.tag">CONOCIMIENTO DEL TERRENO</span>
             <h2 class="section-heading" data-i18n="locations.title">Las Zonas Más Exclusivas de Málaga</h2>
           </div>
-          <p class="section-subheading" data-i18n="locations.subtitle">
-            Cada rincón de Málaga tiene su propia personalidad, ritmo y potencial de valor.
-          </p>
+          <a href="/zonas.html" class="btn-secondary" style="padding: 0.75rem 1.6rem; font-size: 0.8rem;">
+            Ver Guía Completa de Zonas &rarr;
+          </a>
         </div>
 
         <div class="locations-grid">
-          <!-- Loc 1: Historic Center -->
           <div class="location-card">
             <div class="location-img-wrap">
               <img src="/images/malaga-centro.jpg" alt="Centro Histórico de Málaga" class="location-img" />
@@ -295,7 +253,6 @@
             </div>
           </div>
 
-          <!-- Loc 2: Limonar & Pedregalejo -->
           <div class="location-card">
             <div class="location-img-wrap">
               <img src="/images/malaga-costa.jpg" alt="El Limonar y costa de Málaga" class="location-img" />
@@ -311,93 +268,12 @@
               </div>
             </div>
           </div>
-
-          <!-- Loc 3: Malagueta & Seafront -->
-          <div class="location-card">
-            <div class="location-img-wrap">
-              <img src="/images/hero-villa.jpg" alt="La Malagueta frente al mar" class="location-img" />
-              <span class="location-badge">Frontline Beach</span>
-            </div>
-            <div class="location-body">
-              <h3 class="location-name" data-i18n="locations.loc3Name">La Malagueta & Paseo Marítimo</h3>
-              <p class="location-desc" data-i18n="locations.loc3Desc">
-                Vivir frente al mar a cinco minutos a pie del centro histórico. Vistas abiertas al Mediterráneo, Muelle Uno y estilo de vida náutico.
-              </p>
-              <div class="location-highlight" data-i18n="locations.loc3Highlight">
-                Ideal para: Estilo de vida playero exclusivo y residencias de primera línea.
-              </div>
-            </div>
-          </div>
-
-          <!-- Loc 4: Costa del Sol Prime -->
-          <div class="location-card">
-            <div class="location-img-wrap">
-              <img src="/images/hero-villa.jpg" alt="Villas en Costa del Sol" class="location-img" />
-              <span class="location-badge">Costa del Sol</span>
-            </div>
-            <div class="location-body">
-              <h3 class="location-name" data-i18n="locations.loc4Name">Costa del Sol Prime (Benalmádena & Marbella)</h3>
-              <p class="location-desc" data-i18n="locations.loc4Desc">
-                Villas contemporáneas con piscina infinita, campos de golf de renombre mundial y puertos deportivos de primer nivel a corta distancia de la capital.
-              </p>
-              <div class="location-highlight" data-i18n="locations.loc4Highlight">
-                Ideal para: Lujo mediterráneo contemporáneo y retiros de bienestar.
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- Why Work with a Personal Advisor -->
-    <section class="why-section" id="why-me">
-      <div class="container">
-        <div class="why-header">
-          <span class="section-tag" data-i18n="whyMe.tag">DIFERENCIA REAL</span>
-          <h2 class="section-heading" data-i18n="whyMe.title">¿Por Qué un Asesor Personal y no una Agencia Convencional?</h2>
-          <p class="section-subheading" style="margin: 0 auto;" data-i18n="whyMe.subtitle">
-            La diferencia entre un vendedor apresurado y un consultor que defiende tu tranquilidad.
-          </p>
-        </div>
-
-        <div class="why-grid">
-          <div class="why-card">
-            <div class="why-number">01</div>
-            <h3 class="why-card-title" data-i18n="whyMe.p1Title">Un Solo Interlocutor Dedicado</h3>
-            <p class="why-card-desc" data-i18n="whyMe.p1Desc">
-              Tratas directamente conmigo. Sin rotación de comerciales ni mensajes perdidos entre departamentos.
-            </p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-number">02</div>
-            <h3 class="why-card-title" data-i18n="whyMe.p2Title">Visión Global del Mercado</h3>
-            <p class="why-card-desc" data-i18n="whyMe.p2Desc">
-              No estoy limitado a un catálogo cerrado. Si la propiedad perfecta la tiene otra agencia o un particular, la consigo para ti.
-            </p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-number">03</div>
-            <h3 class="why-card-title" data-i18n="whyMe.p3Title">Cero Presión, 100% Honestidad</h3>
-            <p class="why-card-desc" data-i18n="whyMe.p3Desc">
-              Si una propiedad tiene vicios ocultos, mala orientación o precio inflado, seré el primero en desaconsejarte la compra.
-            </p>
-          </div>
-
-          <div class="why-card">
-            <div class="why-number">04</div>
-            <h3 class="why-card-title" data-i18n="whyMe.p4Title">Ecosistema Legal y Financiero</h3>
-            <p class="why-card-desc" data-i18n="whyMe.p4Desc">
-              Te conecto con los despachos jurídicos, arquitectos y entidades bancarias más reputadas de Málaga para que tu compra sea blindada.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section" id="testimonials">
+    <!-- Testimonials Preview -->
+    <section class="testimonials-section" id="testimonials-preview">
       <div class="container">
         <div class="testimonials-header">
           <span class="section-tag" data-i18n="testimonials.tag">EXPERIENCIAS REALES</span>
@@ -459,172 +335,22 @@
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section" id="faq">
-      <div class="container">
-        <div class="faq-header">
-          <span class="section-tag" data-i18n="faq.tag">PREGUNTAS FRECUENTES</span>
-          <h2 class="section-heading" data-i18n="faq.title">Respuestas Claras a Dudas Comunes</h2>
-        </div>
-
-        <div class="faq-accordion" id="faq-accordion">
-          <div class="faq-item">
-            <button class="faq-question-btn" type="button">
-              <span data-i18n="faq.q1">¿Trabajas con inmuebles de cualquier agencia o solo con los tuyos?</span>
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div class="faq-answer">
-              <p data-i18n="faq.a1">
-                Al actuar como tu asesor y personal shopper, puedo colaborar con cualquier inmobiliaria, promotora o propietario directo de Málaga y la Costa del Sol. Mi misión es encontrar la propiedad adecuada para ti, sin importar quién la comercialice.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question-btn" type="button">
-              <span data-i18n="faq.q2">¿Cómo se gestionan tus honorarios de asesoramiento?</span>
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div class="faq-answer">
-              <p data-i18n="faq.a2">
-                La transparencia es total. En la mayoría de operaciones de compraventa en España, los honorarios profesionales son asumidos por el vendedor o compartidos entre agencias colaboradoras, sin sobrecostes para ti. En mandatos específicos de Personal Shopper VIP, acordamos previamente los términos con total claridad antes de comenzar.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question-btn" type="button">
-              <span data-i18n="faq.q3">¿Puedes ayudarme si resido en el extranjero y no puedo viajar ahora?</span>
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div class="faq-answer">
-              <p data-i18n="faq.a3">
-                Por supuesto. Realizo visitas virtuales en vídeo de alta definición, filtro los expedientes registrales, analizo el entorno y te entrego informes detallados para que solo viajes cuando haya opciones que realmente merezcan tu tiempo.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question-btn" type="button">
-              <span data-i18n="faq.q4">¿Trabajas también con clientes en inglés?</span>
-              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div class="faq-answer">
-              <p data-i18n="faq.a4">
-                Sí, todos los informes, reuniones, acompañamientos y comunicaciones pueden realizarse con total fluidez tanto en español como en inglés.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact & Consultation Section -->
-    <section class="contact-section" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-info-col">
-          <span class="section-tag" data-i18n="contact.tag">CONVERSACIÓN PRIVADA</span>
-          <h2 class="section-heading" data-i18n="contact.title">Hablemos de tus Planes en Málaga</h2>
-          <p class="section-subheading" data-i18n="contact.subtitle">
-            Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
-          </p>
-
-          <div class="contact-methods">
-            <div class="contact-method-card">
-              <div class="contact-method-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-              </div>
-              <div>
-                <div class="contact-method-label">Teléfono Directo</div>
-                <div class="contact-method-value" id="contact-phone-display">+34 600 000 000</div>
-              </div>
-            </div>
-
-            <div class="contact-method-card">
-              <div class="contact-method-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <div>
-                <div class="contact-method-label">Email Personal</div>
-                <div class="contact-method-value" id="contact-email-display">contacto@humbertomachacon.com</div>
-              </div>
-            </div>
-
-            <div class="contact-method-card">
-              <div class="contact-method-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              <div>
-                <div class="contact-method-label">Ubicación</div>
-                <div class="contact-method-value" id="contact-location-display">Málaga Capital & Costa del Sol, España</div>
-              </div>
-            </div>
-          </div>
-
-          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large" id="whatsapp-direct-link">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <!-- Consultation Banner CTA -->
+    <section style="padding: 5rem 0; background: linear-gradient(135deg, rgba(21, 24, 30, 0.9) 0%, rgba(13, 15, 18, 0.95) 100%); border-top: 1px solid var(--border-gold); text-align: center;">
+      <div class="container" style="max-width: 800px;">
+        <span class="section-tag" data-i18n="contact.tag">CONVERSACIÓN PRIVADA</span>
+        <h2 class="section-heading" style="margin-bottom: 1.25rem;" data-i18n="contact.title">Hablemos de tus Planes en Málaga</h2>
+        <p class="section-subheading" style="margin: 0 auto 2.5rem;" data-i18n="contact.subtitle">
+          Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
+          <a href="/contacto.html" class="btn-primary" data-i18n="nav.cta">Agendar Cita</a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large" id="whatsapp-direct-link" style="padding: 0.9rem 1.8rem; font-size: 0.85rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
             </svg>
-            <span data-i18n="contact.whatsappBtn">Escribir directamente por WhatsApp</span>
+            <span data-i18n="contact.whatsappBtn">Escribir por WhatsApp</span>
           </a>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="contact-form-card">
-          <form id="contact-form">
-            <div class="form-group">
-              <label for="form-name" class="form-label" data-i18n="contact.formName">Nombre completo</label>
-              <input type="text" id="form-name" class="form-input" required placeholder="Tu nombre y apellidos" />
-            </div>
-
-            <div class="form-group">
-              <label for="form-email" class="form-label" data-i18n="contact.formEmail">Correo electrónico</label>
-              <input type="email" id="form-email" class="form-input" required placeholder="tu@email.com" />
-            </div>
-
-            <div class="form-group">
-              <label for="form-phone" class="form-label" data-i18n="contact.formPhone">Teléfono / WhatsApp</label>
-              <input type="tel" id="form-phone" class="form-input" placeholder="+34 600 000 000" />
-            </div>
-
-            <div class="form-group">
-              <label for="form-interest" class="form-label" data-i18n="contact.formInterest">¿En qué te puedo asesorar?</label>
-              <select id="form-interest" class="form-select">
-                <!-- Dynamically populated options -->
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="form-message" class="form-label" data-i18n="contact.formMessage">Mensaje o detalles de tu proyecto</label>
-              <textarea id="form-message" class="form-textarea" rows="4" required placeholder="Cuéntame sobre la zona, tipo de propiedad, presupuesto o plazos estimados..."></textarea>
-            </div>
-
-            <button type="submit" class="form-btn-submit" id="form-btn-submit" data-i18n="contact.formSubmit">
-              Enviar Mensaje de Consulta
-            </button>
-
-            <p class="form-disclaimer" data-i18n="contact.disclaimer">
-              Tus datos están protegidos y solo se utilizarán para responder a tu consulta conforme a la normativa RGPD.
-            </p>
-
-            <div id="form-status-alert" class="form-status-alert"></div>
-          </form>
         </div>
       </div>
     </section>
@@ -647,25 +373,24 @@
           </div>
 
           <div>
-            <h4 class="footer-title" data-i18n="footer.quickLinks">Navegación Rápida</h4>
+            <h4 class="footer-title" data-i18n="footer.quickLinks">Navegación</h4>
             <ul class="footer-links-list">
-              <li><a href="#about" class="footer-link" data-i18n="nav.about">Sobre Mí</a></li>
-              <li><a href="#services" class="footer-link" data-i18n="nav.services">Servicios</a></li>
-              <li><a href="#locations" class="footer-link" data-i18n="nav.locations">Zonas de Málaga</a></li>
-              <li><a href="#why-me" class="footer-link" data-i18n="nav.whyMe">¿Por Qué un Asesor?</a></li>
-              <li><a href="#testimonials" class="footer-link" data-i18n="nav.testimonials">Testimonios</a></li>
-              <li><a href="#contact" class="footer-link" data-i18n="nav.contact">Contacto</a></li>
+              <li><a href="/" class="footer-link" data-i18n="nav.home">Inicio</a></li>
+              <li><a href="/sobre-mi.html" class="footer-link" data-i18n="nav.about">Sobre Mí</a></li>
+              <li><a href="/servicios.html" class="footer-link" data-i18n="nav.services">Servicios</a></li>
+              <li><a href="/zonas.html" class="footer-link" data-i18n="nav.locations">Zonas de Málaga</a></li>
+              <li><a href="/contacto.html" class="footer-link" data-i18n="nav.contact">Contacto</a></li>
             </ul>
           </div>
 
           <div>
             <h4 class="footer-title" data-i18n="footer.servicesList">Áreas de Servicio</h4>
             <ul class="footer-links-list">
-              <li><a href="#services" class="footer-link">Personal Shopper Inmobiliario</a></li>
-              <li><a href="#services" class="footer-link">Inversión Patrimonial</a></li>
-              <li><a href="#services" class="footer-link">Acompañamiento a Propietarios</a></li>
-              <li><a href="#services" class="footer-link">Relocation & Golden Visa</a></li>
-              <li><a href="#locations" class="footer-link">Málaga Prime Enclaves</a></li>
+              <li><a href="/servicios.html" class="footer-link">Personal Shopper Inmobiliario</a></li>
+              <li><a href="/servicios.html" class="footer-link">Inversión Patrimonial</a></li>
+              <li><a href="/servicios.html" class="footer-link">Acompañamiento a Propietarios</a></li>
+              <li><a href="/servicios.html" class="footer-link">Relocation & Golden Visa</a></li>
+              <li><a href="/zonas.html" class="footer-link">Málaga Prime Enclaves</a></li>
             </ul>
           </div>
         </div>
@@ -688,16 +413,14 @@
       </svg>
     </a>
 
-    <!-- Legal Modal Window -->
+    <!-- Legal Modal -->
     <div class="legal-modal-backdrop" id="legal-modal-backdrop" role="dialog" aria-modal="true">
       <div class="legal-modal-window">
         <div class="legal-modal-header">
           <h3 class="legal-modal-title" id="legal-modal-title">Aviso Legal</h3>
           <button type="button" class="legal-modal-close-btn" id="legal-modal-close" aria-label="Cerrar modal">&times;</button>
         </div>
-        <div class="legal-modal-body" id="legal-modal-body">
-          <!-- Dynamically injected legal content -->
-        </div>
+        <div class="legal-modal-body" id="legal-modal-body"></div>
       </div>
     </div>
 

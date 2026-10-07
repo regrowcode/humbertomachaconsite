@@ -317,10 +317,32 @@ function initLanguageSwitcher() {
   document.getElementById('lang-btn-en')?.addEventListener('click', () => renderLanguage('en'));
 }
 
+/**
+ * Automatically sets active state on current page nav link
+ */
+function initActiveNav() {
+  const currentPath = window.location.pathname.toLowerCase();
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  navLinks.forEach((link) => {
+    const href = link.getAttribute('href').toLowerCase();
+    const cleanHref = href.replace('.html', '').replace('/', '');
+
+    if ((currentPath === '/' || currentPath.endsWith('index.html') || currentPath === '') && (href === '/' || href === '/index.html')) {
+      link.classList.add('active');
+    } else if (cleanHref && currentPath.includes(cleanHref)) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
 // Global Initialization
 document.addEventListener('DOMContentLoaded', () => {
   initSiteConfig();
   renderLanguage(currentLang);
+  initActiveNav();
   initHeaderScroll();
   initMobileMenu();
   initFaqAccordion();
@@ -328,3 +350,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initLegalModals();
   initLanguageSwitcher();
 });
+

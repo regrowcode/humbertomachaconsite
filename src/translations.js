@@ -1,13 +1,12 @@
 export const translations = {
   es: {
     nav: {
+      home: "Inicio",
       about: "Sobre Mí",
       services: "Servicios",
       locations: "Zonas de Málaga",
-      whyMe: "¿Por Qué un Asesor?",
-      testimonials: "Testimonios",
       contact: "Contacto",
-      cta: "Agendar Consulta",
+      cta: "Agendar Cita",
     },
     hero: {
       badge: "CONSEJERO INMOBILIARIO PERSONAL · MÁLAGA & COSTA DEL SOL",
@@ -149,11 +148,10 @@ export const translations = {
   },
   en: {
     nav: {
+      home: "Home",
       about: "About Me",
       services: "Services",
       locations: "Málaga Areas",
-      whyMe: "Why An Advisor?",
-      testimonials: "Testimonials",
       contact: "Contact",
       cta: "Book Consultation",
     },
