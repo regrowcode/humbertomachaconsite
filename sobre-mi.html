@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sobre Mí | Humberto Machacón - Asesor Inmobiliario Personal en Málaga</title>
+    <title>Sobre Mí | Humberto Machacón - Asesor Inmobiliario en Málaga</title>
     <meta name="description" content="Conoce a Humberto Machacón, asesor inmobiliario personal en Málaga y Costa del Sol. Experiencia, independencia y criterio para compradores VIP e inversores." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +17,7 @@
           <div class="brand-monogram">HM</div>
           <div class="brand-info">
             <span class="brand-name">Humberto Machacón</span>
-            <span class="brand-subtitle">MÁLAGA · REAL ESTATE</span>
+            <span class="brand-subtitle">Málaga · Real Estate</span>
           </div>
         </a>
 
@@ -26,7 +26,7 @@
             <li><a href="/" class="nav-link" data-i18n="nav.home">Inicio</a></li>
             <li><a href="/sobre-mi.html" class="nav-link active" data-i18n="nav.about">Sobre Mí</a></li>
             <li><a href="/servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a></li>
-            <li><a href="/zonas.html" class="nav-link" data-i18n="nav.locations">Zonas de Málaga</a></li>
+            <li><a href="/zonas.html" class="nav-link" data-i18n="nav.locations">Zonas</a></li>
             <li><a href="/contacto.html" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
@@ -34,6 +34,7 @@
         <div class="nav-actions">
           <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language selection">
             <button type="button" class="lang-btn active" id="lang-btn-es" data-lang="es">ES</button>
+            <span style="opacity: 0.3;">/</span>
             <button type="button" class="lang-btn" id="lang-btn-en" data-lang="en">EN</button>
           </div>
           <a href="/contacto.html" class="btn-header-cta" id="btn-header-cta" data-i18n="nav.cta">Agendar Cita</a>
@@ -43,52 +44,38 @@
     </header>
 
     <!-- Page Hero Banner -->
-    <section class="page-hero-banner">
+    <section class="page-hero-banner-clean">
       <div class="container">
-        <div class="breadcrumbs">
+        <div class="breadcrumbs-clean">
           <a href="/" data-i18n="nav.home">Inicio</a>
           <span>/</span>
           <span data-i18n="nav.about">Sobre Mí</span>
         </div>
-        <span class="section-tag" data-i18n="about.tag">CONFIANZA & CRITERIO</span>
-        <h1 class="section-heading" data-i18n="about.title">Humberto Machacón</h1>
-        <p class="section-subheading" style="margin: 0 auto;" data-i18n="about.subtitle">
-          Tu aliado estratégico en el mercado inmobiliario más cotizado de España
+        <h1 class="section-title" data-i18n="about.title">Humberto Machacón</h1>
+        <p class="section-subtitle-clean" style="margin: 0.5rem auto 0;" data-i18n="about.subtitle">
+          Asesor Inmobiliario Personal en Málaga & Costa del Sol
         </p>
       </div>
     </section>
 
-    <!-- Detailed About Section -->
+    <!-- Detailed About Section (Editorial Split) -->
     <section class="about-section" style="padding-top: 4.5rem;">
-      <div class="container about-grid">
-        <div class="about-media-col">
-          <div class="advisor-card-frame">
-            <img 
-              src="/images/humberto-machacon.jpg" 
-              alt="Humberto Machacón - Asesor Inmobiliario Senior en Málaga" 
-              class="advisor-image"
-              id="advisor-portrait-img"
-            />
-            <div class="advisor-badge-float">
-              <div>
-                <h3 class="advisor-badge-name">Humberto Machacón</h3>
-                <p class="advisor-badge-role" id="advisor-badge-role">Asesor Inmobiliario Senior</p>
-              </div>
-              <div class="advisor-badge-verified">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                <span>Málaga Verified</span>
-              </div>
-            </div>
-          </div>
+      <div class="container about-split-grid">
+        <div class="about-portrait-wrap">
+          <img 
+            src="/images/humberto-machacon.jpg" 
+            alt="Humberto Machacón - Asesor Inmobiliario en Málaga" 
+            class="about-portrait-img"
+            id="advisor-portrait-img"
+          />
         </div>
 
-        <div class="about-text-col">
-          <span class="section-tag">FILOSOFÍA DE TRABAJO</span>
-          <h2 class="section-heading" style="font-size: 2.3rem;">Compromiso Exclusivo Con Tu Tranquilidad</h2>
+        <div class="about-text-content">
+          <blockquote class="about-quote" data-i18n="about.quote">
+            «El valor de una propiedad se mide en metros; el valor de un asesor, en criterio, tiempo y discreción.»
+          </blockquote>
 
-          <div class="about-narrative">
+          <div class="about-paragraphs">
             <p data-i18n="about.p1">
               Málaga se ha transformado en el epicentro europeo de calidad de vida, tecnología e inversión inmobiliaria de alta gama. Sin embargo, navegar este mercado dinámico requiere más que buscar en portales: exige criterio local, análisis objetivo y discreción absoluta.
             </p>
@@ -97,193 +84,165 @@
             </p>
           </div>
 
-          <div class="about-quote-box" data-i18n="about.quote">
-            «No se trata de vender una propiedad, sino de proteger tu patrimonio y encontrar el espacio donde tu estilo de vida cobre su máxima expresión.»
-          </div>
-
-          <div class="about-affiliation">
-            <span class="affiliation-icon">🏛️</span>
-            <span data-i18n="about.affiliationNote">
-              Operando como Asesor Inmobiliario Senior en estrecha colaboración con firma líder del sector en Málaga y Costa del Sol.
-            </span>
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <a href="/contacto.html" class="btn-dark" data-i18n="nav.cta">Agendar Consulta Privada</a>
+            <a href="/servicios.html" class="btn-outline-dark" data-i18n="nav.services">Ver Servicios</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Why Work With a Personal Advisor -->
-    <section class="why-section" id="why-me">
+    <!-- 4 Work Principles (Minimal Architectural Grid) -->
+    <section class="services-section" style="border-top: 1px solid var(--border-light);">
       <div class="container">
-        <div class="why-header">
-          <span class="section-tag" data-i18n="whyMe.tag">DIFERENCIA REAL</span>
-          <h2 class="section-heading" data-i18n="whyMe.title">¿Por Qué un Asesor Personal y no una Agencia Convencional?</h2>
-          <p class="section-subheading" style="margin: 0 auto;" data-i18n="whyMe.subtitle">
-            La diferencia entre un vendedor apresurado y un consultor que defiende tu tranquilidad.
-          </p>
+        <div class="section-header-clean center">
+          <span class="section-kicker" data-i18n="whyMe.tag">DIFERENCIA REAL</span>
+          <h2 class="section-title">El Enfoque Personal</h2>
         </div>
 
-        <div class="why-grid">
-          <div class="why-card">
-            <div class="why-number">01</div>
-            <h3 class="why-card-title" data-i18n="whyMe.p1Title">Un Solo Interlocutor Dedicado</h3>
-            <p class="why-card-desc" data-i18n="whyMe.p1Desc">
-              Tratas directamente conmigo. Sin rotación de comerciales ni mensajes perdidos entre departamentos.
-            </p>
+        <div class="services-list-grid">
+          <!-- Pillar 1 -->
+          <div class="service-clean-card">
+            <div>
+              <div class="service-number">01</div>
+              <h3 class="service-clean-title" data-i18n="whyMe.p1Title">Un Solo Interlocutor Dedicado</h3>
+              <p class="service-clean-desc" data-i18n="whyMe.p1Desc">
+                Tratas directamente conmigo. Sin rotación de comerciales ni mensajes perdidos entre departamentos.
+              </p>
+            </div>
           </div>
 
-          <div class="why-card">
-            <div class="why-number">02</div>
-            <h3 class="why-card-title" data-i18n="whyMe.p2Title">Visión Global del Mercado</h3>
-            <p class="why-card-desc" data-i18n="whyMe.p2Desc">
-              No estoy limitado a un catálogo cerrado. Si la propiedad perfecta la tiene otra agencia o un particular, la consigo para ti.
-            </p>
+          <!-- Pillar 2 -->
+          <div class="service-clean-card">
+            <div>
+              <div class="service-number">02</div>
+              <h3 class="service-clean-title" data-i18n="whyMe.p2Title">Visión Global del Mercado</h3>
+              <p class="service-clean-desc" data-i18n="whyMe.p2Desc">
+                No estoy limitado a un catálogo cerrado. Si la propiedad perfecta la tiene otra agencia o un particular, la consigo para ti.
+              </p>
+            </div>
           </div>
 
-          <div class="why-card">
-            <div class="why-number">03</div>
-            <h3 class="why-card-title" data-i18n="whyMe.p3Title">Cero Presión, 100% Honestidad</h3>
-            <p class="why-card-desc" data-i18n="whyMe.p3Desc">
-              Si una propiedad tiene vicios ocultos, mala orientación o precio inflado, seré el primero en desaconsejarte la compra.
-            </p>
+          <!-- Pillar 3 -->
+          <div class="service-clean-card">
+            <div>
+              <div class="service-number">03</div>
+              <h3 class="service-clean-title" data-i18n="whyMe.p3Title">Cero Presión, 100% Honestidad</h3>
+              <p class="service-clean-desc" data-i18n="whyMe.p3Desc">
+                Si una propiedad tiene vicios ocultos, mala orientación o precio inflado, seré el primero en desaconsejarte la compra.
+              </p>
+            </div>
           </div>
 
-          <div class="why-card">
-            <div class="why-number">04</div>
-            <h3 class="why-card-title" data-i18n="whyMe.p4Title">Ecosistema Legal y Financiero</h3>
-            <p class="why-card-desc" data-i18n="whyMe.p4Desc">
-              Te conecto con los despachos jurídicos, arquitectos y entidades bancarias más reputadas de Málaga para que tu compra sea blindada.
-            </p>
+          <!-- Pillar 4 -->
+          <div class="service-clean-card">
+            <div>
+              <div class="service-number">04</div>
+              <h3 class="service-clean-title" data-i18n="whyMe.p4Title">Ecosistema Legal y Financiero</h3>
+              <p class="service-clean-desc" data-i18n="whyMe.p4Desc">
+                Te conecto con los despachos jurídicos, arquitectos y entidades bancarias más reputadas de Málaga para que tu compra sea blindada.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-      <div class="container">
-        <div class="testimonials-header">
-          <span class="section-tag" data-i18n="testimonials.tag">EXPERIENCIAS REALES</span>
-          <h2 class="section-heading" data-i18n="testimonials.title">Lo Que Dicen Quienes Ya Confiaron</h2>
-          <p class="section-subheading" style="margin: 0 auto;" data-i18n="testimonials.subtitle">
-            Relaciones construidas sobre la honestidad, la eficacia y la discreción.
-          </p>
-        </div>
-
-        <div class="testimonials-grid">
-          <div class="testimonial-card">
-            <div>
-              <div class="testimonial-quote-icon">“</div>
-              <p class="testimonial-text" data-i18n="testimonials.t1Text">
-                «Humberto nos ahorró meses de frustración buscando casa en Málaga desde Londres. Su honestidad al descartar propiedades que tenían problemas urbanísticos fue impagable. Hoy vivimos en la casa de nuestros sueños en El Limonar.»
-              </p>
-            </div>
-            <div class="testimonial-author-box">
-              <div class="author-avatar-initials">JM</div>
-              <div>
-                <div class="author-name" data-i18n="testimonials.t1Author">James & Sophie M.</div>
-                <div class="author-origin" data-i18n="testimonials.t1Origin">Reubicados desde Reino Unido</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div>
-              <div class="testimonial-quote-icon">“</div>
-              <p class="testimonial-text" data-i18n="testimonials.t2Text">
-                «Como inversor extranjero buscaba seguridad y rentabilidad clara. Humberto me presentó un análisis financiero impecable y coordinó todo el proceso legal con su red de abogados. Un servicio 10 de principio a fin.»
-              </p>
-            </div>
-            <div class="testimonial-author-box">
-              <div class="author-avatar-initials">MW</div>
-              <div>
-                <div class="author-name" data-i18n="testimonials.t2Author">Dr. Markus Weber</div>
-                <div class="author-origin" data-i18n="testimonials.t2Origin">Inversor patrimonial (Múnich, Alemania)</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div>
-              <div class="testimonial-quote-icon">“</div>
-              <p class="testimonial-text" data-i18n="testimonials.t3Text">
-                «Queríamos vender un ático en el centro de Málaga sin que se quemara en portales masivos. Humberto lo gestionó con una discreción impecable y encontró el comprador adecuado en menos de 45 días.»
-              </p>
-            </div>
-            <div class="testimonial-author-box">
-              <div class="author-avatar-initials">CR</div>
-              <div>
-                <div class="author-name" data-i18n="testimonials.t3Author">Carmen R. de la Vega</div>
-                <div class="author-origin" data-i18n="testimonials.t3Origin">Propietaria en Málaga Centro</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 4rem;">
-          <a href="/contacto.html" class="btn-primary" data-i18n="nav.cta">Agendar Cita con Humberto</a>
+    <!-- Consultation Action Banner -->
+    <section class="consultation-banner">
+      <div class="container consultation-inner">
+        <h2 class="consultation-title">
+          Hablemos de su próximo paso <em>en Málaga</em>
+        </h2>
+        <p class="consultation-subtitle" data-i18n="contact.subtitle">
+          Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
+        </p>
+        <div class="consultation-buttons">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large whatsapp-direct-link" id="whatsapp-direct-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span data-i18n="contact.whatsappBtn">Contactar por WhatsApp</span>
+          </a>
+          <a href="/contacto.html" class="btn-secondary" data-i18n="nav.cta">
+            Agendar Cita Privada
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Site Footer -->
+    <!-- Site Footer (Architectural Kretz Style) -->
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-top">
-          <div>
+        <div class="footer-main-grid">
+          <div class="footer-brand-col">
             <div class="brand-logo">
               <div class="brand-monogram">HM</div>
               <div class="brand-info">
-                <span class="brand-name">Humberto Machacón</span>
-                <span class="brand-subtitle">REAL ESTATE ADVISOR</span>
+                <span class="brand-name" style="color: #ffffff;">Humberto Machacón</span>
+                <span class="brand-subtitle" style="color: rgba(255,255,255,0.6);">MÁLAGA · REAL ESTATE</span>
               </div>
             </div>
-            <p class="footer-brand-bio" data-i18n="footer.bio">
-              Asesor Inmobiliario Personal especializado en Málaga y Costa del Sol. Comprometido con la excelencia, la discreción y el asesoramiento transparente.
+            <p class="footer-bio-text" data-i18n="footer.bio">
+              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol. Propiedades singulares y servicio de alta confianza.
             </p>
           </div>
 
           <div>
-            <h4 class="footer-title" data-i18n="footer.quickLinks">Navegación</h4>
-            <ul class="footer-links-list">
-              <li><a href="/" class="footer-link" data-i18n="nav.home">Inicio</a></li>
-              <li><a href="/sobre-mi.html" class="footer-link" data-i18n="nav.about">Sobre Mí</a></li>
-              <li><a href="/servicios.html" class="footer-link" data-i18n="nav.services">Servicios</a></li>
-              <li><a href="/zonas.html" class="footer-link" data-i18n="nav.locations">Zonas de Málaga</a></li>
-              <li><a href="/contacto.html" class="footer-link" data-i18n="nav.contact">Contacto</a></li>
+            <h4 class="footer-col-title" data-i18n="footer.destinations">Enclaves</h4>
+            <ul class="footer-nav-list">
+              <li><a href="/zonas.html" class="footer-nav-link">Centro Histórico</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">El Limonar & Pedregalejo</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">La Malagueta</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">Costa del Sol Prime</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 class="footer-title" data-i18n="footer.servicesList">Áreas de Servicio</h4>
-            <ul class="footer-links-list">
-              <li><a href="/servicios.html" class="footer-link">Personal Shopper Inmobiliario</a></li>
-              <li><a href="/servicios.html" class="footer-link">Inversión Patrimonial</a></li>
-              <li><a href="/servicios.html" class="footer-link">Acompañamiento a Propietarios</a></li>
-              <li><a href="/servicios.html" class="footer-link">Relocation & Golden Visa</a></li>
-              <li><a href="/zonas.html" class="footer-link">Málaga Prime Enclaves</a></li>
+            <h4 class="footer-col-title" data-i18n="footer.servicesList">Servicios</h4>
+            <ul class="footer-nav-list">
+              <li><a href="/servicios.html" class="footer-nav-link">Personal Shopper</a></li>
+              <li><a href="/servicios.html" class="footer-nav-link">Inversión Patrimonial</a></li>
+              <li><a href="/servicios.html" class="footer-nav-link">Venta Discreta</a></li>
+              <li><a href="/servicios.html" class="footer-nav-link">Relocation & Concierge</a></li>
             </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-col-title" data-i18n="nav.contact">Contacto</h4>
+            <div class="footer-contact-item">
+              <span>Tel:</span>
+              <a href="tel:+34600000000" id="contact-phone-display">+34 600 000 000</a>
+            </div>
+            <div class="footer-contact-item">
+              <span>Email:</span>
+              <a href="mailto:contacto@humbertomachacon.com" id="contact-email-display">contacto@humbertomachacon.com</a>
+            </div>
+            <div class="footer-contact-item" style="margin-top: 1rem;">
+              <span id="contact-location-display">Málaga & Costa del Sol, España</span>
+            </div>
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados. Marca personal independiente en asociación profesional con agencia inmobiliaria líder en Málaga.</span></p>
+        <div class="footer-bottom-row">
+          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
           <div class="footer-legal-links">
             <button type="button" class="footer-legal-btn" id="legal-btn-aviso" data-i18n="footer.legalNotice">Aviso Legal</button>
-            <button type="button" class="footer-legal-btn" id="legal-btn-privacidad" data-i18n="footer.privacyPolicy">Política de Privacidad</button>
+            <button type="button" class="footer-legal-btn" id="legal-btn-privacidad" data-i18n="footer.privacyPolicy">Privacidad</button>
             <button type="button" class="footer-legal-btn" id="legal-btn-cookies" data-i18n="footer.cookiesPolicy">Cookies</button>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
+    <!-- Floating WhatsApp Action Button -->
     <a href="#" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" id="floating-whatsapp" aria-label="Contactar por WhatsApp">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
       </svg>
     </a>
 
-    <!-- Legal Modal -->
+    <!-- Legal Modal Window -->
     <div class="legal-modal-backdrop" id="legal-modal-backdrop" role="dialog" aria-modal="true">
       <div class="legal-modal-window">
         <div class="legal-modal-header">

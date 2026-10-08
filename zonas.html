@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zonas Exclusivas de Málaga | Humberto Machacón - Asesor Inmobiliario</title>
-    <meta name="description" content="Guía inmobiliaria de las zonas más exclusivas de Málaga: Centro Histórico, El Limonar, La Malagueta y Costa del Sol Prime." />
+    <title>Zonas Exclusivas | Humberto Machacón - Asesor Inmobiliario en Málaga</title>
+    <meta name="description" content="Guía inmobiliaria de los enclaves más cotizados: Centro Histórico, El Limonar, La Malagueta y Costa del Sol Prime." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="/src/style.css" />
@@ -17,7 +17,7 @@
           <div class="brand-monogram">HM</div>
           <div class="brand-info">
             <span class="brand-name">Humberto Machacón</span>
-            <span class="brand-subtitle">MÁLAGA · REAL ESTATE</span>
+            <span class="brand-subtitle">Málaga · Real Estate</span>
           </div>
         </a>
 
@@ -26,7 +26,7 @@
             <li><a href="/" class="nav-link" data-i18n="nav.home">Inicio</a></li>
             <li><a href="/sobre-mi.html" class="nav-link" data-i18n="nav.about">Sobre Mí</a></li>
             <li><a href="/servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a></li>
-            <li><a href="/zonas.html" class="nav-link active" data-i18n="nav.locations">Zonas de Málaga</a></li>
+            <li><a href="/zonas.html" class="nav-link active" data-i18n="nav.locations">Zonas</a></li>
             <li><a href="/contacto.html" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
@@ -34,6 +34,7 @@
         <div class="nav-actions">
           <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language selection">
             <button type="button" class="lang-btn active" id="lang-btn-es" data-lang="es">ES</button>
+            <span style="opacity: 0.3;">/</span>
             <button type="button" class="lang-btn" id="lang-btn-en" data-lang="en">EN</button>
           </div>
           <a href="/contacto.html" class="btn-header-cta" id="btn-header-cta" data-i18n="nav.cta">Agendar Cita</a>
@@ -43,100 +44,126 @@
     </header>
 
     <!-- Page Hero Banner -->
-    <section class="page-hero-banner">
+    <section class="page-hero-banner-clean">
       <div class="container">
-        <div class="breadcrumbs">
+        <div class="breadcrumbs-clean">
           <a href="/" data-i18n="nav.home">Inicio</a>
           <span>/</span>
-          <span data-i18n="nav.locations">Zonas de Málaga</span>
+          <span data-i18n="nav.locations">Zonas</span>
         </div>
-        <span class="section-tag" data-i18n="locations.tag">CONOCIMIENTO DEL TERRENO</span>
-        <h1 class="section-heading" data-i18n="locations.title">Las Zonas Más Exclusivas de Málaga</h1>
-        <p class="section-subheading" style="margin: 0 auto;" data-i18n="locations.subtitle">
-          Cada rincón de Málaga tiene su propia personalidad, ritmo y potencial de valor.
+        <h1 class="section-title" data-i18n="locations.title">Destinos exclusivos</h1>
+        <p class="section-subtitle-clean" style="margin: 0.5rem auto 0;" data-i18n="locations.subtitle">
+          Los enclaves más codiciados del sur de Europa con personalidad y potencial singular.
         </p>
       </div>
     </section>
 
-    <!-- Prime Locations Detailed Showcase -->
-    <section class="locations-section" style="padding-top: 4.5rem;">
+    <!-- Detailed Prime Locations Showcase -->
+    <section class="properties-section" style="padding-top: 4.5rem;">
       <div class="container">
-        <div class="locations-grid">
-          <!-- Loc 1: Historic Center -->
-          <div class="location-card">
-            <div class="location-img-wrap">
-              <img src="/images/malaga-centro.jpg" alt="Centro Histórico de Málaga" class="location-img" />
-              <span class="location-badge">Málaga Capital</span>
+        <div class="properties-grid">
+          <!-- Enclave 1: Centro Histórico -->
+          <article class="property-card">
+            <div class="property-image-wrap">
+              <img src="/images/malaga-centro.jpg" alt="Centro Histórico de Málaga" class="property-image" loading="lazy" />
+              <span class="property-tag-badge">Málaga Capital</span>
             </div>
-            <div class="location-body">
-              <h3 class="location-name" data-i18n="locations.loc1Name">Málaga Centro Histórico</h3>
-              <p class="location-desc" data-i18n="locations.loc1Desc">
-                Cultura, teatros, museos (Picasso, Pompidou), gastronomía estelar y arquitectura señorial andaluza para quienes aman el pulso cosmopolita.
+            <div class="property-details">
+              <span class="property-location" data-i18n="locations.loc1Highlight">Residencial de prestigio urbano</span>
+              <h2 class="property-title" data-i18n="locations.loc1Name">Málaga Centro Histórico</h2>
+              <p class="property-specs" data-i18n="locations.loc1Desc">
+                Palacetes señoriales, vida cultural y museos (Picasso, Pompidou), gastronomía estelar y arquitectura andaluza para quienes aprecian el pulso cosmopolita.
               </p>
-              <div class="location-highlight" data-i18n="locations.loc1Highlight">
-                Ideal para: Segunda residencia urbana y alta rentabilidad cultural.
+              <div class="property-footer-row">
+                <a href="/contacto.html" class="property-action-link">
+                  Consultar propiedades en esta zona &rarr;
+                </a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Loc 2: Limonar & Pedregalejo -->
-          <div class="location-card">
-            <div class="location-img-wrap">
-              <img src="/images/malaga-costa.jpg" alt="El Limonar y costa de Málaga" class="location-img" />
-              <span class="location-badge">Málaga Este</span>
+          <!-- Enclave 2: El Limonar -->
+          <article class="property-card">
+            <div class="property-image-wrap">
+              <img src="/images/hero-villa.jpg" alt="El Limonar y Pedregalejo" class="property-image" loading="lazy" />
+              <span class="property-tag-badge">Málaga Este</span>
             </div>
-            <div class="location-body">
-              <h3 class="location-name" data-i18n="locations.loc2Name">El Limonar & Pedregalejo</h3>
-              <p class="location-desc" data-i18n="locations.loc2Desc">
-                La zona residencial noble de Málaga. Mansiones señoriales, villas con jardines mediterráneos, colegios prestigiosos y vistas panorámicas a la bahía.
+            <div class="property-details">
+              <span class="property-location" data-i18n="locations.loc2Highlight">Villas y residencias familiares</span>
+              <h2 class="property-title" data-i18n="locations.loc2Name">El Limonar & Pedregalejo</h2>
+              <p class="property-specs" data-i18n="locations.loc2Desc">
+                La zona residencial noble tradicional. Mansiones con jardines mediterráneos, colegios internacionales y máxima tranquilidad con vistas a la bahía.
               </p>
-              <div class="location-highlight" data-i18n="locations.loc2Highlight">
-                Ideal para: Familias y residencias de lujo con máxima tranquilidad.
+              <div class="property-footer-row">
+                <a href="/contacto.html" class="property-action-link">
+                  Consultar propiedades en esta zona &rarr;
+                </a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Loc 3: Malagueta & Seafront -->
-          <div class="location-card">
-            <div class="location-img-wrap">
-              <img src="/images/hero-villa.jpg" alt="La Malagueta frente al mar" class="location-img" />
-              <span class="location-badge">Frontline Beach</span>
+          <!-- Enclave 3: La Malagueta -->
+          <article class="property-card">
+            <div class="property-image-wrap">
+              <img src="/images/prop-atico-malagueta.jpg" alt="La Malagueta frente al mar" class="property-image" loading="lazy" />
+              <span class="property-tag-badge">Costa Urbana</span>
             </div>
-            <div class="location-body">
-              <h3 class="location-name" data-i18n="locations.loc3Name">La Malagueta & Paseo Marítimo</h3>
-              <p class="location-desc" data-i18n="locations.loc3Desc">
-                Vivir frente al mar a cinco minutos a pie del centro histórico. Vistas abiertas al Mediterráneo, Muelle Uno y estilo de vida náutico.
+            <div class="property-details">
+              <span class="property-location" data-i18n="locations.loc3Highlight">Áticos y vistas panorámicas</span>
+              <h2 class="property-title" data-i18n="locations.loc3Name">La Malagueta & Paseo Marítimo</h2>
+              <p class="property-specs" data-i18n="locations.loc3Desc">
+                Vivir frente al mar a corta distancia a pie del centro histórico. Vistas abiertas al Mediterráneo, Muelle Uno y estilo de vida náutico.
               </p>
-              <div class="location-highlight" data-i18n="locations.loc3Highlight">
-                Ideal para: Estilo de vida playero exclusivo y residencias de primera línea.
+              <div class="property-footer-row">
+                <a href="/contacto.html" class="property-action-link">
+                  Consultar propiedades en esta zona &rarr;
+                </a>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Loc 4: Costa del Sol Prime -->
-          <div class="location-card">
-            <div class="location-img-wrap">
-              <img src="/images/hero-villa.jpg" alt="Villas en Costa del Sol" class="location-img" />
-              <span class="location-badge">Costa del Sol</span>
+          <!-- Enclave 4: Costa del Sol Prime -->
+          <article class="property-card">
+            <div class="property-image-wrap">
+              <img src="/images/prop-villa-marbella.jpg" alt="Costa del Sol Prime Marbella" class="property-image" loading="lazy" />
+              <span class="property-tag-badge">Costa del Sol</span>
             </div>
-            <div class="location-body">
-              <h3 class="location-name" data-i18n="locations.loc4Name">Costa del Sol Prime (Benalmádena & Marbella)</h3>
-              <p class="location-desc" data-i18n="locations.loc4Desc">
-                Villas contemporáneas con piscina infinita, campos de golf de renombre mundial y puertos deportivos de primer nivel a corta distancia de la capital.
+            <div class="property-details">
+              <span class="property-location" data-i18n="locations.loc4Highlight">Retiros de lujo y golf</span>
+              <h2 class="property-title" data-i18n="locations.loc4Name">Costa del Sol Prime (Marbella & Costa)</h2>
+              <p class="property-specs" data-i18n="locations.loc4Desc">
+                Villas contemporáneas con piscina infinita, campos de golf de prestigio internacional y puertos deportivos de primer nivel.
               </p>
-              <div class="location-highlight" data-i18n="locations.loc4Highlight">
-                Ideal para: Lujo mediterráneo contemporáneo y retiros de bienestar.
+              <div class="property-footer-row">
+                <a href="/contacto.html" class="property-action-link">
+                  Consultar propiedades en esta zona &rarr;
+                </a>
               </div>
             </div>
-          </div>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <div style="text-align: center; margin-top: 4.5rem; padding: 3rem; background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); max-width: 820px; margin-left: auto; margin-right: auto;">
-          <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 0.75rem; color: var(--gold-light);">¿Dudas sobre cuál es la zona ideal para tu proyecto?</h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.75rem;">
-            Analizamos juntos tu estilo de vida, conexiones con colegios, aeropuerto o perfil de inquilino para orientarte a la zona precisa.
-          </p>
-          <a href="/contacto.html" class="btn-primary" data-i18n="nav.cta">Consultar Con Humberto</a>
+    <!-- Consultation Action Banner -->
+    <section class="consultation-banner">
+      <div class="container consultation-inner">
+        <h2 class="consultation-title">
+          ¿En qué enclave desea establecer su <em>residencia</em>?
+        </h2>
+        <p class="consultation-subtitle" data-i18n="contact.subtitle">
+          Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
+        </p>
+        <div class="consultation-buttons">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large whatsapp-direct-link" id="whatsapp-direct-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            <span data-i18n="contact.whatsappBtn">Contactar por WhatsApp</span>
+          </a>
+          <a href="/contacto.html" class="btn-secondary" data-i18n="nav.cta">
+            Agendar Cita Privada
+          </a>
         </div>
       </div>
     </section>
@@ -144,62 +171,75 @@
     <!-- Site Footer -->
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-top">
-          <div>
+        <div class="footer-main-grid">
+          <div class="footer-brand-col">
             <div class="brand-logo">
               <div class="brand-monogram">HM</div>
               <div class="brand-info">
-                <span class="brand-name">Humberto Machacón</span>
-                <span class="brand-subtitle">REAL ESTATE ADVISOR</span>
+                <span class="brand-name" style="color: #ffffff;">Humberto Machacón</span>
+                <span class="brand-subtitle" style="color: rgba(255,255,255,0.6);">MÁLAGA · REAL ESTATE</span>
               </div>
             </div>
-            <p class="footer-brand-bio" data-i18n="footer.bio">
-              Asesor Inmobiliario Personal especializado en Málaga y Costa del Sol. Comprometido con la excelencia, la discreción y el asesoramiento transparente.
+            <p class="footer-bio-text" data-i18n="footer.bio">
+              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol. Propiedades singulares y servicio de alta confianza.
             </p>
           </div>
 
           <div>
-            <h4 class="footer-title" data-i18n="footer.quickLinks">Navegación</h4>
-            <ul class="footer-links-list">
-              <li><a href="/" class="footer-link" data-i18n="nav.home">Inicio</a></li>
-              <li><a href="/sobre-mi.html" class="footer-link" data-i18n="nav.about">Sobre Mí</a></li>
-              <li><a href="/servicios.html" class="footer-link" data-i18n="nav.services">Servicios</a></li>
-              <li><a href="/zonas.html" class="footer-link" data-i18n="nav.locations">Zonas de Málaga</a></li>
-              <li><a href="/contacto.html" class="footer-link" data-i18n="nav.contact">Contacto</a></li>
+            <h4 class="footer-col-title" data-i18n="footer.destinations">Enclaves</h4>
+            <ul class="footer-nav-list">
+              <li><a href="/zonas.html" class="footer-nav-link">Centro Histórico</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">El Limonar & Pedregalejo</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">La Malagueta</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">Costa del Sol Prime</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 class="footer-title" data-i18n="footer.servicesList">Áreas de Servicio</h4>
-            <ul class="footer-links-list">
-              <li><a href="/servicios.html" class="footer-link">Personal Shopper Inmobiliario</a></li>
-              <li><a href="/servicios.html" class="footer-link">Inversión Patrimonial</a></li>
-              <li><a href="/servicios.html" class="footer-link">Acompañamiento a Propietarios</a></li>
-              <li><a href="/servicios.html" class="footer-link">Relocation & Golden Visa</a></li>
-              <li><a href="/zonas.html" class="footer-link">Málaga Prime Enclaves</a></li>
+            <h4 class="footer-col-title" data-i18n="footer.servicesList">Servicios</h4>
+            <ul class="footer-nav-list">
+              <li><a href="/servicios.html" class="footer-nav-link">Personal Shopper</a></li>
+              <li><a href="/servicios.html" class="footer-nav-link">Inversión Patrimonial</a></li>
+              <li><a href="/servicios.html" class="footer-nav-link">Venta Discreta</a></li>
+              <li><a href="/servicios.html" class="footer-nav-link">Relocation & Concierge</a></li>
             </ul>
+          </div>
+
+          <div>
+            <h4 class="footer-col-title" data-i18n="nav.contact">Contacto</h4>
+            <div class="footer-contact-item">
+              <span>Tel:</span>
+              <a href="tel:+34600000000" id="contact-phone-display">+34 600 000 000</a>
+            </div>
+            <div class="footer-contact-item">
+              <span>Email:</span>
+              <a href="mailto:contacto@humbertomachacon.com" id="contact-email-display">contacto@humbertomachacon.com</a>
+            </div>
+            <div class="footer-contact-item" style="margin-top: 1rem;">
+              <span id="contact-location-display">Málaga & Costa del Sol, España</span>
+            </div>
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados. Marca personal independiente en asociación profesional con agencia inmobiliaria líder en Málaga.</span></p>
+        <div class="footer-bottom-row">
+          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
           <div class="footer-legal-links">
             <button type="button" class="footer-legal-btn" id="legal-btn-aviso" data-i18n="footer.legalNotice">Aviso Legal</button>
-            <button type="button" class="footer-legal-btn" id="legal-btn-privacidad" data-i18n="footer.privacyPolicy">Política de Privacidad</button>
+            <button type="button" class="footer-legal-btn" id="legal-btn-privacidad" data-i18n="footer.privacyPolicy">Privacidad</button>
             <button type="button" class="footer-legal-btn" id="legal-btn-cookies" data-i18n="footer.cookiesPolicy">Cookies</button>
           </div>
         </div>
       </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
+    <!-- Floating WhatsApp Action Button -->
     <a href="#" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" id="floating-whatsapp" aria-label="Contactar por WhatsApp">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
       </svg>
     </a>
 
-    <!-- Legal Modal -->
+    <!-- Legal Modal Window -->
     <div class="legal-modal-backdrop" id="legal-modal-backdrop" role="dialog" aria-modal="true">
       <div class="legal-modal-window">
         <div class="legal-modal-header">

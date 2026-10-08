@@ -45,18 +45,16 @@ function renderLanguage(lang) {
     }
   }
 
-  // 3. Update Service Points Lists
+  // 3. Update Service Points Lists (if on services page)
   ['s1', 's2', 's3', 's4'].forEach((serviceKey) => {
     const listEl = document.getElementById(`${serviceKey}-points`);
-    const points = t.services[`${serviceKey}Points`];
+    const points = t.services && t.services[`${serviceKey}Points`];
     if (listEl && points) {
       listEl.innerHTML = points
         .map(
           (point) => `
-          <li class="service-point">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+          <li style="display:flex; align-items:center; gap:0.5rem; font-size:0.86rem; color:var(--text-muted); margin-bottom:0.4rem;">
+            <span style="color:var(--accent-gold-dark);">—</span>
             <span>${point}</span>
           </li>`
         )
@@ -66,13 +64,13 @@ function renderLanguage(lang) {
 
   // 4. Update Contact Form Interest Select Options
   const interestSelect = document.getElementById('form-interest');
-  if (interestSelect && t.contact.interestOptions) {
+  if (interestSelect && t.contact && t.contact.interestOptions) {
     interestSelect.innerHTML = t.contact.interestOptions
       .map((opt) => `<option value="${opt}">${opt}</option>`)
       .join('');
   }
 
-  // 5. Update Advisor Role and Affiliation
+  // 5. Update Advisor Role and Affiliation if element present
   const roleEl = document.getElementById('advisor-badge-role');
   if (roleEl) {
     roleEl.textContent = siteConfig.advisor.title[lang] || siteConfig.advisor.title.es;
@@ -89,27 +87,43 @@ function updateWhatsAppLinks(lang) {
   const number = siteConfig.contact.whatsappNumber;
   const greeting =
     lang === 'es'
-      ? encodeURIComponent('Hola Humberto, me gustaría solicitar una consulta privada sobre el mercado inmobiliario en Málaga.')
-      : encodeURIComponent('Hello Humberto, I would like to schedule a private advisory consultation regarding Malaga real estate.');
+      ? encodeURIComponent('Hola Humberto, me gustaría solicitar una consulta privada sobre propiedades en Málaga.')
+      : encodeURIComponent('Hello Humberto, I would like to schedule a private advisory consultation regarding properties in Malaga.');
 
   const waUrl = `https://wa.me/${number}?text=${greeting}`;
 
-  const directBtn = document.getElementById('whatsapp-direct-link');
-  if (directBtn) directBtn.href = waUrl;
+  const directBtns = document.querySelectorAll('.whatsapp-direct-link, #whatsapp-direct-link');
+  directBtns.forEach((btn) => {
+    btn.href = waUrl;
+  });
 
   const floatingBtn = document.getElementById('floating-whatsapp');
   if (floatingBtn) floatingBtn.href = waUrl;
+
+  // Property consultation links
+  document.querySelectorAll('.property-whatsapp-btn').forEach((btn) => {
+    const propTitle = btn.getAttribute('data-prop-name') || 'Málaga';
+    const propMsg =
+      lang === 'es'
+        ? encodeURIComponent(`Hola Humberto, me gustaría recibir más información y el dossier privado de la propiedad: ${propTitle}`)
+        : encodeURIComponent(`Hello Humberto, I would like to receive the private dossier for the property: ${propTitle}`);
+    btn.href = `https://wa.me/${number}?text=${propMsg}`;
+  });
 }
 
 /**
  * Injects contact numbers and addresses from siteConfig
  */
 function initSiteConfig() {
-  const phoneDisplay = document.getElementById('contact-phone-display');
-  if (phoneDisplay) phoneDisplay.textContent = siteConfig.contact.phoneDisplay;
+  const phoneDisplays = document.querySelectorAll('#contact-phone-display, .contact-phone-val');
+  phoneDisplays.forEach((el) => {
+    el.textContent = siteConfig.contact.phoneDisplay;
+  });
 
-  const emailDisplay = document.getElementById('contact-email-display');
-  if (emailDisplay) emailDisplay.textContent = siteConfig.contact.email;
+  const emailDisplays = document.querySelectorAll('#contact-email-display, .contact-email-val');
+  emailDisplays.forEach((el) => {
+    el.textContent = siteConfig.contact.email;
+  });
 
   const locationDisplay = document.getElementById('contact-location-display');
   if (locationDisplay) locationDisplay.textContent = siteConfig.advisor.location;
@@ -123,13 +137,18 @@ function initSiteConfig() {
  */
 function initHeaderScroll() {
   const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => {
+  if (!header) return;
+
+  const handleScroll = () => {
     if (window.scrollY > 40) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
-  });
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 }
 
 /**
@@ -145,7 +164,6 @@ function initMobileMenu() {
       hamburger.textContent = navMenu.classList.contains('open') ? '✕' : '☰';
     });
 
-    // Close when clicking nav links
     navMenu.querySelectorAll('.nav-link').forEach((link) => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('open');
@@ -156,21 +174,33 @@ function initMobileMenu() {
 }
 
 /**
- * FAQ Accordion logic
+ * Property filter tabs on homepage
  */
-function initFaqAccordion() {
-  const accordion = document.getElementById('faq-accordion');
-  if (!accordion) return;
+function initPropertyFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const propertyCards = document.querySelectorAll('.property-card');
 
-  const items = accordion.querySelectorAll('.faq-item');
-  items.forEach((item) => {
-    const btn = item.querySelector('.faq-question-btn');
+  if (!filterBtns.length || !propertyCards.length) return;
+
+  filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      items.forEach((i) => i.classList.remove('active'));
-      if (!isActive) {
-        item.classList.add('active');
-      }
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterType = btn.getAttribute('data-filter');
+
+      propertyCards.forEach((card) => {
+        const category = card.getAttribute('data-category');
+        if (filterType === 'all' || category === filterType) {
+          card.style.display = 'flex';
+          card.style.opacity = '0';
+          setTimeout(() => {
+            card.style.opacity = '1';
+          }, 50);
+        } else {
+          card.style.display = 'none';
+        }
+      });
     });
   });
 }
@@ -189,30 +219,35 @@ function initContactForm() {
     e.preventDefault();
 
     const t = translations[currentLang];
-    submitBtn.disabled = true;
-    submitBtn.textContent = t.contact.sending;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = t.contact.sending;
+    }
 
-    // Simulate sending or send to Web3Forms / mailto
     setTimeout(() => {
-      statusAlert.className = 'form-status-alert success';
-      statusAlert.innerHTML = `
-        <strong>${t.contact.successTitle}</strong><br />
-        ${t.contact.successDesc}
-      `;
+      if (statusAlert) {
+        statusAlert.className = 'form-status-alert success';
+        statusAlert.innerHTML = `
+          <strong>${t.contact.successTitle}</strong><br />
+          ${t.contact.successDesc}
+        `;
+      }
 
-      submitBtn.disabled = false;
-      submitBtn.textContent = t.contact.formSubmit;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = t.contact.formSubmit;
+      }
       form.reset();
 
       setTimeout(() => {
-        statusAlert.style.display = 'none';
-      }, 8000);
-    }, 900);
+        if (statusAlert) statusAlert.style.display = 'none';
+      }, 7000);
+    }, 700);
   });
 }
 
 /**
- * Legal Modals (Aviso Legal, Política de Privacidad, Cookies)
+ * Legal Modals
  */
 function initLegalModals() {
   const backdrop = document.getElementById('legal-modal-backdrop');
@@ -225,47 +260,47 @@ function initLegalModals() {
       es: {
         title: 'Aviso Legal e Información Corporativa',
         body: `
-          <h4>1. Identificación del Asesor</h4>
-          <p>En cumplimiento de la Ley 34/2002 (LSSI-CE), se informa que este sitio web constituye la marca personal y presentación profesional de <strong>Humberto Machacón</strong>, Asesor Inmobiliario operando en Málaga y la Costa del Sol, España.</p>
-          <h4>2. Objeto del Sitio Web</h4>
-          <p>La presente web tiene un carácter estrictamente informativo y de asesoramiento personal. No constituye una plataforma de intermediación financiera directa ni venta directa de inmuebles por cuenta propia, actuando como consultor independiente en colaboración con firmas inmobiliarias colegiadas y autorizadas.</p>
+          <h4>1. Identificación</h4>
+          <p>En cumplimiento de la Ley 34/2002 (LSSI-CE), se informa que este sitio web constituye la marca personal y presentación profesional de <strong>Humberto Machacón</strong>, Asesor Inmobiliario operando en Málaga y Costa del Sol, España.</p>
+          <h4>2. Objeto</h4>
+          <p>La web tiene un carácter exclusivamente informativo y de asesoramiento personal independiente.</p>
           <h4>3. Propiedad Intelectual</h4>
-          <p>Todos los textos, logotipos, elementos gráficos y composiciones audiovisuales son propiedad de Humberto Machacón o cuentan con licencias de uso correspondientes.</p>
+          <p>Todos los textos, logotipos y elementos audiovisuales son propiedad de Humberto Machacón o cuentan con licencia de uso.</p>
         `,
       },
       en: {
-        title: 'Legal Notice & Corporate Information',
+        title: 'Legal Notice',
         body: `
-          <h4>1. Advisor Identification</h4>
+          <h4>1. Identification</h4>
           <p>In accordance with Spanish Law 34/2002 (LSSI-CE), this website represents the personal brand and advisory practice of <strong>Humberto Machacón</strong>, Senior Real Estate Advisor based in Málaga and Costa del Sol, Spain.</p>
-          <h4>2. Purpose of the Website</h4>
-          <p>This website serves solely for professional presentation and bespoke real estate advisory. It does not operate as an automated financial brokerage or self-owned sales vehicle, operating in strategic alliance with licensed Spanish real estate agencies.</p>
+          <h4>2. Scope</h4>
+          <p>This website serves solely for professional presentation and bespoke real estate advisory.</p>
           <h4>3. Intellectual Property</h4>
-          <p>All editorial texts, branding visuals, and layout designs belong to Humberto Machacón or are utilized under valid commercial rights.</p>
+          <p>All editorial texts, branding visuals, and layout designs belong to Humberto Machacón or are utilized under valid license.</p>
         `,
       },
     },
     privacidad: {
       es: {
-        title: 'Política de Privacidad y Protección de Datos (RGPD)',
+        title: 'Política de Privacidad (RGPD)',
         body: `
-          <h4>1. Responsable del Tratamiento</h4>
-          <p>El responsable del tratamiento de los datos facilitados a través de los formularios o canales de contacto es Humberto Machacón.</p>
+          <h4>1. Responsable</h4>
+          <p>El responsable del tratamiento de los datos es Humberto Machacón.</p>
           <h4>2. Finalidad</h4>
-          <p>La recogida y tratamiento de datos personales se limita exclusivamente a dar respuesta a sus solicitudes de información, coordinar visitas o agendar llamadas de asesoramiento personalizado.</p>
-          <h4>3. Derechos del Usuario</h4>
-          <p>Puede ejercer en cualquier momento sus derechos de acceso, rectificación, supresión y limitación de sus datos dirigiendo un correo a ${siteConfig.contact.email}.</p>
+          <p>Los datos aportados se utilizan únicamente para responder a su solicitud de consulta o información sobre propiedades.</p>
+          <h4>3. Derechos</h4>
+          <p>Puede ejercitar sus derechos de acceso, rectificación o cancelación enviando un correo a ${siteConfig.contact.email}.</p>
         `,
       },
       en: {
-        title: 'Privacy Policy & Data Protection (GDPR)',
+        title: 'Privacy Policy (GDPR)',
         body: `
-          <h4>1. Data Controller</h4>
-          <p>The party responsible for data submitted through this site is Humberto Machacón, Personal Real Estate Advisor.</p>
-          <h4>2. Purpose of Processing</h4>
-          <p>Your contact details are processed strictly to respond to advisory inquiries, arrange property previews, and establish confidential consulting sessions.</p>
-          <h4>3. Your Rights</h4>
-          <p>You may exercise your rights to access, amend, or erase your information at any time by emailing ${siteConfig.contact.email}.</p>
+          <h4>1. Controller</h4>
+          <p>The party responsible for data is Humberto Machacón, Personal Real Estate Advisor.</p>
+          <h4>2. Purpose</h4>
+          <p>Your details are processed solely to respond to advisory inquiries and property requests.</p>
+          <h4>3. Rights</h4>
+          <p>You may exercise rights to access or erasure at any time by contacting ${siteConfig.contact.email}.</p>
         `,
       },
     },
@@ -273,21 +308,22 @@ function initLegalModals() {
       es: {
         title: 'Política de Cookies',
         body: `
-          <h4>Uso Técnico y Analítico</h4>
-          <p>Este sitio web utiliza cookies técnicas indispensables para recordar su preferencia de idioma (español o inglés) y garantizar una navegación segura y fluida. No se emplean cookies de rastreo invasivo ni venta de datos a terceros.</p>
+          <h4>Uso de Cookies</h4>
+          <p>Utilizamos cookies técnicas necesarias para recordar su idioma preferido (español o inglés). No utilizamos cookies invasivas de terceros.</p>
         `,
       },
       en: {
         title: 'Cookies Policy',
         body: `
-          <h4>Technical & Preference Cookies</h4>
-          <p>This website uses essential technical cookies strictly to remember your language preference (Spanish or English) and provide smooth, secure navigation. No invasive tracking or commercial data reselling is conducted.</p>
+          <h4>Use of Cookies</h4>
+          <p>We use essential technical cookies to remember your language preference (Spanish or English). No invasive third-party tracking is used.</p>
         `,
       },
     },
   };
 
   function openModal(type) {
+    if (!backdrop || !title || !body) return;
     const item = legalContent[type][currentLang];
     if (!item) return;
     title.textContent = item.title;
@@ -296,7 +332,7 @@ function initLegalModals() {
   }
 
   function closeModal() {
-    backdrop.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
   }
 
   document.getElementById('legal-btn-aviso')?.addEventListener('click', () => openModal('aviso'));
@@ -345,9 +381,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNav();
   initHeaderScroll();
   initMobileMenu();
-  initFaqAccordion();
+  initPropertyFilters();
   initContactForm();
   initLegalModals();
   initLanguageSwitcher();
 });
-
