@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zonas Exclusivas | Humberto Machacón - Asesor Inmobiliario en Málaga</title>
+    <title>Zonas de Málaga | Humberto Machacón - Asesor Inmobiliario</title>
     <meta name="description" content="Guía inmobiliaria de los enclaves más cotizados: Centro Histórico, El Limonar, La Malagueta y Costa del Sol Prime." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,12 +21,26 @@
           </div>
         </a>
 
+        <!-- Main Navigation Links -->
         <nav>
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="/" class="nav-link" data-i18n="nav.home">Inicio</a></li>
             <li><a href="/sobre-mi.html" class="nav-link" data-i18n="nav.about">Sobre Mí</a></li>
-            <li><a href="/servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a></li>
-            <li><a href="/zonas.html" class="nav-link active" data-i18n="nav.locations">Zonas</a></li>
+            <li class="nav-item-dropdown">
+              <a href="/servicios.html" class="nav-link nav-dropdown-trigger active" id="nav-services-trigger">
+                <span data-i18n="nav.services">Servicios</span>
+                <span class="dropdown-chevron"></span>
+              </a>
+              <div class="nav-dropdown-menu">
+                <a href="/servicios.html" class="dropdown-item-link">
+                  <span data-i18n="nav.allServices">Servicios de Asesoramiento</span>
+                  <span class="dropdown-item-desc">VIP</span>
+                </a>
+                <a href="/zonas.html" class="dropdown-item-link">
+                  <span data-i18n="nav.locations">Zonas de Málaga</span>
+                  <span class="dropdown-item-desc">Enclaves</span>
+                </a>
+              </div>
+            </li>
             <li><a href="/contacto.html" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
@@ -49,11 +63,11 @@
         <div class="breadcrumbs-clean">
           <a href="/" data-i18n="nav.home">Inicio</a>
           <span>/</span>
-          <span data-i18n="nav.locations">Zonas</span>
+          <span data-i18n="nav.locations">Zonas de Málaga</span>
         </div>
-        <h1 class="section-title" data-i18n="locations.title">Destinos exclusivos</h1>
+        <h1 class="section-title" data-i18n="locations.title">Zonas de Málaga</h1>
         <p class="section-subtitle-clean" style="margin: 0.5rem auto 0;" data-i18n="locations.subtitle">
-          Los enclaves más codiciados del sur de Europa con personalidad y potencial singular.
+          Los enclaves más codiciados donde desarrollo mi actividad asesora personal.
         </p>
       </div>
     </section>
@@ -76,7 +90,7 @@
               </p>
               <div class="property-footer-row">
                 <a href="/contacto.html" class="property-action-link">
-                  Consultar propiedades en esta zona &rarr;
+                  Consultar asesoramiento en este enclave &rarr;
                 </a>
               </div>
             </div>
@@ -96,7 +110,7 @@
               </p>
               <div class="property-footer-row">
                 <a href="/contacto.html" class="property-action-link">
-                  Consultar propiedades en esta zona &rarr;
+                  Consultar asesoramiento en este enclave &rarr;
                 </a>
               </div>
             </div>
@@ -116,7 +130,7 @@
               </p>
               <div class="property-footer-row">
                 <a href="/contacto.html" class="property-action-link">
-                  Consultar propiedades en esta zona &rarr;
+                  Consultar asesoramiento en este enclave &rarr;
                 </a>
               </div>
             </div>
@@ -129,14 +143,14 @@
               <span class="property-tag-badge">Costa del Sol</span>
             </div>
             <div class="property-details">
-              <span class="property-location" data-i18n="locations.loc4Highlight">Retiros de lujo y golf</span>
+              <span class="property-location" data-i18n="locations.loc4Highlight">Retiros de lujo y bienestar</span>
               <h2 class="property-title" data-i18n="locations.loc4Name">Costa del Sol Prime (Marbella & Costa)</h2>
               <p class="property-specs" data-i18n="locations.loc4Desc">
                 Villas contemporáneas con piscina infinita, campos de golf de prestigio internacional y puertos deportivos de primer nivel.
               </p>
               <div class="property-footer-row">
                 <a href="/contacto.html" class="property-action-link">
-                  Consultar propiedades en esta zona &rarr;
+                  Consultar asesoramiento en este enclave &rarr;
                 </a>
               </div>
             </div>
@@ -149,11 +163,25 @@
     <section class="consultation-banner">
       <div class="container consultation-inner">
         <h2 class="consultation-title">
-          ¿En qué enclave desea establecer su <em>residencia</em>?
+          ¿En qué enclave desea enfocar su <em>búsqueda</em>?
         </h2>
         <p class="consultation-subtitle" data-i18n="contact.subtitle">
           Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
         </p>
+
+        <div class="consultation-advisor-badge">
+          <img 
+            src="/images/humberto-avatar.png" 
+            alt="Humberto Machacón - Asesor Inmobiliario Personal" 
+            class="consultation-avatar-img"
+            loading="lazy"
+          />
+          <div class="consultation-advisor-text">
+            <span class="consultation-advisor-name">Humberto Machacón</span>
+            <span class="consultation-advisor-role">Asesor Inmobiliario Personal · Málaga</span>
+          </div>
+        </div>
+
         <div class="consultation-buttons">
           <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large whatsapp-direct-link" id="whatsapp-direct-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -181,12 +209,12 @@
               </div>
             </div>
             <p class="footer-bio-text" data-i18n="footer.bio">
-              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol. Propiedades singulares y servicio de alta confianza.
+              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol en asociación profesional con firma líder del sector.
             </p>
           </div>
 
           <div>
-            <h4 class="footer-col-title" data-i18n="footer.destinations">Enclaves</h4>
+            <h4 class="footer-col-title" data-i18n="footer.destinations">Zonas de Málaga</h4>
             <ul class="footer-nav-list">
               <li><a href="/zonas.html" class="footer-nav-link">Centro Histórico</a></li>
               <li><a href="/zonas.html" class="footer-nav-link">El Limonar & Pedregalejo</a></li>
@@ -222,7 +250,7 @@
         </div>
 
         <div class="footer-bottom-row">
-          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados. Marca personal independiente.</span></p>
           <div class="footer-legal-links">
             <button type="button" class="footer-legal-btn" id="legal-btn-aviso" data-i18n="footer.legalNotice">Aviso Legal</button>
             <button type="button" class="footer-legal-btn" id="legal-btn-privacidad" data-i18n="footer.privacyPolicy">Privacidad</button>

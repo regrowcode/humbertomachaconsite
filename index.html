@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary SEO Meta Tags -->
-    <title>Humberto Machacón | Inmobiliaria de Lujo & Asesor Personal en Málaga</title>
-    <meta name="title" content="Humberto Machacón | Inmobiliaria de Lujo & Asesor Personal en Málaga" />
-    <meta name="description" content="Inmobiliaria de lujo y asesoramiento independiente en Málaga y Costa del Sol. Selección de propiedades singulares, Personal Shopper e inversión patrimonial." />
-    <meta name="keywords" content="inmobiliaria de lujo malaga, luxury real estate malaga, asesor inmobiliario malaga, villas malaga, comprar atico malaga, costa del sol prime" />
+    <title>Humberto Machacón | Asesor Inmobiliario Personal en Málaga & Costa del Sol</title>
+    <meta name="title" content="Humberto Machacón | Asesor Inmobiliario Personal en Málaga & Costa del Sol" />
+    <meta name="description" content="Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol. Personal Shopper, inversión patrimonial y acompañamiento exclusivo." />
+    <meta name="keywords" content="asesor inmobiliario malaga, personal shopper inmobiliario malaga, real estate advisor malaga, inversion inmobiliaria malaga, costa del sol" />
     <meta name="author" content="Humberto Machacón" />
     
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Humberto Machacón | Inmobiliaria de Lujo en Málaga" />
-    <meta property="og:description" content="Propiedades de excepción y asesoramiento inmobiliario boutique en Málaga y Costa del Sol." />
+    <meta property="og:title" content="Humberto Machacón | Asesor Inmobiliario Personal en Málaga" />
+    <meta property="og:description" content="Asesoramiento boutique independiente para adquirir, invertir o gestionar propiedades de prestigio en Málaga y Costa del Sol." />
     <meta property="og:image" content="/images/hero-villa.jpg" />
 
     <!-- Google Fonts Preconnect -->
@@ -37,10 +37,23 @@
         <!-- Main Navigation Links -->
         <nav>
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="/" class="nav-link active" data-i18n="nav.home">Inicio</a></li>
             <li><a href="/sobre-mi.html" class="nav-link" data-i18n="nav.about">Sobre Mí</a></li>
-            <li><a href="/servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a></li>
-            <li><a href="/zonas.html" class="nav-link" data-i18n="nav.locations">Zonas</a></li>
+            <li class="nav-item-dropdown">
+              <a href="/servicios.html" class="nav-link nav-dropdown-trigger" id="nav-services-trigger">
+                <span data-i18n="nav.services">Servicios</span>
+                <span class="dropdown-chevron"></span>
+              </a>
+              <div class="nav-dropdown-menu">
+                <a href="/servicios.html" class="dropdown-item-link">
+                  <span data-i18n="nav.allServices">Servicios de Asesoramiento</span>
+                  <span class="dropdown-item-desc">VIP</span>
+                </a>
+                <a href="/zonas.html" class="dropdown-item-link">
+                  <span data-i18n="nav.locations">Zonas de Málaga</span>
+                  <span class="dropdown-item-desc">Enclaves</span>
+                </a>
+              </div>
+            </li>
             <li><a href="/contacto.html" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
@@ -58,10 +71,21 @@
       </div>
     </header>
 
-    <!-- Hero Section (Kretz Cinematic Editorial) -->
+    <!-- Hero Section (Kretz Cinematic Video Banner) -->
     <section class="hero-section" id="hero">
       <div class="hero-bg-container">
-        <img src="/images/hero-villa.jpg" alt="Propiedades de lujo en Málaga Costa del Sol" class="hero-bg-image" />
+        <video 
+          class="hero-bg-video" 
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          poster="/images/hero-villa.jpg"
+          preload="auto"
+        >
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          <img src="/images/hero-villa.jpg" alt="Villas de lujo en Málaga" class="hero-bg-image" />
+        </video>
         <div class="hero-overlay"></div>
       </div>
       
@@ -69,20 +93,20 @@
         <span class="hero-kicker" data-i18n="hero.badge">MÁLAGA & COSTA DEL SOL</span>
         
         <h1 class="hero-title" id="hero-title">
-          <span data-i18n="hero.titleStart">Inmobiliaria de Lujo</span><br />
+          <span data-i18n="hero.titleStart">Asesor Inmobiliario Personal</span><br />
           <em data-i18n="hero.titleAccent">en Málaga & Costa del Sol</em>
         </h1>
         
         <p class="hero-subtitle" data-i18n="hero.subtitle">
-          Asesoramiento independiente y selección de propiedades de excepción.
+          Asesoramiento independiente, discreción y acceso exclusivo al mercado inmobiliario más cotizado.
         </p>
 
         <div class="hero-actions">
-          <a href="#propiedades" class="btn-primary" id="btn-hero-primary" data-i18n="hero.ctaPrimary">
-            Descubrir Propiedades
+          <a href="/contacto.html" class="btn-primary" id="btn-hero-primary" data-i18n="hero.ctaPrimary">
+            Agendar Cita
           </a>
-          <a href="/contacto.html" class="btn-secondary" id="btn-hero-secondary" data-i18n="hero.ctaSecondary">
-            Contacto Privado
+          <a href="/servicios.html" class="btn-secondary" id="btn-hero-secondary" data-i18n="hero.ctaSecondary">
+            Servicios
           </a>
         </div>
 
@@ -108,176 +132,53 @@
       </div>
     </section>
 
-    <!-- Featured Properties (Viviendas Destacadas - Core Kretz Element) -->
-    <section class="properties-section" id="propiedades">
-      <div class="container">
-        <div class="section-header-clean">
-          <div>
-            <h2 class="section-title" data-i18n="properties.title">Viviendas destacadas</h2>
+    <!-- Advisor Spotlight Section (Humberto Machacón - Personal Focus) -->
+    <section class="about-section" id="el-asesor">
+      <div class="container about-split-grid">
+        <div class="about-portrait-wrap">
+          <img 
+            src="/images/humberto-suit-beige.jpg" 
+            alt="Humberto Machacón - Asesor Inmobiliario Personal en Málaga" 
+            class="about-portrait-img" 
+            id="advisor-portrait-img"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="about-text-content">
+          <span class="section-kicker" data-i18n="aboutPreview.tag">EL ASESOR</span>
+          <h2 class="section-title" style="margin-bottom: 1.5rem;" data-i18n="aboutPreview.title">Humberto Machacón</h2>
+          
+          <blockquote class="about-quote" data-i18n="aboutPreview.quote">
+            «El valor de una propiedad se mide en metros; el valor de un asesor, en criterio, tiempo y tranquilidad.»
+          </blockquote>
+
+          <div class="about-paragraphs">
+            <p data-i18n="aboutPreview.p1">
+              Málaga se ha transformado en el epicentro europeo de calidad de vida e inversión de alta gama. Sin embargo, navegar este mercado exige un criterio local objetivo, rigor técnico y confidencialidad.
+            </p>
+            <p data-i18n="aboutPreview.p2">
+              Como asesor personal, opero en colaboración con firma inmobiliaria líder del sector, pero mi lealtad es exclusivamente contigo: busco en todo el mercado sin ataduras de catálogo para defender tus intereses.
+            </p>
           </div>
-          <a href="/contacto.html" class="section-link-more" data-i18n="properties.viewAll">
-            Consultar todas las propiedades &rarr;
-          </a>
-        </div>
 
-        <!-- Property Filters -->
-        <div class="property-filters">
-          <button type="button" class="filter-btn active" data-filter="all" data-i18n="properties.filterAll">Todas</button>
-          <button type="button" class="filter-btn" data-filter="villas" data-i18n="properties.filterVillas">Villas</button>
-          <button type="button" class="filter-btn" data-filter="penthouses" data-i18n="properties.filterPenthouses">Áticos</button>
-          <button type="button" class="filter-btn" data-filter="historic" data-i18n="properties.filterHistoric">Casas Singulares</button>
-        </div>
-
-        <!-- Property Grid -->
-        <div class="properties-grid">
-          <!-- Property 1: Villa El Limonar -->
-          <article class="property-card" data-category="villas">
-            <div class="property-image-wrap">
-              <img src="/images/hero-villa.jpg" alt="Villa señorial en El Limonar Málaga" class="property-image" loading="lazy" />
-              <span class="property-tag-badge">Exclusiva</span>
-            </div>
-            <div class="property-details">
-              <span class="property-location" data-i18n="properties.p1Location">El Limonar · Málaga</span>
-              <h3 class="property-title" data-i18n="properties.p1Title">Villa Señorial Mediterránea</h3>
-              <p class="property-specs" data-i18n="properties.p1Specs">480 m² · 5 Habitaciones · Piscina & Jardín Privado</p>
-              <div class="property-footer-row">
-                <span class="property-price" data-i18n="properties.p1Price">2.850.000 €</span>
-                <a href="#" class="property-action-link property-whatsapp-btn" data-prop-name="Villa Señorial El Limonar">
-                  Solicitar Dossier &rarr;
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Property 2: Penthouse La Malagueta -->
-          <article class="property-card" data-category="penthouses">
-            <div class="property-image-wrap">
-              <img src="/images/prop-atico-malagueta.jpg" alt="Ático frontal al mar en La Malagueta" class="property-image" loading="lazy" />
-              <span class="property-tag-badge">Frente al Mar</span>
-            </div>
-            <div class="property-details">
-              <span class="property-location" data-i18n="properties.p2Location">La Malagueta · Málaga</span>
-              <h3 class="property-title" data-i18n="properties.p2Title">Ático Frontal al Mediterráneo</h3>
-              <p class="property-specs" data-i18n="properties.p2Specs">210 m² · 3 Habitaciones · Terraza Panorámica 360°</p>
-              <div class="property-footer-row">
-                <span class="property-price" data-i18n="properties.p2Price">1.650.000 €</span>
-                <a href="#" class="property-action-link property-whatsapp-btn" data-prop-name="Ático Frontal La Malagueta">
-                  Solicitar Dossier &rarr;
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Property 3: Contemporary Villa Marbella -->
-          <article class="property-card" data-category="villas">
-            <div class="property-image-wrap">
-              <img src="/images/prop-villa-marbella.jpg" alt="Villa contemporánea en Marbella Golden Mile" class="property-image" loading="lazy" />
-              <span class="property-tag-badge">Costa del Sol</span>
-            </div>
-            <div class="property-details">
-              <span class="property-location" data-i18n="properties.p3Location">Marbella Golden Mile</span>
-              <h3 class="property-title" data-i18n="properties.p3Title">Villa Contemporánea Prime</h3>
-              <p class="property-specs" data-i18n="properties.p3Specs">620 m² · 6 Habitaciones · Infinity Pool & Vistas al Mar</p>
-              <div class="property-footer-row">
-                <span class="property-price" data-i18n="properties.p3Price">3.900.000 €</span>
-                <a href="#" class="property-action-link property-whatsapp-btn" data-prop-name="Villa Contemporánea Marbella">
-                  Solicitar Dossier &rarr;
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Property 4: Historic Palace -->
-          <article class="property-card" data-category="historic">
-            <div class="property-image-wrap">
-              <img src="/images/malaga-centro.jpg" alt="Palacete señorial restaurado en el Centro Histórico de Málaga" class="property-image" loading="lazy" />
-              <span class="property-tag-badge">Patrimonio</span>
-            </div>
-            <div class="property-details">
-              <span class="property-location" data-i18n="properties.p4Location">Centro Histórico · Málaga</span>
-              <h3 class="property-title" data-i18n="properties.p4Title">Palacete Señorial Restaurado</h3>
-              <p class="property-specs" data-i18n="properties.p4Specs">340 m² · 4 Habitaciones · Arquitectura del Siglo XIX</p>
-              <div class="property-footer-row">
-                <span class="property-price" data-i18n="properties.p4Price">1.950.000 €</span>
-                <a href="#" class="property-action-link property-whatsapp-btn" data-prop-name="Palacete Centro Histórico">
-                  Solicitar Dossier &rarr;
-                </a>
-              </div>
-            </div>
-          </article>
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <a href="/sobre-mi.html" class="btn-dark" data-i18n="aboutPreview.cta">Conocer trayectoria</a>
+            <a href="/contacto.html" class="btn-outline-dark" data-i18n="nav.cta">Agendar Cita</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Exclusive Destinations / Enclaves (Destinos Exclusivos) -->
-    <section class="destinations-section" id="enclaves">
-      <div class="container">
-        <div class="section-header-clean">
-          <div>
-            <h2 class="section-title" data-i18n="locations.title">Destinos exclusivos</h2>
-          </div>
-          <a href="/zonas.html" class="section-link-more" data-i18n="locations.viewAll">
-            Descubrir todas las zonas &rarr;
-          </a>
-        </div>
-
-        <div class="destinations-grid">
-          <!-- Enclave 1: Centro Histórico -->
-          <a href="/zonas.html" class="destination-card">
-            <img src="/images/malaga-centro.jpg" alt="Centro Histórico de Málaga" class="destination-bg" loading="lazy" />
-            <div class="destination-overlay"></div>
-            <div class="destination-content">
-              <h3 class="destination-name" data-i18n="locations.loc1Name">Centro Histórico</h3>
-              <p class="destination-desc" data-i18n="locations.loc1Desc">Palacetes señoriales, vida cultural y museos.</p>
-              <span class="destination-explore">Explorar enclaves &rarr;</span>
-            </div>
-          </a>
-
-          <!-- Enclave 2: El Limonar -->
-          <a href="/zonas.html" class="destination-card">
-            <img src="/images/hero-villa.jpg" alt="El Limonar y Pedregalejo" class="destination-bg" loading="lazy" />
-            <div class="destination-overlay"></div>
-            <div class="destination-content">
-              <h3 class="destination-name" data-i18n="locations.loc2Name">El Limonar & Pedregalejo</h3>
-              <p class="destination-desc" data-i18n="locations.loc2Desc">La zona noble residencial, jardines y tranquilidad.</p>
-              <span class="destination-explore">Explorar enclaves &rarr;</span>
-            </div>
-          </a>
-
-          <!-- Enclave 3: La Malagueta -->
-          <a href="/zonas.html" class="destination-card">
-            <img src="/images/prop-atico-malagueta.jpg" alt="La Malagueta" class="destination-bg" loading="lazy" />
-            <div class="destination-overlay"></div>
-            <div class="destination-content">
-              <h3 class="destination-name" data-i18n="locations.loc3Name">La Malagueta</h3>
-              <p class="destination-desc" data-i18n="locations.loc3Desc">Primera línea de playa frente al mar Mediterráneo.</p>
-              <span class="destination-explore">Explorar enclaves &rarr;</span>
-            </div>
-          </a>
-
-          <!-- Enclave 4: Costa del Sol Prime -->
-          <a href="/zonas.html" class="destination-card">
-            <img src="/images/prop-villa-marbella.jpg" alt="Costa del Sol Prime" class="destination-bg" loading="lazy" />
-            <div class="destination-overlay"></div>
-            <div class="destination-content">
-              <h3 class="destination-name" data-i18n="locations.loc4Name">Costa del Sol Prime</h3>
-              <p class="destination-desc" data-i18n="locations.loc4Desc">Marbella, Benalmádena y villas contemporáneas.</p>
-              <span class="destination-explore">Explorar enclaves &rarr;</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services Overview (Clean Architectural Grid) -->
+    <!-- Services Section (Architectural Minimal Grid) -->
     <section class="services-section" id="servicios">
       <div class="container">
         <div class="section-header-clean">
           <div>
-            <h2 class="section-title" data-i18n="services.title">Nuestros servicios</h2>
+            <h2 class="section-title" data-i18n="services.title">Servicios</h2>
           </div>
-          <a href="/servicios.html" class="section-link-more">
-            Ver metodología detallada &rarr;
+          <a href="/servicios.html" class="section-link-more" data-i18n="services.viewAll">
+            Ver todos los servicios & metodología &rarr;
           </a>
         </div>
 
@@ -288,7 +189,7 @@
               <div class="service-number">01</div>
               <h3 class="service-clean-title" data-i18n="services.s1Title">Personal Shopper Inmobiliario</h3>
               <p class="service-clean-desc" data-i18n="services.s1Desc">
-                Búsqueda a medida y acceso a carteras privadas off-market para compradores VIP.
+                Búsqueda a medida de tu residencia ideal y acceso a carteras privadas off-market.
               </p>
             </div>
             <a href="/servicios.html" class="service-clean-link">Descubrir &rarr;</a>
@@ -300,7 +201,7 @@
               <div class="service-number">02</div>
               <h3 class="service-clean-title" data-i18n="services.s2Title">Inversión Patrimonial</h3>
               <p class="service-clean-desc" data-i18n="services.s2Desc">
-                Identificación de activos con alto potencial de revalorización y rentabilidad neta.
+                Identificación de activos de alto rendimiento, análisis financiero y asesoría Golden Visa.
               </p>
             </div>
             <a href="/servicios.html" class="service-clean-link">Descubrir &rarr;</a>
@@ -312,7 +213,7 @@
               <div class="service-number">03</div>
               <h3 class="service-clean-title" data-i18n="services.s3Title">Venta Discreta & Off-Market</h3>
               <p class="service-clean-desc" data-i18n="services.s3Desc">
-                Acompañamiento a propietarios para posicionar su activo ante compradores solventes.
+                Posicionamiento editorial de propiedades ante compradores cualificados con total reserva.
               </p>
             </div>
             <a href="/servicios.html" class="service-clean-link">Descubrir &rarr;</a>
@@ -324,7 +225,7 @@
               <div class="service-number">04</div>
               <h3 class="service-clean-title" data-i18n="services.s4Title">Relocation & Expat Concierge</h3>
               <p class="service-clean-desc" data-i18n="services.s4Desc">
-                Servicio integral de aterrizaje para familias e inversores internacionales.
+                Servicio integral de aterrizaje familiar y profesional en Málaga y Costa del Sol.
               </p>
             </div>
             <a href="/servicios.html" class="service-clean-link">Descubrir &rarr;</a>
@@ -333,39 +234,62 @@
       </div>
     </section>
 
-    <!-- Advisor Spotlight (La Agencia / Humberto Machacón) -->
-    <section class="about-section" id="la-agencia">
-      <div class="container about-split-grid">
-        <div class="about-portrait-wrap">
-          <img 
-            src="/images/humberto-machacon.jpg" 
-            alt="Humberto Machacón - Asesor Inmobiliario Personal" 
-            class="about-portrait-img" 
-            loading="lazy"
-          />
+    <!-- Zonas de Málaga / Territorio de Actividad (Enclaves) -->
+    <section class="destinations-section" id="zonas-malaga">
+      <div class="container">
+        <div class="section-header-clean">
+          <div>
+            <h2 class="section-title" data-i18n="locations.title">Zonas de Málaga</h2>
+          </div>
+          <a href="/zonas.html" class="section-link-more" data-i18n="locations.viewAll">
+            Explorar todas las zonas &rarr;
+          </a>
         </div>
 
-        <div class="about-text-content">
-          <span class="section-kicker" data-i18n="about.tag">LA AGENCIA</span>
-          <h2 class="section-title" style="margin-bottom: 1.5rem;" data-i18n="about.title">Humberto Machacón</h2>
-          
-          <blockquote class="about-quote" data-i18n="about.quote">
-            «El valor de una propiedad se mide en metros; el valor de un asesor, en criterio, tiempo y discreción.»
-          </blockquote>
+        <div class="destinations-grid">
+          <!-- Enclave 1: Centro Histórico -->
+          <a href="/zonas.html" class="destination-card">
+            <img src="/images/malaga-centro.jpg" alt="Centro Histórico de Málaga" class="destination-bg" loading="lazy" />
+            <div class="destination-overlay"></div>
+            <div class="destination-content">
+              <h3 class="destination-name" data-i18n="locations.loc1Name">Centro Histórico</h3>
+              <p class="destination-desc" data-i18n="locations.loc1Desc">Palacetes señoriales, vida cultural y museos.</p>
+              <span class="destination-explore">Conocer enclave &rarr;</span>
+            </div>
+          </a>
 
-          <div class="about-paragraphs">
-            <p data-i18n="about.p1">
-              Málaga se ha convertido en uno de los destinos residenciales más codiciados de Europa. Navegar este mercado dinámico requiere un criterio independiente, conocimiento profundo del terreno y discreción absoluta.
-            </p>
-            <p data-i18n="about.p2">
-              Mi compromiso es exclusivo contigo: sin la presión de un catálogo cerrado, busco en todo el mercado para defender tus intereses, coordinar cada aspecto técnico y legal, y asegurar una operación impecable.
-            </p>
-          </div>
+          <!-- Enclave 2: El Limonar -->
+          <a href="/zonas.html" class="destination-card">
+            <img src="/images/hero-villa.jpg" alt="El Limonar y Pedregalejo" class="destination-bg" loading="lazy" />
+            <div class="destination-overlay"></div>
+            <div class="destination-content">
+              <h3 class="destination-name" data-i18n="locations.loc2Name">El Limonar & Pedregalejo</h3>
+              <p class="destination-desc" data-i18n="locations.loc2Desc">La zona noble residencial, jardines y tranquilidad.</p>
+              <span class="destination-explore">Conocer enclave &rarr;</span>
+            </div>
+          </a>
 
-          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-            <a href="/sobre-mi.html" class="btn-dark" data-i18n="about.cta">Conocer trayectoria</a>
-            <a href="/contacto.html" class="btn-outline-dark" data-i18n="nav.cta">Agendar Cita</a>
-          </div>
+          <!-- Enclave 3: La Malagueta -->
+          <a href="/zonas.html" class="destination-card">
+            <img src="/images/prop-atico-malagueta.jpg" alt="La Malagueta" class="destination-bg" loading="lazy" />
+            <div class="destination-overlay"></div>
+            <div class="destination-content">
+              <h3 class="destination-name" data-i18n="locations.loc3Name">La Malagueta</h3>
+              <p class="destination-desc" data-i18n="locations.loc3Desc">Primera línea de playa frente al mar Mediterráneo.</p>
+              <span class="destination-explore">Conocer enclave &rarr;</span>
+            </div>
+          </a>
+
+          <!-- Enclave 4: Costa del Sol Prime -->
+          <a href="/zonas.html" class="destination-card">
+            <img src="/images/prop-villa-marbella.jpg" alt="Costa del Sol Prime" class="destination-bg" loading="lazy" />
+            <div class="destination-overlay"></div>
+            <div class="destination-content">
+              <h3 class="destination-name" data-i18n="locations.loc4Name">Costa del Sol Prime</h3>
+              <p class="destination-desc" data-i18n="locations.loc4Desc">Marbella, Benalmádena y villas contemporáneas.</p>
+              <span class="destination-explore">Conocer enclave &rarr;</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -415,7 +339,7 @@
       </div>
     </section>
 
-    <!-- Consultation Action Banner (Kretz Clean Dark Banner) -->
+    <!-- Consultation Action Banner -->
     <section class="consultation-banner">
       <div class="container consultation-inner">
         <h2 class="consultation-title">
@@ -424,6 +348,19 @@
         <p class="consultation-subtitle" data-i18n="contact.subtitle">
           Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
         </p>
+        <div class="consultation-advisor-badge">
+          <img 
+            src="/images/humberto-avatar.png" 
+            alt="Humberto Machacón - Asesor Inmobiliario Personal" 
+            class="consultation-avatar-img"
+            loading="lazy"
+          />
+          <div class="consultation-advisor-text">
+            <span class="consultation-advisor-name">Humberto Machacón</span>
+            <span class="consultation-advisor-role">Asesor Inmobiliario Personal · Málaga</span>
+          </div>
+        </div>
+
         <div class="consultation-buttons">
           <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large whatsapp-direct-link" id="whatsapp-direct-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -452,13 +389,13 @@
               </div>
             </div>
             <p class="footer-bio-text" data-i18n="footer.bio">
-              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol. Propiedades singulares y servicio de alta confianza.
+              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol en asociación profesional con firma líder del sector.
             </p>
           </div>
 
           <!-- Col 2: Enclaves -->
           <div>
-            <h4 class="footer-col-title" data-i18n="footer.destinations">Enclaves</h4>
+            <h4 class="footer-col-title" data-i18n="footer.destinations">Zonas de Málaga</h4>
             <ul class="footer-nav-list">
               <li><a href="/zonas.html" class="footer-nav-link">Centro Histórico</a></li>
               <li><a href="/zonas.html" class="footer-nav-link">El Limonar & Pedregalejo</a></li>
@@ -497,7 +434,7 @@
 
         <!-- Footer Bottom Bar -->
         <div class="footer-bottom-row">
-          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados. Marca personal independiente.</span></p>
           <div class="footer-legal-links">
             <button type="button" class="footer-legal-btn" id="legal-btn-aviso" data-i18n="footer.legalNotice">Aviso Legal</button>
             <button type="button" class="footer-legal-btn" id="legal-btn-privacidad" data-i18n="footer.privacyPolicy">Privacidad</button>

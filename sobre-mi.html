@@ -21,12 +21,26 @@
           </div>
         </a>
 
+        <!-- Main Navigation Links -->
         <nav>
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="/" class="nav-link" data-i18n="nav.home">Inicio</a></li>
             <li><a href="/sobre-mi.html" class="nav-link active" data-i18n="nav.about">Sobre Mí</a></li>
-            <li><a href="/servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a></li>
-            <li><a href="/zonas.html" class="nav-link" data-i18n="nav.locations">Zonas</a></li>
+            <li class="nav-item-dropdown">
+              <a href="/servicios.html" class="nav-link nav-dropdown-trigger" id="nav-services-trigger">
+                <span data-i18n="nav.services">Servicios</span>
+                <span class="dropdown-chevron"></span>
+              </a>
+              <div class="nav-dropdown-menu">
+                <a href="/servicios.html" class="dropdown-item-link">
+                  <span data-i18n="nav.allServices">Servicios de Asesoramiento</span>
+                  <span class="dropdown-item-desc">VIP</span>
+                </a>
+                <a href="/zonas.html" class="dropdown-item-link">
+                  <span data-i18n="nav.locations">Zonas de Málaga</span>
+                  <span class="dropdown-item-desc">Enclaves</span>
+                </a>
+              </div>
+            </li>
             <li><a href="/contacto.html" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
@@ -51,9 +65,9 @@
           <span>/</span>
           <span data-i18n="nav.about">Sobre Mí</span>
         </div>
-        <h1 class="section-title" data-i18n="about.title">Humberto Machacón</h1>
-        <p class="section-subtitle-clean" style="margin: 0.5rem auto 0;" data-i18n="about.subtitle">
-          Asesor Inmobiliario Personal en Málaga & Costa del Sol
+        <h1 class="section-title" data-i18n="aboutPreview.title">Humberto Machacón</h1>
+        <p class="section-subtitle-clean" style="margin: 0.5rem auto 0;" data-i18n="aboutPreview.subtitle">
+          Tu interlocutor directo y de confianza en el sur de España
         </p>
       </div>
     </section>
@@ -63,7 +77,7 @@
       <div class="container about-split-grid">
         <div class="about-portrait-wrap">
           <img 
-            src="/images/humberto-machacon.jpg" 
+            src="/images/humberto-suit-beige.jpg" 
             alt="Humberto Machacón - Asesor Inmobiliario en Málaga" 
             class="about-portrait-img"
             id="advisor-portrait-img"
@@ -71,16 +85,16 @@
         </div>
 
         <div class="about-text-content">
-          <blockquote class="about-quote" data-i18n="about.quote">
-            «El valor de una propiedad se mide en metros; el valor de un asesor, en criterio, tiempo y discreción.»
+          <blockquote class="about-quote" data-i18n="aboutPreview.quote">
+            «El valor de una propiedad se mide en metros; el valor de un asesor, en criterio, tiempo y tranquilidad.»
           </blockquote>
 
           <div class="about-paragraphs">
-            <p data-i18n="about.p1">
-              Málaga se ha transformado en el epicentro europeo de calidad de vida, tecnología e inversión inmobiliaria de alta gama. Sin embargo, navegar este mercado dinámico requiere más que buscar en portales: exige criterio local, análisis objetivo y discreción absoluta.
+            <p data-i18n="aboutPreview.p1">
+              Málaga se ha transformado en el epicentro europeo de calidad de vida e inversión de alta gama. Sin embargo, navegar este mercado exige un criterio local objetivo, rigor técnico y confidencialidad.
             </p>
-            <p data-i18n="about.p2">
-              Como asesor personal, no tengo la presión de venderte una cartera cerrada. Mi compromiso es exclusivamente contigo: defender tus intereses, evaluar cada oportunidad con rigor técnico y acompañarte en cada paso desde la primera llamada hasta la firma en notaría.
+            <p data-i18n="aboutPreview.p2">
+              Como asesor personal, opero en colaboración con firma inmobiliaria líder del sector, pero mi lealtad es exclusivamente contigo: busco en todo el mercado sin ataduras de catálogo para defender tus intereses.
             </p>
           </div>
 
@@ -105,8 +119,8 @@
           <div class="service-clean-card">
             <div>
               <div class="service-number">01</div>
-              <h3 class="service-clean-title" data-i18n="whyMe.p1Title">Un Solo Interlocutor Dedicado</h3>
-              <p class="service-clean-desc" data-i18n="whyMe.p1Desc">
+              <h3 class="service-clean-title">Un Solo Interlocutor Dedicado</h3>
+              <p class="service-clean-desc">
                 Tratas directamente conmigo. Sin rotación de comerciales ni mensajes perdidos entre departamentos.
               </p>
             </div>
@@ -116,8 +130,8 @@
           <div class="service-clean-card">
             <div>
               <div class="service-number">02</div>
-              <h3 class="service-clean-title" data-i18n="whyMe.p2Title">Visión Global del Mercado</h3>
-              <p class="service-clean-desc" data-i18n="whyMe.p2Desc">
+              <h3 class="service-clean-title">Visión Global del Mercado</h3>
+              <p class="service-clean-desc">
                 No estoy limitado a un catálogo cerrado. Si la propiedad perfecta la tiene otra agencia o un particular, la consigo para ti.
               </p>
             </div>
@@ -127,8 +141,8 @@
           <div class="service-clean-card">
             <div>
               <div class="service-number">03</div>
-              <h3 class="service-clean-title" data-i18n="whyMe.p3Title">Cero Presión, 100% Honestidad</h3>
-              <p class="service-clean-desc" data-i18n="whyMe.p3Desc">
+              <h3 class="service-clean-title">Cero Presión, 100% Honestidad</h3>
+              <p class="service-clean-desc">
                 Si una propiedad tiene vicios ocultos, mala orientación o precio inflado, seré el primero en desaconsejarte la compra.
               </p>
             </div>
@@ -138,12 +152,42 @@
           <div class="service-clean-card">
             <div>
               <div class="service-number">04</div>
-              <h3 class="service-clean-title" data-i18n="whyMe.p4Title">Ecosistema Legal y Financiero</h3>
-              <p class="service-clean-desc" data-i18n="whyMe.p4Desc">
+              <h3 class="service-clean-title">Ecosistema Legal y Financiero</h3>
+              <p class="service-clean-desc">
                 Te conecto con los despachos jurídicos, arquitectos y entidades bancarias más reputadas de Málaga para que tu compra sea blindada.
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Commitment Section (Navy Suit Representation) -->
+    <section class="about-section" style="background-color: var(--bg-body); border-top: 1px solid var(--border-light);">
+      <div class="container about-split-grid" style="grid-template-columns: 1.05fr 0.95fr;">
+        <div class="about-text-content">
+          <span class="section-kicker">REPRESENTACIÓN EXCLUSIVA</span>
+          <h2 class="section-title" style="margin-bottom: 1.5rem;">Defensa de sus Intereses y Rigor Técnico</h2>
+          <div class="about-paragraphs">
+            <p>
+              En operaciones de alto valor patrimonial, cada detalle cuenta: desde la auditoría urbanística previa y la solvencia del promotor hasta la negociación del precio final y la optimización fiscal para inversores nacionales e internacionales.
+            </p>
+            <p>
+              No actúo como un intermediario que busca cerrar transacciones apresuradas. Mi labor es actuar como su aliado estratégico en Málaga, blindando sus intereses y garantizando total confidencialidad en cada fase del proceso.
+            </p>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <a href="/contacto.html" class="btn-dark" data-i18n="nav.cta">Agendar Cita Privada</a>
+          </div>
+        </div>
+
+        <div class="about-portrait-wrap">
+          <img 
+            src="/images/humberto-suit-navy.jpg" 
+            alt="Humberto Machacón - Asesor Inmobiliario Senior" 
+            class="about-portrait-img"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
@@ -157,6 +201,20 @@
         <p class="consultation-subtitle" data-i18n="contact.subtitle">
           Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
         </p>
+
+        <div class="consultation-advisor-badge">
+          <img 
+            src="/images/humberto-avatar.png" 
+            alt="Humberto Machacón - Asesor Inmobiliario Personal" 
+            class="consultation-avatar-img"
+            loading="lazy"
+          />
+          <div class="consultation-advisor-text">
+            <span class="consultation-advisor-name">Humberto Machacón</span>
+            <span class="consultation-advisor-role">Asesor Inmobiliario Personal · Málaga</span>
+          </div>
+        </div>
+
         <div class="consultation-buttons">
           <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large whatsapp-direct-link" id="whatsapp-direct-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -184,12 +242,12 @@
               </div>
             </div>
             <p class="footer-bio-text" data-i18n="footer.bio">
-              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol. Propiedades singulares y servicio de alta confianza.
+              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol en asociación profesional con firma líder del sector.
             </p>
           </div>
 
           <div>
-            <h4 class="footer-col-title" data-i18n="footer.destinations">Enclaves</h4>
+            <h4 class="footer-col-title" data-i18n="footer.destinations">Zonas de Málaga</h4>
             <ul class="footer-nav-list">
               <li><a href="/zonas.html" class="footer-nav-link">Centro Histórico</a></li>
               <li><a href="/zonas.html" class="footer-nav-link">El Limonar & Pedregalejo</a></li>
@@ -225,7 +283,7 @@
         </div>
 
         <div class="footer-bottom-row">
-          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados. Marca personal independiente.</span></p>
           <div class="footer-legal-links">
             <button type="button" class="footer-legal-btn" id="legal-btn-aviso" data-i18n="footer.legalNotice">Aviso Legal</button>
             <button type="button" class="footer-legal-btn" id="legal-btn-privacidad" data-i18n="footer.privacyPolicy">Privacidad</button>

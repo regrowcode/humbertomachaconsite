@@ -359,19 +359,22 @@ function initLanguageSwitcher() {
 function initActiveNav() {
   const currentPath = window.location.pathname.toLowerCase();
   const navLinks = document.querySelectorAll('.nav-link');
+  const servicesTrigger = document.getElementById('nav-services-trigger');
 
   navLinks.forEach((link) => {
-    const href = link.getAttribute('href').toLowerCase();
+    const href = link.getAttribute('href')?.toLowerCase() || '';
     const cleanHref = href.replace('.html', '').replace('/', '');
 
-    if ((currentPath === '/' || currentPath.endsWith('index.html') || currentPath === '') && (href === '/' || href === '/index.html')) {
-      link.classList.add('active');
-    } else if (cleanHref && currentPath.includes(cleanHref)) {
+    if (cleanHref && currentPath.includes(cleanHref)) {
       link.classList.add('active');
     } else {
       link.classList.remove('active');
     }
   });
+
+  if (servicesTrigger && (currentPath.includes('servicios') || currentPath.includes('zonas'))) {
+    servicesTrigger.classList.add('active');
+  }
 }
 
 // Global Initialization

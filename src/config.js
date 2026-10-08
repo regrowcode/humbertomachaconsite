@@ -37,13 +37,15 @@ export const siteConfig = {
     whatsapp: "https://wa.me/34600000000",
   },
 
-  // Rutas de imágenes (puedes reemplazar los archivos en /public/images/ o cambiar las rutas aquí)
+  // Rutas de imágenes oficiales del cliente
   images: {
-    portrait: "/images/humberto-machacon.jpg",
+    portrait: "/images/humberto-suit-beige.jpg",
+    portraitBeige: "/images/humberto-suit-beige.jpg",
+    portraitNavy: "/images/humberto-suit-navy.jpg",
+    avatar: "/images/humberto-avatar.png",
     heroVilla: "/images/hero-villa.jpg",
     malagaCentro: "/images/malaga-centro.jpg",
     malagaCosta: "/images/malaga-costa.jpg",
-    // Si tu hermano tiene un archivo de logo, colócalo en /public/images/logo.png y descomenta:
-    logoUrl: null, // Si es null, se genera el isotipo tipográfico 'HM | HUMBERTO MACHACÓN'
+    logoUrl: null, // Si tiene isotipo o monograma, colocar en /public/images/logo.png
   },
 };

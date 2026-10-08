@@ -21,12 +21,26 @@
           </div>
         </a>
 
+        <!-- Main Navigation Links -->
         <nav>
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="/" class="nav-link" data-i18n="nav.home">Inicio</a></li>
             <li><a href="/sobre-mi.html" class="nav-link" data-i18n="nav.about">Sobre Mí</a></li>
-            <li><a href="/servicios.html" class="nav-link active" data-i18n="nav.services">Servicios</a></li>
-            <li><a href="/zonas.html" class="nav-link" data-i18n="nav.locations">Zonas</a></li>
+            <li class="nav-item-dropdown">
+              <a href="/servicios.html" class="nav-link nav-dropdown-trigger active" id="nav-services-trigger">
+                <span data-i18n="nav.services">Servicios</span>
+                <span class="dropdown-chevron"></span>
+              </a>
+              <div class="nav-dropdown-menu">
+                <a href="/servicios.html" class="dropdown-item-link">
+                  <span data-i18n="nav.allServices">Servicios de Asesoramiento</span>
+                  <span class="dropdown-item-desc">VIP</span>
+                </a>
+                <a href="/zonas.html" class="dropdown-item-link">
+                  <span data-i18n="nav.locations">Zonas de Málaga</span>
+                  <span class="dropdown-item-desc">Enclaves</span>
+                </a>
+              </div>
+            </li>
             <li><a href="/contacto.html" class="nav-link" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
@@ -51,9 +65,9 @@
           <span>/</span>
           <span data-i18n="nav.services">Servicios</span>
         </div>
-        <h1 class="section-title" data-i18n="services.title">Nuestros servicios</h1>
+        <h1 class="section-title" data-i18n="services.title">Servicios</h1>
         <p class="section-subtitle-clean" style="margin: 0.5rem auto 0;" data-i18n="services.subtitle">
-          Asesoramiento personalizado de principio a fin para compradores, propietarios e inversores.
+          Acompañamiento integral para compradores, inversores y propietarios.
         </p>
       </div>
     </section>
@@ -68,7 +82,7 @@
               <div class="service-number">01</div>
               <h2 class="service-clean-title" data-i18n="services.s1Title">Personal Shopper Inmobiliario</h2>
               <p class="service-clean-desc" data-i18n="services.s1Desc">
-                Búsqueda a medida y acceso a carteras privadas off-market para compradores VIP.
+                Búsqueda a medida de tu residencia ideal y acceso a carteras privadas off-market.
               </p>
               <ul id="s1-points" style="list-style: none; margin-top: 1.5rem; border-top: 1px solid var(--border-light); padding-top: 1rem;"></ul>
             </div>
@@ -81,7 +95,7 @@
               <div class="service-number">02</div>
               <h2 class="service-clean-title" data-i18n="services.s2Title">Inversión Patrimonial</h2>
               <p class="service-clean-desc" data-i18n="services.s2Desc">
-                Identificación de activos con alto potencial de revalorización y rentabilidad neta.
+                Identificación de activos de alto rendimiento, análisis financiero y asesoría Golden Visa.
               </p>
               <ul id="s2-points" style="list-style: none; margin-top: 1.5rem; border-top: 1px solid var(--border-light); padding-top: 1rem;"></ul>
             </div>
@@ -94,7 +108,7 @@
               <div class="service-number">03</div>
               <h2 class="service-clean-title" data-i18n="services.s3Title">Venta Discreta & Off-Market</h2>
               <p class="service-clean-desc" data-i18n="services.s3Desc">
-                Acompañamiento a propietarios para posicionar su activo ante compradores solventes.
+                Posicionamiento editorial de propiedades ante compradores cualificados con total reserva.
               </p>
               <ul id="s3-points" style="list-style: none; margin-top: 1.5rem; border-top: 1px solid var(--border-light); padding-top: 1rem;"></ul>
             </div>
@@ -107,7 +121,7 @@
               <div class="service-number">04</div>
               <h2 class="service-clean-title" data-i18n="services.s4Title">Relocation & Expat Concierge</h2>
               <p class="service-clean-desc" data-i18n="services.s4Desc">
-                Servicio integral de aterrizaje para familias e inversores internacionales.
+                Servicio integral de aterrizaje familiar y profesional en Málaga y Costa del Sol.
               </p>
               <ul id="s4-points" style="list-style: none; margin-top: 1.5rem; border-top: 1px solid var(--border-light); padding-top: 1rem;"></ul>
             </div>
@@ -170,6 +184,20 @@
         <p class="consultation-subtitle" data-i18n="contact.subtitle">
           Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
         </p>
+
+        <div class="consultation-advisor-badge">
+          <img 
+            src="/images/humberto-avatar.png" 
+            alt="Humberto Machacón - Asesor Inmobiliario Personal" 
+            class="consultation-avatar-img"
+            loading="lazy"
+          />
+          <div class="consultation-advisor-text">
+            <span class="consultation-advisor-name">Humberto Machacón</span>
+            <span class="consultation-advisor-role">Asesor Inmobiliario Personal · Málaga</span>
+          </div>
+        </div>
+
         <div class="consultation-buttons">
           <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large whatsapp-direct-link" id="whatsapp-direct-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -197,12 +225,12 @@
               </div>
             </div>
             <p class="footer-bio-text" data-i18n="footer.bio">
-              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol. Propiedades singulares y servicio de alta confianza.
+              Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol en asociación profesional con firma líder del sector.
             </p>
           </div>
 
           <div>
-            <h4 class="footer-col-title" data-i18n="footer.destinations">Enclaves</h4>
+            <h4 class="footer-col-title" data-i18n="footer.destinations">Zonas de Málaga</h4>
             <ul class="footer-nav-list">
               <li><a href="/zonas.html" class="footer-nav-link">Centro Histórico</a></li>
               <li><a href="/zonas.html" class="footer-nav-link">El Limonar & Pedregalejo</a></li>
@@ -238,7 +266,7 @@
         </div>
 
         <div class="footer-bottom-row">
-          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados.</span></p>
+          <p>© <span id="current-year"></span> Humberto Machacón. <span data-i18n="footer.rights">Todos los derechos reservados. Marca personal independiente.</span></p>
           <div class="footer-legal-links">
             <button type="button" class="footer-legal-btn" id="legal-btn-aviso" data-i18n="footer.legalNotice">Aviso Legal</button>
             <button type="button" class="footer-legal-btn" id="legal-btn-privacidad" data-i18n="footer.privacyPolicy">Privacidad</button>

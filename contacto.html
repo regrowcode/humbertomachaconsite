@@ -21,12 +21,26 @@
           </div>
         </a>
 
+        <!-- Main Navigation Links -->
         <nav>
           <ul class="nav-menu" id="nav-menu">
-            <li><a href="/" class="nav-link" data-i18n="nav.home">Inicio</a></li>
             <li><a href="/sobre-mi.html" class="nav-link" data-i18n="nav.about">Sobre Mí</a></li>
-            <li><a href="/servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a></li>
-            <li><a href="/zonas.html" class="nav-link" data-i18n="nav.locations">Zonas</a></li>
+            <li class="nav-item-dropdown">
+              <a href="/servicios.html" class="nav-link nav-dropdown-trigger" id="nav-services-trigger">
+                <span data-i18n="nav.services">Servicios</span>
+                <span class="dropdown-chevron"></span>
+              </a>
+              <div class="nav-dropdown-menu">
+                <a href="/servicios.html" class="dropdown-item-link">
+                  <span data-i18n="nav.allServices">Servicios de Asesoramiento</span>
+                  <span class="dropdown-item-desc">VIP</span>
+                </a>
+                <a href="/zonas.html" class="dropdown-item-link">
+                  <span data-i18n="nav.locations">Zonas de Málaga</span>
+                  <span class="dropdown-item-desc">Enclaves</span>
+                </a>
+              </div>
+            </li>
             <li><a href="/contacto.html" class="nav-link active" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
@@ -68,6 +82,21 @@
           <p class="section-subtitle-clean" style="margin-bottom: 1.5rem;">
             Trato directo con Humberto Machacón. Responderé personalmente a su consulta en menos de 24 horas laborables.
           </p>
+
+          <div class="contact-advisor-card">
+            <img 
+              src="/images/humberto-suit-navy.jpg" 
+              alt="Humberto Machacón - Asesor Inmobiliario" 
+              class="contact-advisor-card-img" 
+              loading="lazy"
+            />
+            <div class="contact-advisor-info">
+              <span class="contact-advisor-badge-pill">Atención directa</span>
+              <h3 class="contact-advisor-name">Humberto Machacón</h3>
+              <p class="contact-advisor-title">Asesor Inmobiliario Personal · Málaga</p>
+              <p class="contact-advisor-note">«Cada consulta es atendida personalmente con absoluta reserva y rigor.»</p>
+            </div>
+          </div>
 
           <div class="contact-channels">
             <div class="channel-card">
