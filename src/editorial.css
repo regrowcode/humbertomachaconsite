@@ -1,4 +1,4 @@
-/* Shared editorial layer. Navigation labels, destinations and order are preserved. */
+/* Shared editorial layer for the personal advisory site. */
 :root {
   --bg-body: #faf9f6;
   --bg-alt: #efede7;
@@ -42,6 +42,36 @@ section[id], main { scroll-margin-top: 100px; }
 .btn-whatsapp-large { background: #3b5141; font-size: .7rem; box-shadow: none; }
 .btn-whatsapp-large:hover { background: #293d2e; box-shadow: none; transform: none; }
 .floating-whatsapp { width: 48px; height: 48px; background: #3b5141; box-shadow: 0 4px 18px #0002; }
+
+/* Local flag assets stay consistent across browsers; labels identify languages. */
+.lang-switcher { gap: .15rem; }
+.lang-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .35rem;
+  min-height: 44px; padding: .4rem .45rem; white-space: nowrap;
+}
+.lang-btn img { width: 21px; height: 14px; object-fit: cover; border-radius: 1px; box-shadow: 0 0 0 1px #ffffff40; }
+.lang-btn:hover { background: #ffffff18; }
+.site-header.scrolled .lang-btn:hover { background: #2529230a; }
+.header-call-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; flex-shrink: 0; color: white;
+  border: 1px solid #ffffff50; border-radius: 50%;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.header-call-link:hover { background: #ffffff18; border-color: currentColor; }
+.site-header.scrolled .header-call-link { color: var(--text-main); border-color: var(--border-light); }
+.site-header.scrolled .header-call-link:hover { background: var(--bg-alt); border-color: var(--accent-gold-dark); }
+@media (max-width: 700px) {
+  .lang-btn { flex-direction: column; gap: .25rem; min-width: 34px; padding-inline: .2rem; font-size: .6rem; }
+}
+@media (max-width: 380px) {
+  .site-header .container { padding-inline: .5rem; }
+  .site-header .brand-name { font-size: .72rem; }
+  .site-header .nav-actions { gap: .2rem; }
+  .lang-btn { min-width: 28px; }
+  .header-call-link { width: 36px; height: 44px; border-radius: 3px; }
+  .site-header .hamburger-btn { width: 32px; padding-inline: 0; }
+}
 
 /* Cinematic first impression: the person and the promise, not a property listing. */
 .hero-section {
@@ -109,6 +139,44 @@ section[id], main { scroll-margin-top: 100px; }
 .service-clean-title { font-size: 1.75rem; line-height: 1.12; margin-bottom: 1.2rem; }
 .service-clean-desc { font-size: .8rem; font-weight: 400; line-height: 1.85; }
 .service-clean-link { font-size: .61rem; letter-spacing: .12em; padding-block: .7rem; }
+
+/* Four clear next steps: generous typography, fine rules and restrained arrows. */
+.advisory-actions-section { padding: clamp(3rem, 6vw, 6rem) 0; background: white; }
+.advisory-actions-layout { display: grid; grid-template-columns: .85fr 1.5fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.advisory-actions-intro h2 { font: 400 clamp(2rem, 3vw, 3rem)/1.15 var(--font-serif); margin-bottom: 1.5rem; }
+.advisory-actions-intro p { font-size: .84rem; line-height: 1.9; color: var(--text-muted); margin-bottom: 2rem; }
+.advisory-actions-intro img { width: 100%; height: auto; max-width: 420px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 25%; border-radius: 3px; }
+.advisory-actions-list { border-top: 1px solid var(--border-light); min-width: 0; }
+.advisory-action { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 2rem 1rem; border-bottom: 1px solid var(--border-light); color: var(--text-main); transition: background-color .2s ease; }
+.advisory-action:hover, .advisory-action:focus-visible { background: var(--bg-body); }
+.advisory-action-category { display: block; font-size: .6rem; letter-spacing: .18em; color: var(--accent-gold-dark); margin-bottom: .65rem; }
+.advisory-action h3 { font: 400 clamp(1.7rem, 2.7vw, 2.6rem)/1.18 var(--font-serif); overflow-wrap: anywhere; }
+.advisory-action p { font-size: .78rem; line-height: 1.8; color: var(--text-muted); margin-top: .75rem; max-width: 550px; }
+.advisory-action-arrow { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid var(--border-light); border-radius: 50%; }
+.advisory-action:hover .advisory-action-arrow { background: var(--bg-dark); color: white; }
+
+.project-fields { border: 0; border-top: 1px solid var(--border-light); margin: 2rem 0 1rem; padding: 1.5rem 0 0; min-width: 0; }
+.project-fields legend { font-size: .6rem; letter-spacing: .12em; padding-right: 1rem; color: var(--accent-gold-dark); }
+.project-fields-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.5rem; }
+.project-fields-grid > div { min-width: 0; }
+.project-fields-grid input { width: 100%; min-width: 0; }
+.contact-project-page .contact-section-page { background: linear-gradient(white 35%, #f2e9e3 35%); }
+.contact-project-page .contact-layout-grid { grid-template-columns: .8fr 1.5fr; align-items: start; }
+.contact-project-page .contact-form-container { background: white; border: 1px solid var(--border-light); border-radius: 3px; }
+.contact-project-page .contact-advisor-card { flex-direction: column; align-items: stretch; }
+.contact-project-page .contact-advisor-card-img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 25%; border-radius: 3px; }
+.contact-project-page .form-clean-input, .contact-project-page .form-clean-select, .contact-project-page .form-clean-textarea { background: transparent; border: 0; border-bottom: 1px solid var(--border-light); border-radius: 0; padding-inline: 0; }
+.contact-project-page .page-hero-banner-clean .section-title { font-size: clamp(2.5rem, 5vw, 4.5rem); overflow-wrap: anywhere; }
+@media (max-width: 900px) {
+  .advisory-actions-layout, .contact-project-page .contact-layout-grid { grid-template-columns: 1fr; }
+  .advisory-actions-intro img { display: none; }
+  .contact-project-page .contact-advisor-card { flex-direction: row; align-items: center; }
+  .contact-project-page .contact-advisor-card-img { width: 100px; flex-shrink: 0; }
+}
+@media (max-width: 700px) {
+  .advisory-action { padding: 1.5rem 0; gap: 1rem; }
+  .project-fields-grid { grid-template-columns: 1fr; }
+}
 
 /* Two short films communicate listening, analysis, and a change of life. */
 .films-section { background: var(--bg-alt); padding: clamp(4rem, 8vw, 8rem) 0; }

@@ -11,6 +11,7 @@ export const siteConfig = {
     title: {
       es: "Asesor Inmobiliario Senior",
       en: "Senior Real Estate Advisor",
+      de: "Senior-Immobilienberater",
     },
     location: "Málaga & Costa del Sol, España",
     // Nombre de la agencia con la que colabora (puede cambiarse cuando lo deseen)
@@ -21,8 +22,8 @@ export const siteConfig = {
   contact: {
     // Número para WhatsApp internacional (sin +, sin espacios ni guiones)
     // Ejemplo: "34612345678"
-    whatsappNumber: "34600000000",
-    phoneDisplay: "+34 600 000 000",
+    whatsappNumber: "34681816023",
+    phoneDisplay: "+34 681 81 60 23",
     email: "contacto@humbertomachacon.com",
     // Enlace opcional a Calendly para agendar videollamadas
     calendlyUrl: "https://calendly.com",

@@ -3,6 +3,7 @@ import './editorial.css';
 import { translations } from './translations.js';
 import { siteConfig } from './config.js';
 import { initAmbientVideos } from './media.js';
+import { contactInterests, getServiceKey, projectFields, getProjectLines } from './advisory.js';
 
 // Application State
 let currentLang = 'es';
@@ -44,19 +45,14 @@ function renderLanguage(lang) {
   });
 
   // 2. Update Language Switcher Buttons
-  const esBtn = document.getElementById('lang-btn-es');
-  const enBtn = document.getElementById('lang-btn-en');
-  if (esBtn && enBtn) {
-    esBtn.setAttribute('aria-pressed', String(lang === 'es'));
-    enBtn.setAttribute('aria-pressed', String(lang === 'en'));
-    if (lang === 'es') {
-      esBtn.classList.add('active');
-      enBtn.classList.remove('active');
-    } else {
-      enBtn.classList.add('active');
-      esBtn.classList.remove('active');
-    }
-  }
+  document.querySelectorAll('.lang-btn[data-lang]').forEach((button) => {
+    const active = button.dataset.lang === lang;
+    button.setAttribute('aria-pressed', String(active));
+    button.classList.toggle('active', active);
+  });
+  document.getElementById('lang-switcher')?.setAttribute('aria-label', {
+    es: 'Seleccionar idioma', en: 'Select language', de: 'Sprache auswählen',
+  }[lang]);
 
   // 3. Update Service Points Lists (if on services page)
   ['s1', 's2', 's3', 's4'].forEach((serviceKey) => {
@@ -79,8 +75,9 @@ function renderLanguage(lang) {
   const interestSelect = document.getElementById('form-interest');
   if (interestSelect && t.contact && t.contact.interestOptions) {
     const selectedIndex = interestSelect.selectedIndex;
-    interestSelect.replaceChildren(...t.contact.interestOptions.map((opt) => new Option(opt, opt)));
+    interestSelect.replaceChildren(...t.contact.interestOptions.map((opt, index) => new Option(opt, contactInterests[index])));
     interestSelect.selectedIndex = Math.max(0, selectedIndex);
+    syncContactProject();
   }
 
   // 5. Update Advisor Role and Affiliation if element present
@@ -91,6 +88,11 @@ function renderLanguage(lang) {
 
   // 6. Update WhatsApp URLs with localized greeting
   updateWhatsAppLinks(lang);
+  const callLink = document.getElementById('header-call-link');
+  if (callLink) {
+    callLink.setAttribute('aria-label', t.ui.callAdvisor);
+    callLink.title = `${t.ui.callAdvisor} · ${siteConfig.contact.phoneDisplay}`;
+  }
   const hamburger = document.getElementById('hamburger-btn');
   if (hamburger) hamburger.setAttribute('aria-label', t.ui[document.getElementById('nav-menu')?.classList.contains('open') ? 'closeMenu' : 'openMenu']);
   document.dispatchEvent(new Event('languagechange'));
@@ -101,10 +103,11 @@ function renderLanguage(lang) {
  */
 function updateWhatsAppLinks(lang) {
   const number = siteConfig.contact.whatsappNumber;
-  const greeting =
-    lang === 'es'
-      ? encodeURIComponent('Hola Humberto, me gustaría conversar contigo sobre tu asesoría inmobiliaria en Málaga. ¿Podemos hablar de mi proyecto?')
-      : encodeURIComponent('Hello Humberto, I would like to discuss your real estate advisory in Malaga. Can we talk about my project?');
+  const greeting = encodeURIComponent({
+    es: 'Hola Humberto, me gustaría conversar contigo sobre tu asesoría inmobiliaria en Málaga. ¿Podemos hablar de mi proyecto?',
+    en: 'Hello Humberto, I would like to discuss your real estate advisory in Malaga. Can we talk about my project?',
+    de: 'Hallo Humberto, ich würde gerne mit dir über deine Immobilienberatung in Málaga sprechen. Können wir über mein Projekt sprechen?',
+  }[lang]);
 
   const waUrl = `https://wa.me/${number}?text=${greeting}`;
 
@@ -122,6 +125,8 @@ function updateWhatsAppLinks(lang) {
  * Injects contact numbers and addresses from siteConfig
  */
 function initSiteConfig() {
+  const callLink = document.getElementById('header-call-link');
+  if (callLink) callLink.href = `tel:+${siteConfig.contact.whatsappNumber}`;
   // Bind repeated content outside the navbar without changing navigation options.
   document.querySelectorAll('.service-clean-link').forEach((el) => {
     el.dataset.i18n = el.getAttribute('href') === '/contacto.html' ? 'ui.consultation' : 'ui.discoverService';
@@ -136,6 +141,9 @@ function initSiteConfig() {
   });
   document.querySelectorAll('.property-tag-badge').forEach((el, index) => {
     el.dataset.i18n = `locations.zone${index + 1}Tag`;
+  });
+  document.querySelectorAll('#contact-location-display, .contact-location-val').forEach((el) => {
+    el.dataset.i18n = 'contact.location';
   });
   const phoneDisplays = document.querySelectorAll('#contact-phone-display, .contact-phone-val');
   phoneDisplays.forEach((el) => {
@@ -217,10 +225,56 @@ function initMobileMenu() {
 /**
  * Contact Form submission handler
  */
+function syncContactProject() {
+  const select = document.getElementById('form-interest');
+  if (!select) return;
+  const service = select.dataset.projectContext === 'true' ? select.value : null;
+  const key = getServiceKey(service);
+  document.body.classList.toggle('contact-project-page', Boolean(key));
+  const textBindings = {
+    'contact-page-title': key ? `serviceActions.${key}.label` : 'contact.title',
+    'contact-project-title': key ? `serviceActions.${key}.formTitle` : 'contact.personalTitle',
+    'contact-project-description': key ? `serviceActions.${key}.formDescription` : 'contact.personalDesc',
+  };
+  for (const [id, path] of Object.entries(textBindings)) {
+    const element = document.getElementById(id);
+    if (element) {
+      element.dataset.i18n = path;
+      element.textContent = getTranslation(translations[currentLang], path);
+    }
+  }
+  const fieldset = document.getElementById('project-fields');
+  if (fieldset) {
+    fieldset.hidden = !key;
+    fieldset.disabled = !key;
+    for (const field of projectFields) {
+      const input = fieldset.elements.namedItem(field.name);
+      if (!input) continue;
+      const visible = field.services.includes(service);
+      input.disabled = !visible;
+      input.closest('.form-clean-group').hidden = !visible;
+    }
+  }
+}
+
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const statusAlert = document.getElementById('form-status-alert');
   if (!form) return;
+
+  const interestSelect = document.getElementById('form-interest');
+  const requestedService = new URLSearchParams(window.location.search).get('servicio');
+  if (interestSelect) {
+    if (getServiceKey(requestedService)) {
+      interestSelect.value = requestedService;
+      interestSelect.dataset.projectContext = 'true';
+    }
+    interestSelect.addEventListener('change', () => {
+      interestSelect.dataset.projectContext = 'true';
+      syncContactProject();
+    });
+    syncContactProject();
+  }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -228,12 +282,13 @@ function initContactForm() {
     if (!form.reportValidity()) return;
     const data = new FormData(form);
     const labels = translations[currentLang].contact;
-    const subject = `${currentLang === 'es' ? 'Consulta de asesoría' : 'Advisory inquiry'} — ${data.get('name')}`;
+    const subject = `${{ es: 'Consulta de asesoría', en: 'Advisory inquiry', de: 'Beratungsanfrage' }[currentLang]} — ${data.get('name')}`;
     const body = [
       `${labels.formName}: ${data.get('name')}`,
       `${labels.formEmail}: ${data.get('email')}`,
       `${labels.formPhone}: ${data.get('phone') || '—'}`,
-      `${labels.formInterest}: ${data.get('interest')}`,
+      `${labels.formInterest}: ${labels.interestOptions[contactInterests.indexOf(data.get('interest'))] || '—'}`,
+      ...getProjectLines(data, labels, data.get('interest')),
       '', String(data.get('message')),
     ].join('\n');
     if (statusAlert) {
@@ -284,6 +339,17 @@ function initLegalModals() {
           <p>All editorial texts, branding visuals, and layout designs belong to Humberto Machacón or are utilized under valid license.</p>
         `,
       },
+      de: {
+        title: 'Rechtliche Hinweise',
+        body: `
+          <h4>1. Identifikation</h4>
+          <p>Gemäß dem spanischen Gesetz 34/2002 (LSSI-CE) stellt diese Website die persönliche Marke und berufliche Tätigkeit von <strong>Humberto Machacón</strong>, Immobilienberater in Málaga und an der Costa del Sol, Spanien, vor.</p>
+          <h4>2. Zweck</h4>
+          <p>Diese Website dient ausschließlich der Information und der unabhängigen persönlichen Beratung.</p>
+          <h4>3. Geistiges Eigentum</h4>
+          <p>Alle Texte, Logos und audiovisuellen Elemente sind Eigentum von Humberto Machacón oder werden unter einer Nutzungslizenz verwendet.</p>
+        `,
+      },
     },
     privacidad: {
       es: {
@@ -308,6 +374,17 @@ function initLegalModals() {
           <p>You may exercise rights to access or erasure at any time by contacting ${siteConfig.contact.email}.</p>
         `,
       },
+      de: {
+        title: 'Datenschutzerklärung (DSGVO)',
+        body: `
+          <h4>1. Verantwortlicher</h4>
+          <p>Verantwortlich für die Verarbeitung der Daten ist Humberto Machacón.</p>
+          <h4>2. Zweck</h4>
+          <p>Das Formular bereitet eine Nachricht in deinem lokalen E-Mail-Programm vor. Diese Website speichert deine Anfrage nicht und versendet sie nicht automatisch. Wenn du sie per E-Mail oder WhatsApp sendest, werden deine Daten zur Beantwortung deiner Beratungsanfrage verwendet.</p>
+          <h4>3. Rechte</h4>
+          <p>Du kannst deine Rechte auf Auskunft, Berichtigung oder Löschung per E-Mail an ${siteConfig.contact.email} ausüben.</p>
+        `,
+      },
     },
     cookies: {
       es: {
@@ -322,6 +399,13 @@ function initLegalModals() {
         body: `
           <h4>Use of Cookies</h4>
            <p>Your language preference is stored in your browser's localStorage, not in a cookie. This site does not embed third-party videos or analytics. Typefaces are requested from Google Fonts.</p>
+        `,
+      },
+      de: {
+        title: 'Cookie-Hinweise',
+        body: `
+          <h4>Verwendung von Cookies</h4>
+          <p>Deine Sprachpräferenz wird im localStorage deines Browsers gespeichert, nicht in einem Cookie. Diese Website verwendet keine Analyse-Tools oder eingebetteten Videos von Drittanbietern. Schriftarten werden von Google Fonts geladen.</p>
         `,
       },
     },
@@ -371,8 +455,9 @@ function initLegalModals() {
  * Language switcher click listeners
  */
 function initLanguageSwitcher() {
-  document.getElementById('lang-btn-es')?.addEventListener('click', () => renderLanguage('es'));
-  document.getElementById('lang-btn-en')?.addEventListener('click', () => renderLanguage('en'));
+  document.querySelectorAll('.lang-btn[data-lang]').forEach((button) => {
+    button.addEventListener('click', () => renderLanguage(button.dataset.lang));
+  });
 }
 
 /**
@@ -381,7 +466,6 @@ function initLanguageSwitcher() {
 function initActiveNav() {
   const currentPath = window.location.pathname.toLowerCase();
   const navLinks = document.querySelectorAll('.nav-link');
-  const servicesTrigger = document.getElementById('nav-services-trigger');
 
   navLinks.forEach((link) => {
     const href = link.getAttribute('href')?.toLowerCase() || '';
@@ -389,14 +473,13 @@ function initActiveNav() {
 
     if (cleanHref && currentPath.includes(cleanHref)) {
       link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
     } else {
       link.classList.remove('active');
+      link.removeAttribute('aria-current');
     }
   });
 
-  if (servicesTrigger && (currentPath.includes('servicios') || currentPath.includes('zonas'))) {
-    servicesTrigger.classList.add('active');
-  }
 }
 
 // Global Initialization

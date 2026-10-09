@@ -26,33 +26,21 @@
         <nav>
           <ul class="nav-menu" id="nav-menu">
             <li><a href="/sobre-mi.html" class="nav-link" data-i18n="nav.about">Sobre Mí</a></li>
-            <li class="nav-item-dropdown">
-              <a href="/servicios.html" class="nav-link nav-dropdown-trigger" id="nav-services-trigger">
-                <span data-i18n="nav.services">Servicios</span>
-                <span class="dropdown-chevron"></span>
-              </a>
-              <div class="nav-dropdown-menu">
-                <a href="/servicios.html" class="dropdown-item-link">
-                  <span data-i18n="nav.allServices">Servicios de Asesoramiento</span>
-                  <span class="dropdown-item-desc">VIP</span>
-                </a>
-                <a href="/zonas.html" class="dropdown-item-link">
-                  <span data-i18n="nav.locations">Zonas de Málaga</span>
-                  <span class="dropdown-item-desc">Enclaves</span>
-                </a>
-              </div>
-            </li>
+            <li><a href="/servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a></li>
+            <li><a href="/zonas.html" class="nav-link" data-i18n="nav.locations">Zonas</a></li>
             <li><a href="/contacto.html" class="nav-link active" data-i18n="nav.contact">Contacto</a></li>
           </ul>
         </nav>
 
         <div class="nav-actions">
           <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language selection">
-            <button type="button" class="lang-btn active" id="lang-btn-es" data-lang="es">ES</button>
-            <span style="opacity: 0.3;">/</span>
-            <button type="button" class="lang-btn" id="lang-btn-en" data-lang="en">EN</button>
+            <button type="button" class="lang-btn active" id="lang-btn-es" data-lang="es" lang="es" aria-label="Español" title="Español" aria-pressed="true"><img src="/images/flags/es.svg" width="21" height="14" alt="" />ES</button>
+            <button type="button" class="lang-btn" id="lang-btn-en" data-lang="en" lang="en" aria-label="English" title="English" aria-pressed="false"><img src="/images/flags/en.svg" width="21" height="14" alt="" />EN</button>
+            <button type="button" class="lang-btn" id="lang-btn-de" data-lang="de" lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false"><img src="/images/flags/de.svg" width="21" height="14" alt="" />DE</button>
           </div>
-          <a href="/contacto.html" class="btn-header-cta" id="btn-header-cta" data-i18n="nav.cta">Agendar Cita</a>
+          <a href="tel:+34600000000" class="header-call-link" id="header-call-link" aria-label="Llamar a Humberto" title="Llamar a Humberto">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.35 1.9.69 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.57 2.79.69A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
           <button type="button" class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">☰</button>
         </div>
       </div>
@@ -67,7 +55,7 @@
           <span>/</span>
           <span data-i18n="nav.contact">Contacto</span>
         </div>
-        <h1 class="section-title" data-i18n="contact.title">Contacto privado</h1>
+        <h1 class="section-title" id="contact-page-title" data-i18n="contact.title">Contacto privado</h1>
         <p class="section-subtitle-clean" style="margin: 0.5rem auto 0;" data-i18n="contact.subtitle">
           Sin compromiso y con absoluta confidencialidad. Planifiquemos su próximo proyecto.
         </p>
@@ -80,8 +68,8 @@
         <!-- Left: Direct Channels -->
         <div class="contact-info-block">
           <span class="section-kicker" data-i18n="contact.channels">TRATO DIRECTO</span>
-          <h2 class="section-title" style="margin-bottom: 1rem;" data-i18n="contact.personalTitle">Una conversación contigo.</h2>
-          <p class="section-subtitle-clean" style="margin-bottom: 1.5rem;" data-i18n="contact.personalDesc">
+          <h2 class="section-title" id="contact-project-title" style="margin-bottom: 1rem;" data-i18n="contact.personalTitle">Una conversación contigo.</h2>
+          <p class="section-subtitle-clean" id="contact-project-description" style="margin-bottom: 1.5rem;" data-i18n="contact.personalDesc">
             Tu consulta llega a Humberto, no a un departamento comercial. Hablemos de tus dudas y de cómo puedo ayudarte.
           </p>
 
@@ -172,13 +160,26 @@
             <div class="form-clean-group">
               <label for="form-interest" class="form-clean-label" data-i18n="contact.formInterest">¿En qué podemos asesorarle?</label>
               <select id="form-interest" name="interest" class="form-clean-select">
-                <option value="Orientación para encontrar mi hogar">Orientación para encontrar mi hogar</option>
-                <option value="Asesoría sobre inversión patrimonial">Asesoría sobre inversión patrimonial</option>
-                <option value="Acompañamiento como propietario">Acompañamiento como propietario</option>
-                <option value="Ayuda para trasladarme a Málaga">Ayuda para trasladarme a Málaga</option>
-                <option value="Otra consulta privada">Otra consulta privada</option>
+                <option value="comprar">Orientación para encontrar mi hogar</option>
+                <option value="invertir">Asesoría sobre inversión patrimonial</option>
+                <option value="vender">Acompañamiento como propietario</option>
+                <option value="relocation">Ayuda para trasladarme a Málaga</option>
+                <option value="otra">Otra consulta privada</option>
+                <option value="valorar">Orientación sobre el valor de mi propiedad</option>
               </select>
             </div>
+
+            <fieldset class="project-fields" id="project-fields" hidden disabled>
+              <legend data-i18n="contact.projectDetails">TU PROYECTO · DATOS OPCIONALES</legend>
+              <div class="project-fields-grid">
+                <div class="form-clean-group"><label for="project-location" class="form-clean-label" data-i18n="contact.projectLocation">Zona o ubicación</label><input id="project-location" name="projectLocation" type="text" class="form-clean-input" maxlength="150" /></div>
+                <div class="form-clean-group"><label for="project-type" class="form-clean-label" data-i18n="contact.propertyType">Tipo de propiedad</label><input id="project-type" name="propertyType" type="text" class="form-clean-input" maxlength="100" /></div>
+                <div class="form-clean-group"><label for="project-budget" class="form-clean-label" data-i18n="contact.budget">Presupuesto máximo (€)</label><input id="project-budget" name="budget" type="number" min="0" step="any" class="form-clean-input" /></div>
+                <div class="form-clean-group"><label for="project-area" class="form-clean-label" data-i18n="contact.area">Superficie aproximada (m²)</label><input id="project-area" name="area" type="number" min="0" step="any" class="form-clean-input" /></div>
+                <div class="form-clean-group"><label for="project-rooms" class="form-clean-label" data-i18n="contact.rooms">Número de habitaciones</label><input id="project-rooms" name="rooms" type="number" min="0" step="1" class="form-clean-input" /></div>
+                <div class="form-clean-group"><label for="project-goal" class="form-clean-label" data-i18n="contact.investmentGoal">Objetivo y horizonte de inversión</label><input id="project-goal" name="investmentGoal" type="text" class="form-clean-input" maxlength="300" /></div>
+              </div>
+            </fieldset>
 
             <div class="form-clean-group">
               <label for="form-message" class="form-clean-label" data-i18n="contact.formMessage">Detalles de su búsqueda o propiedad</label>
