@@ -1,9 +1,15 @@
 import './style.css';
+import './editorial.css';
 import { translations } from './translations.js';
 import { siteConfig } from './config.js';
+import { initAmbientVideos } from './media.js';
 
 // Application State
-let currentLang = localStorage.getItem('hm_advisor_lang') || 'es';
+let currentLang = 'es';
+try {
+  const saved = localStorage.getItem('hm_advisor_lang');
+  if (saved && translations[saved]) currentLang = saved;
+} catch { /* The site also works when browser storage is unavailable. */ }
 
 /**
  * Helper to resolve nested object keys by string path (e.g. 'hero.titleStart')
@@ -16,8 +22,9 @@ function getTranslation(obj, path) {
  * Updates all texts in the DOM according to current language
  */
 function renderLanguage(lang) {
+  if (!translations[lang]) return;
   currentLang = lang;
-  localStorage.setItem('hm_advisor_lang', lang);
+  try { localStorage.setItem('hm_advisor_lang', lang); } catch { /* Optional persistence. */ }
   document.documentElement.lang = lang;
 
   const t = translations[lang];
@@ -31,11 +38,17 @@ function renderLanguage(lang) {
       el.textContent = value;
     }
   });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+    const value = getTranslation(t, el.dataset.i18nPlaceholder);
+    if (value) el.placeholder = value;
+  });
 
   // 2. Update Language Switcher Buttons
   const esBtn = document.getElementById('lang-btn-es');
   const enBtn = document.getElementById('lang-btn-en');
   if (esBtn && enBtn) {
+    esBtn.setAttribute('aria-pressed', String(lang === 'es'));
+    enBtn.setAttribute('aria-pressed', String(lang === 'en'));
     if (lang === 'es') {
       esBtn.classList.add('active');
       enBtn.classList.remove('active');
@@ -65,9 +78,9 @@ function renderLanguage(lang) {
   // 4. Update Contact Form Interest Select Options
   const interestSelect = document.getElementById('form-interest');
   if (interestSelect && t.contact && t.contact.interestOptions) {
-    interestSelect.innerHTML = t.contact.interestOptions
-      .map((opt) => `<option value="${opt}">${opt}</option>`)
-      .join('');
+    const selectedIndex = interestSelect.selectedIndex;
+    interestSelect.replaceChildren(...t.contact.interestOptions.map((opt) => new Option(opt, opt)));
+    interestSelect.selectedIndex = Math.max(0, selectedIndex);
   }
 
   // 5. Update Advisor Role and Affiliation if element present
@@ -78,6 +91,9 @@ function renderLanguage(lang) {
 
   // 6. Update WhatsApp URLs with localized greeting
   updateWhatsAppLinks(lang);
+  const hamburger = document.getElementById('hamburger-btn');
+  if (hamburger) hamburger.setAttribute('aria-label', t.ui[document.getElementById('nav-menu')?.classList.contains('open') ? 'closeMenu' : 'openMenu']);
+  document.dispatchEvent(new Event('languagechange'));
 }
 
 /**
@@ -87,8 +103,8 @@ function updateWhatsAppLinks(lang) {
   const number = siteConfig.contact.whatsappNumber;
   const greeting =
     lang === 'es'
-      ? encodeURIComponent('Hola Humberto, me gustaría solicitar una consulta privada sobre propiedades en Málaga.')
-      : encodeURIComponent('Hello Humberto, I would like to schedule a private advisory consultation regarding properties in Malaga.');
+      ? encodeURIComponent('Hola Humberto, me gustaría conversar contigo sobre tu asesoría inmobiliaria en Málaga. ¿Podemos hablar de mi proyecto?')
+      : encodeURIComponent('Hello Humberto, I would like to discuss your real estate advisory in Malaga. Can we talk about my project?');
 
   const waUrl = `https://wa.me/${number}?text=${greeting}`;
 
@@ -100,33 +116,42 @@ function updateWhatsAppLinks(lang) {
   const floatingBtn = document.getElementById('floating-whatsapp');
   if (floatingBtn) floatingBtn.href = waUrl;
 
-  // Property consultation links
-  document.querySelectorAll('.property-whatsapp-btn').forEach((btn) => {
-    const propTitle = btn.getAttribute('data-prop-name') || 'Málaga';
-    const propMsg =
-      lang === 'es'
-        ? encodeURIComponent(`Hola Humberto, me gustaría recibir más información y el dossier privado de la propiedad: ${propTitle}`)
-        : encodeURIComponent(`Hello Humberto, I would like to receive the private dossier for the property: ${propTitle}`);
-    btn.href = `https://wa.me/${number}?text=${propMsg}`;
-  });
 }
 
 /**
  * Injects contact numbers and addresses from siteConfig
  */
 function initSiteConfig() {
+  // Bind repeated content outside the navbar without changing navigation options.
+  document.querySelectorAll('.service-clean-link').forEach((el) => {
+    el.dataset.i18n = el.getAttribute('href') === '/contacto.html' ? 'ui.consultation' : 'ui.discoverService';
+  });
+  document.querySelectorAll('.destination-explore').forEach((el) => { el.dataset.i18n = 'ui.exploreArea'; });
+  document.querySelectorAll('.property-action-link').forEach((el) => { el.dataset.i18n = 'ui.areaAdvice'; });
+  document.querySelectorAll('.consultation-advisor-role').forEach((el) => { el.dataset.i18n = 'ui.advisorTitle'; });
+  document.querySelectorAll('.footer-nav-list').forEach((list) => {
+    list.querySelectorAll('a').forEach((link, index) => {
+      link.dataset.i18n = link.getAttribute('href').includes('zonas') ? `locations.loc${index + 1}Name` : `services.s${index + 1}Title`;
+    });
+  });
+  document.querySelectorAll('.property-tag-badge').forEach((el, index) => {
+    el.dataset.i18n = `locations.zone${index + 1}Tag`;
+  });
   const phoneDisplays = document.querySelectorAll('#contact-phone-display, .contact-phone-val');
   phoneDisplays.forEach((el) => {
     el.textContent = siteConfig.contact.phoneDisplay;
+    if (el.tagName === 'A') el.href = `tel:+${siteConfig.contact.whatsappNumber}`;
   });
 
   const emailDisplays = document.querySelectorAll('#contact-email-display, .contact-email-val');
   emailDisplays.forEach((el) => {
     el.textContent = siteConfig.contact.email;
+    if (el.tagName === 'A') el.href = `mailto:${siteConfig.contact.email}`;
   });
 
-  const locationDisplay = document.getElementById('contact-location-display');
-  if (locationDisplay) locationDisplay.textContent = siteConfig.advisor.location;
+  document.querySelectorAll('#contact-location-display, .contact-location-val').forEach((el) => {
+    el.textContent = siteConfig.advisor.location;
+  });
 
   const yearEl = document.getElementById('current-year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -140,7 +165,7 @@ function initHeaderScroll() {
   if (!header) return;
 
   const handleScroll = () => {
-    if (window.scrollY > 40) {
+    if (!document.querySelector('.hero-section') || window.scrollY > 40) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -159,50 +184,34 @@ function initMobileMenu() {
   const navMenu = document.getElementById('nav-menu');
 
   if (hamburger && navMenu) {
+    hamburger.setAttribute('aria-controls', 'nav-menu');
+    hamburger.setAttribute('aria-expanded', 'false');
+    const setOpen = (open) => {
+      navMenu.classList.toggle('open', open);
+      hamburger.textContent = open ? '✕' : '☰';
+      hamburger.setAttribute('aria-expanded', String(open));
+      hamburger.setAttribute('aria-label', translations[currentLang].ui[open ? 'closeMenu' : 'openMenu']);
+    };
     hamburger.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
-      hamburger.textContent = navMenu.classList.contains('open') ? '✕' : '☰';
+      setOpen(!navMenu.classList.contains('open'));
     });
 
     navMenu.querySelectorAll('.nav-link').forEach((link) => {
       link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        hamburger.textContent = '☰';
+        setOpen(false);
       });
     });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navMenu.classList.contains('open')) {
+        setOpen(false);
+        hamburger.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) setOpen(false);
+    });
+    window.matchMedia('(max-width: 1100px)').addEventListener('change', () => setOpen(false));
   }
-}
-
-/**
- * Property filter tabs on homepage
- */
-function initPropertyFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const propertyCards = document.querySelectorAll('.property-card');
-
-  if (!filterBtns.length || !propertyCards.length) return;
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filterType = btn.getAttribute('data-filter');
-
-      propertyCards.forEach((card) => {
-        const category = card.getAttribute('data-category');
-        if (filterType === 'all' || category === filterType) {
-          card.style.display = 'flex';
-          card.style.opacity = '0';
-          setTimeout(() => {
-            card.style.opacity = '1';
-          }, 50);
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
 }
 
 /**
@@ -211,38 +220,34 @@ function initPropertyFilters() {
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const statusAlert = document.getElementById('form-status-alert');
-  const submitBtn = document.getElementById('form-btn-submit');
-
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const t = translations[currentLang];
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = t.contact.sending;
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const labels = translations[currentLang].contact;
+    const subject = `${currentLang === 'es' ? 'Consulta de asesoría' : 'Advisory inquiry'} — ${data.get('name')}`;
+    const body = [
+      `${labels.formName}: ${data.get('name')}`,
+      `${labels.formEmail}: ${data.get('email')}`,
+      `${labels.formPhone}: ${data.get('phone') || '—'}`,
+      `${labels.formInterest}: ${data.get('interest')}`,
+      '', String(data.get('message')),
+    ].join('\n');
+    if (statusAlert) {
+      statusAlert.className = 'form-status-alert success';
+      const title = document.createElement('strong');
+      title.dataset.i18n = 'contact.successTitle';
+      title.textContent = labels.successTitle;
+      const description = document.createElement('p');
+      description.dataset.i18n = 'contact.successDesc';
+      description.textContent = labels.successDesc;
+      statusAlert.replaceChildren(title, description);
     }
-
-    setTimeout(() => {
-      if (statusAlert) {
-        statusAlert.className = 'form-status-alert success';
-        statusAlert.innerHTML = `
-          <strong>${t.contact.successTitle}</strong><br />
-          ${t.contact.successDesc}
-        `;
-      }
-
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = t.contact.formSubmit;
-      }
-      form.reset();
-
-      setTimeout(() => {
-        if (statusAlert) statusAlert.style.display = 'none';
-      }, 7000);
-    }, 700);
+    // No backend is configured: be transparent, and keep all fields for retry/copy.
+    window.location.href = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 }
 
@@ -287,7 +292,7 @@ function initLegalModals() {
           <h4>1. Responsable</h4>
           <p>El responsable del tratamiento de los datos es Humberto Machacón.</p>
           <h4>2. Finalidad</h4>
-          <p>Los datos aportados se utilizan únicamente para responder a su solicitud de consulta o información sobre propiedades.</p>
+           <p>El formulario prepara un correo en su aplicación local. Esta web no almacena ni envía su consulta automáticamente. Si decide enviarla por correo o WhatsApp, sus datos se utilizarán para responder a su solicitud de asesoría.</p>
           <h4>3. Derechos</h4>
           <p>Puede ejercitar sus derechos de acceso, rectificación o cancelación enviando un correo a ${siteConfig.contact.email}.</p>
         `,
@@ -298,7 +303,7 @@ function initLegalModals() {
           <h4>1. Controller</h4>
           <p>The party responsible for data is Humberto Machacón, Personal Real Estate Advisor.</p>
           <h4>2. Purpose</h4>
-          <p>Your details are processed solely to respond to advisory inquiries and property requests.</p>
+           <p>The form prepares a message in your local email application. This website does not store or automatically send your inquiry. If you send it via email or WhatsApp, your details will be used to respond to your advisory request.</p>
           <h4>3. Rights</h4>
           <p>You may exercise rights to access or erasure at any time by contacting ${siteConfig.contact.email}.</p>
         `,
@@ -309,30 +314,37 @@ function initLegalModals() {
         title: 'Política de Cookies',
         body: `
           <h4>Uso de Cookies</h4>
-          <p>Utilizamos cookies técnicas necesarias para recordar su idioma preferido (español o inglés). No utilizamos cookies invasivas de terceros.</p>
+           <p>Guardamos su idioma preferido en el almacenamiento local del navegador (localStorage), no en una cookie. Este sitio no incorpora analítica ni vídeos embebidos de terceros. Las fuentes tipográficas se solicitan a Google Fonts.</p>
         `,
       },
       en: {
         title: 'Cookies Policy',
         body: `
           <h4>Use of Cookies</h4>
-          <p>We use essential technical cookies to remember your language preference (Spanish or English). No invasive third-party tracking is used.</p>
+           <p>Your language preference is stored in your browser's localStorage, not in a cookie. This site does not embed third-party videos or analytics. Typefaces are requested from Google Fonts.</p>
         `,
       },
     },
   };
 
+  let previousFocus;
   function openModal(type) {
     if (!backdrop || !title || !body) return;
     const item = legalContent[type][currentLang];
     if (!item) return;
     title.textContent = item.title;
     body.innerHTML = item.body;
+    previousFocus = document.activeElement;
     backdrop.classList.add('open');
+    backdrop.setAttribute('aria-labelledby', 'legal-modal-title');
+    document.body.style.overflow = 'hidden';
+    closeBtn?.focus();
   }
 
   function closeModal() {
     if (backdrop) backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+    previousFocus?.focus();
   }
 
   document.getElementById('legal-btn-aviso')?.addEventListener('click', () => openModal('aviso'));
@@ -342,6 +354,16 @@ function initLegalModals() {
   closeBtn?.addEventListener('click', closeModal);
   backdrop?.addEventListener('click', (e) => {
     if (e.target === backdrop) closeModal();
+  });
+  backdrop?.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeModal();
+    if (event.key === 'Tab') {
+      const focusable = [...backdrop.querySelectorAll('button, a[href], input, [tabindex="0"]')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
   });
 }
 
@@ -384,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNav();
   initHeaderScroll();
   initMobileMenu();
-  initPropertyFilters();
+  initAmbientVideos(() => translations[currentLang].ui);
   initContactForm();
   initLegalModals();
   initLanguageSwitcher();

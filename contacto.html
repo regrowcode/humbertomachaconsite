@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link" data-i18n="ui.skip">Saltar al contenido</a>
     <!-- Site Header -->
     <header class="site-header" id="site-header">
       <div class="container nav-container">
@@ -57,6 +58,7 @@
       </div>
     </header>
 
+    <main id="main-content" tabindex="-1">
     <!-- Page Hero Banner -->
     <section class="page-hero-banner-clean">
       <div class="container">
@@ -77,24 +79,24 @@
       <div class="container contact-layout-grid">
         <!-- Left: Direct Channels -->
         <div class="contact-info-block">
-          <span class="section-kicker">CANALES DIRECTOS</span>
-          <h2 class="section-title" style="margin-bottom: 1rem; font-size: 2.2rem;">Atención Personal</h2>
-          <p class="section-subtitle-clean" style="margin-bottom: 1.5rem;">
-            Trato directo con Humberto Machacón. Responderé personalmente a su consulta en menos de 24 horas laborables.
+          <span class="section-kicker" data-i18n="contact.channels">TRATO DIRECTO</span>
+          <h2 class="section-title" style="margin-bottom: 1rem;" data-i18n="contact.personalTitle">Una conversación contigo.</h2>
+          <p class="section-subtitle-clean" style="margin-bottom: 1.5rem;" data-i18n="contact.personalDesc">
+            Tu consulta llega a Humberto, no a un departamento comercial. Hablemos de tus dudas y de cómo puedo ayudarte.
           </p>
 
           <div class="contact-advisor-card">
             <img 
-              src="/images/humberto-suit-navy.jpg" 
+              src="/images/humberto-suit-navy.webp"
               alt="Humberto Machacón - Asesor Inmobiliario" 
               class="contact-advisor-card-img" 
               loading="lazy"
             />
             <div class="contact-advisor-info">
-              <span class="contact-advisor-badge-pill">Atención directa</span>
+              <span class="contact-advisor-badge-pill" data-i18n="contact.directAttention">Atención personal</span>
               <h3 class="contact-advisor-name">Humberto Machacón</h3>
-              <p class="contact-advisor-title">Asesor Inmobiliario Personal · Málaga</p>
-              <p class="contact-advisor-note">«Cada consulta es atendida personalmente con absoluta reserva y rigor.»</p>
+              <p class="contact-advisor-title" data-i18n="ui.advisorTitle">Asesor inmobiliario personal · Málaga</p>
+              <p class="contact-advisor-note" data-i18n="contact.advisorNote">«Escucharte es el primer paso para asesorarte bien.»</p>
             </div>
           </div>
 
@@ -106,8 +108,8 @@
                 </svg>
               </div>
               <div>
-                <div class="channel-label">Teléfono Directo</div>
-                <div class="channel-val" id="contact-phone-display">+34 600 000 000</div>
+                <div class="channel-label" data-i18n="contact.phoneLabel">Teléfono directo</div>
+                <a class="channel-val contact-phone-val" href="tel:+34600000000">+34 600 000 000</a>
               </div>
             </div>
 
@@ -119,8 +121,8 @@
                 </svg>
               </div>
               <div>
-                <div class="channel-label">Correo Electrónico</div>
-                <div class="channel-val" id="contact-email-display">contacto@humbertomachacon.com</div>
+                <div class="channel-label" data-i18n="contact.emailLabel">Correo electrónico</div>
+                <a class="channel-val contact-email-val" href="mailto:contacto@humbertomachacon.com">contacto@humbertomachacon.com</a>
               </div>
             </div>
 
@@ -132,8 +134,8 @@
                 </svg>
               </div>
               <div>
-                <div class="channel-label">Ubicación</div>
-                <div class="channel-val" id="contact-location-display">Málaga & Costa del Sol, España</div>
+                <div class="channel-label" data-i18n="contact.locationLabel">Dónde te acompaño</div>
+                <div class="channel-val contact-location-val">Málaga & Costa del Sol, España</div>
               </div>
             </div>
           </div>
@@ -150,51 +152,53 @@
 
         <!-- Right: Clean Minimalist Consultation Form -->
         <div class="contact-form-container">
+          <p class="form-hint" data-i18n="contact.formHint">Este formulario prepara un correo con tu consulta. Se abrirá tu aplicación de correo y podrás revisarlo antes de enviarlo.</p>
           <form id="contact-form">
             <div class="form-clean-group">
               <label for="form-name" class="form-clean-label" data-i18n="contact.formName">Nombre completo</label>
-              <input type="text" id="form-name" name="name" class="form-clean-input" required placeholder="Ej. Alejandro Martín" />
+              <input type="text" id="form-name" name="name" class="form-clean-input" required autocomplete="name" maxlength="100" placeholder="Tu nombre completo" data-i18n-placeholder="contact.namePlaceholder" />
             </div>
 
             <div class="form-clean-group">
               <label for="form-email" class="form-clean-label" data-i18n="contact.formEmail">Correo electrónico</label>
-              <input type="email" id="form-email" name="email" class="form-clean-input" required placeholder="correo@ejemplo.com" />
+              <input type="email" id="form-email" name="email" class="form-clean-input" required autocomplete="email" maxlength="150" placeholder="tu@email.com" data-i18n-placeholder="contact.emailPlaceholder" />
             </div>
 
             <div class="form-clean-group">
               <label for="form-phone" class="form-clean-label" data-i18n="contact.formPhone">Teléfono / WhatsApp</label>
-              <input type="tel" id="form-phone" name="phone" class="form-clean-input" placeholder="+34 600 000 000" />
+              <input type="tel" id="form-phone" name="phone" class="form-clean-input" autocomplete="tel" maxlength="40" placeholder="+34 600 000 000" />
             </div>
 
             <div class="form-clean-group">
               <label for="form-interest" class="form-clean-label" data-i18n="contact.formInterest">¿En qué podemos asesorarle?</label>
               <select id="form-interest" name="interest" class="form-clean-select">
-                <option value="Comprar una vivienda o residencia">Comprar una vivienda o residencia</option>
-                <option value="Inversión inmobiliaria de alta rentabilidad">Inversión inmobiliaria de alta rentabilidad</option>
-                <option value="Vender una propiedad en Málaga">Vender una propiedad en Málaga</option>
-                <option value="Reubicación internacional / Expat Concierge">Reubicación internacional / Expat Concierge</option>
+                <option value="Orientación para encontrar mi hogar">Orientación para encontrar mi hogar</option>
+                <option value="Asesoría sobre inversión patrimonial">Asesoría sobre inversión patrimonial</option>
+                <option value="Acompañamiento como propietario">Acompañamiento como propietario</option>
+                <option value="Ayuda para trasladarme a Málaga">Ayuda para trasladarme a Málaga</option>
                 <option value="Otra consulta privada">Otra consulta privada</option>
               </select>
             </div>
 
             <div class="form-clean-group">
               <label for="form-message" class="form-clean-label" data-i18n="contact.formMessage">Detalles de su búsqueda o propiedad</label>
-              <textarea id="form-message" name="message" class="form-clean-textarea" required placeholder="Describa brevemente lo que busca o las características de su propiedad..."></textarea>
+              <textarea id="form-message" name="message" class="form-clean-textarea" required maxlength="2000" placeholder="Cuéntame qué necesitas, tus dudas y cuándo te gustaría empezar…" data-i18n-placeholder="contact.messagePlaceholder"></textarea>
             </div>
 
             <button type="submit" class="form-clean-submit" id="form-btn-submit" data-i18n="contact.formSubmit">
-              Solicitar Consulta Privada
+              Preparar mi consulta por correo ↗
             </button>
 
             <p style="font-size: 0.74rem; color: var(--text-dim); text-align: center; margin-top: 1rem; line-height: 1.5;" data-i18n="contact.disclaimer">
               Sus datos se tratarán con estricta confidencialidad bajo la normativa europea de protección de datos (RGPD).
             </p>
 
-            <div class="form-status-alert" id="form-status-alert"></div>
+            <div class="form-status-alert" id="form-status-alert" role="status" aria-live="polite"></div>
           </form>
         </div>
       </div>
     </section>
+    </main>
 
     <!-- Site Footer -->
     <footer class="site-footer">

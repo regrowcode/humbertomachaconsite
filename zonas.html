@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link" data-i18n="ui.skip">Saltar al contenido</a>
     <!-- Site Header -->
     <header class="site-header" id="site-header">
       <div class="container nav-container">
@@ -57,6 +58,7 @@
       </div>
     </header>
 
+    <main id="main-content" tabindex="-1">
     <!-- Page Hero Banner -->
     <section class="page-hero-banner-clean">
       <div class="container">
@@ -79,7 +81,7 @@
           <!-- Enclave 1: Centro Histórico -->
           <article class="property-card">
             <div class="property-image-wrap">
-              <img src="/images/malaga-centro.jpg" alt="Centro Histórico de Málaga" class="property-image" loading="lazy" />
+              <img src="/images/malaga-centro.webp" alt="Ambiente urbano mediterráneo" class="property-image" loading="lazy" />
               <span class="property-tag-badge">Málaga Capital</span>
             </div>
             <div class="property-details">
@@ -99,7 +101,7 @@
           <!-- Enclave 2: El Limonar -->
           <article class="property-card">
             <div class="property-image-wrap">
-              <img src="/images/hero-villa.jpg" alt="El Limonar y Pedregalejo" class="property-image" loading="lazy" />
+              <img src="/images/hero-villa.webp" alt="Arquitectura residencial mediterránea" class="property-image" loading="lazy" />
               <span class="property-tag-badge">Málaga Este</span>
             </div>
             <div class="property-details">
@@ -119,7 +121,7 @@
           <!-- Enclave 3: La Malagueta -->
           <article class="property-card">
             <div class="property-image-wrap">
-              <img src="/images/prop-atico-malagueta.jpg" alt="La Malagueta frente al mar" class="property-image" loading="lazy" />
+              <img src="/images/prop-atico-malagueta.webp" alt="Estilo de vida residencial junto al mar" class="property-image" loading="lazy" />
               <span class="property-tag-badge">Costa Urbana</span>
             </div>
             <div class="property-details">
@@ -139,7 +141,7 @@
           <!-- Enclave 4: Costa del Sol Prime -->
           <article class="property-card">
             <div class="property-image-wrap">
-              <img src="/images/prop-villa-marbella.jpg" alt="Costa del Sol Prime Marbella" class="property-image" loading="lazy" />
+              <img src="/images/prop-villa-marbella.webp" alt="Arquitectura contemporánea de inspiración costera" class="property-image" loading="lazy" />
               <span class="property-tag-badge">Costa del Sol</span>
             </div>
             <div class="property-details">
@@ -156,14 +158,15 @@
             </div>
           </article>
         </div>
+        <p class="media-note" data-i18n="editorial.mediaNote">Imágenes de ambiente que ilustran la asesoría y el estilo de vida junto al mar; no representan clientes ni inmuebles en oferta.</p>
       </div>
     </section>
 
     <!-- Consultation Action Banner -->
     <section class="consultation-banner">
       <div class="container consultation-inner">
-        <h2 class="consultation-title">
-          ¿En qué enclave desea enfocar su <em>búsqueda</em>?
+        <h2 class="consultation-title" data-i18n="editorial.ctaTitle">
+          Tu siguiente paso merece un buen compañero.
         </h2>
         <p class="consultation-subtitle" data-i18n="contact.subtitle">
           Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
@@ -195,6 +198,7 @@
         </div>
       </div>
     </section>
+    </main>
 
     <!-- Site Footer -->
     <footer class="site-footer">

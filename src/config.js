@@ -39,13 +39,13 @@ export const siteConfig = {
 
   // Rutas de imágenes oficiales del cliente
   images: {
-    portrait: "/images/humberto-suit-beige.jpg",
-    portraitBeige: "/images/humberto-suit-beige.jpg",
-    portraitNavy: "/images/humberto-suit-navy.jpg",
+    portrait: "/images/humberto-suit-beige.webp",
+    portraitBeige: "/images/humberto-suit-beige.webp",
+    portraitNavy: "/images/humberto-suit-navy.webp",
     avatar: "/images/humberto-avatar.png",
-    heroVilla: "/images/hero-villa.jpg",
-    malagaCentro: "/images/malaga-centro.jpg",
-    malagaCosta: "/images/malaga-costa.jpg",
+    heroVilla: "/images/hero-villa.webp",
+    malagaCentro: "/images/malaga-centro.webp",
+    malagaCosta: "/images/malaga-costa.webp",
     logoUrl: null, // Si tiene isotipo o monograma, colocar en /public/images/logo.png
   },
 };

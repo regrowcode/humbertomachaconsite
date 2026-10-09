@@ -7,15 +7,15 @@
     <!-- Primary SEO Meta Tags -->
     <title>Humberto Machacón | Asesor Inmobiliario Personal en Málaga & Costa del Sol</title>
     <meta name="title" content="Humberto Machacón | Asesor Inmobiliario Personal en Málaga & Costa del Sol" />
-    <meta name="description" content="Asesoramiento inmobiliario boutique e independiente en Málaga y Costa del Sol. Personal Shopper, inversión patrimonial y acompañamiento exclusivo." />
+    <meta name="description" content="Conoce a Humberto Machacón. Asesoría inmobiliaria personal en Málaga y Costa del Sol: orientación, criterio y acompañamiento en cada decisión." />
     <meta name="keywords" content="asesor inmobiliario malaga, personal shopper inmobiliario malaga, real estate advisor malaga, inversion inmobiliaria malaga, costa del sol" />
     <meta name="author" content="Humberto Machacón" />
     
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Humberto Machacón | Asesor Inmobiliario Personal en Málaga" />
-    <meta property="og:description" content="Asesoramiento boutique independiente para adquirir, invertir o gestionar propiedades de prestigio en Málaga y Costa del Sol." />
-    <meta property="og:image" content="/images/hero-villa.jpg" />
+    <meta property="og:description" content="Personas antes que propiedades. Conoce a Humberto Machacón y descubre su asesoría personal en Málaga y Costa del Sol." />
+    <meta property="og:image" content="/images/humberto-suit-beige.webp" />
 
     <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+    <a href="#main-content" class="skip-link" data-i18n="ui.skip">Saltar al contenido</a>
     <!-- Site Header -->
     <header class="site-header" id="site-header">
       <div class="container nav-container">
@@ -71,79 +72,71 @@
       </div>
     </header>
 
-    <!-- Hero Section (Kretz Cinematic Video Banner) -->
+    <main id="main-content" tabindex="-1">
+    <!-- Cinematic personal-brand introduction -->
     <section class="hero-section" id="hero">
       <div class="hero-bg-container">
-        <video 
-          class="hero-bg-video" 
-          autoplay 
-          muted 
-          loop 
-          playsinline 
-          poster="/images/hero-villa.jpg"
-          preload="auto"
-        >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
-          <img src="/images/hero-villa.jpg" alt="Villas de lujo en Málaga" class="hero-bg-image" />
+        <img src="/images/coastal-life.webp" alt="" class="hero-bg-image" fetchpriority="high" />
+        <video class="hero-bg-video" id="hero-film" data-ambient-video muted loop playsinline poster="/images/coastal-life.webp" preload="none" aria-hidden="true">
+          <source data-src="/videos/coastal-life.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay"></div>
       </div>
       
       <div class="container hero-content">
-        <span class="hero-kicker" data-i18n="hero.badge">MÁLAGA & COSTA DEL SOL</span>
+        <span class="hero-kicker" data-i18n="hero.badge">HUMBERTO MACHACÓN · ASESOR INMOBILIARIO</span>
         
         <h1 class="hero-title" id="hero-title">
-          <span data-i18n="hero.titleStart">Asesor Inmobiliario Personal</span><br />
-          <em data-i18n="hero.titleAccent">en Málaga & Costa del Sol</em>
+          <span data-i18n="hero.titleStart">Más que una propiedad,</span><br />
+          <em data-i18n="hero.titleAccent">tu tranquilidad.</em>
         </h1>
         
         <p class="hero-subtitle" data-i18n="hero.subtitle">
-          Asesoramiento independiente, discreción y acceso exclusivo al mercado inmobiliario más cotizado.
+          Te ayudo a tomar decisiones inmobiliarias con criterio, confianza y alguien a tu lado. En Málaga y Costa del Sol.
         </p>
 
         <div class="hero-actions">
           <a href="/contacto.html" class="btn-primary" id="btn-hero-primary" data-i18n="hero.ctaPrimary">
-            Agendar Cita
+             Hablemos de tu proyecto
           </a>
           <a href="/servicios.html" class="btn-secondary" id="btn-hero-secondary" data-i18n="hero.ctaSecondary">
-            Servicios
+             Cómo puedo ayudarte
           </a>
         </div>
 
-        <!-- Subtle Trust Strip -->
-        <div class="hero-trust-strip">
-          <div class="trust-item">
-            <div class="trust-value" data-i18n="hero.stat1Number">+120</div>
-            <div class="trust-label" data-i18n="hero.stat1Label">Operaciones Asesoradas</div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-value" data-i18n="hero.stat2Number">100%</div>
-            <div class="trust-label" data-i18n="hero.stat2Label">Criterio Independiente</div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-value" data-i18n="hero.stat3Number">Málaga</div>
-            <div class="trust-label" data-i18n="hero.stat3Label">Especialista Costa del Sol</div>
-          </div>
-          <div class="trust-item">
-            <div class="trust-value" data-i18n="hero.stat4Number">Bilingüe</div>
-            <div class="trust-label" data-i18n="hero.stat4Label">Servicio Español e Inglés</div>
-          </div>
-        </div>
+        <a href="/sobre-mi.html" class="hero-advisor-link">
+          <img src="/images/humberto-suit-beige.webp" alt="Humberto Machacón" width="60" height="75" />
+          <div><span class="advisor-name">Humberto Machacón ↗</span><span class="advisor-role" data-i18n="ui.advisorRole">Tu asesor personal en Málaga</span></div>
+        </a>
+      </div>
+      <div class="container hero-bottom">
+        <a href="#el-asesor" class="scroll-cue"><span class="scroll-arrow" aria-hidden="true">↓</span><span data-i18n="ui.discover">Una forma más personal de asesorarte</span></a>
+        <button type="button" class="video-toggle" data-video-toggle="hero-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span></button>
+      </div>
+    </section>
+
+    <section class="intro-section" aria-labelledby="intro-title">
+      <div class="container intro-grid">
+        <h2 class="intro-heading" id="intro-title" data-i18n="editorial.introTitle">Las mejores decisiones empiezan con alguien que te escucha.</h2>
+        <div class="intro-note"><strong data-i18n="editorial.introTag">Personas antes que propiedades</strong><p data-i18n="editorial.introDesc">No estás ante un catálogo de inmuebles. Este es un espacio para conocernos y descubrir cómo puedo ayudarte a encontrar claridad, evitar incertidumbres y dar tu siguiente paso.</p></div>
       </div>
     </section>
 
     <!-- Advisor Spotlight Section (Humberto Machacón - Personal Focus) -->
     <section class="about-section" id="el-asesor">
       <div class="container about-split-grid">
+        <figure>
         <div class="about-portrait-wrap">
           <img 
-            src="/images/humberto-suit-beige.jpg" 
+            src="/images/humberto-suit-beige.webp"
             alt="Humberto Machacón - Asesor Inmobiliario Personal en Málaga" 
             class="about-portrait-img" 
             id="advisor-portrait-img"
             loading="lazy"
           />
         </div>
+        <figcaption class="portrait-caption"><span>Humberto Machacón</span><span>Málaga · Costa del Sol</span></figcaption>
+        </figure>
 
         <div class="about-text-content">
           <span class="section-kicker" data-i18n="aboutPreview.tag">EL ASESOR</span>
@@ -155,16 +148,16 @@
 
           <div class="about-paragraphs">
             <p data-i18n="aboutPreview.p1">
-              Málaga se ha transformado en el epicentro europeo de calidad de vida e inversión de alta gama. Sin embargo, navegar este mercado exige un criterio local objetivo, rigor técnico y confidencialidad.
+              Soy Humberto Machacón. Mi trabajo empieza por escucharte: entender qué quieres conseguir, qué te preocupa y qué necesitas para avanzar con confianza en Málaga y Costa del Sol.
             </p>
             <p data-i18n="aboutPreview.p2">
-              Como asesor personal, opero en colaboración con firma inmobiliaria líder del sector, pero mi lealtad es exclusivamente contigo: busco en todo el mercado sin ataduras de catálogo para defender tus intereses.
+              Te acompaño con una mirada local y un trato directo. Analizo las alternativas, te explico cada paso y coordino el apoyo profesional que tu proyecto necesita. El centro de mi trabajo no es una propiedad: eres tú.
             </p>
           </div>
-
+          <p class="advisor-signature">Humberto Machacón</p>
           <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
             <a href="/sobre-mi.html" class="btn-dark" data-i18n="aboutPreview.cta">Conocer trayectoria</a>
-            <a href="/contacto.html" class="btn-outline-dark" data-i18n="nav.cta">Agendar Cita</a>
+            <a href="/contacto.html" class="section-link-more" data-i18n="ui.letsTalk">Hablemos ↗</a>
           </div>
         </div>
       </div>
@@ -175,7 +168,9 @@
       <div class="container">
         <div class="section-header-clean">
           <div>
-            <h2 class="section-title" data-i18n="services.title">Servicios</h2>
+            <span class="section-kicker" data-i18n="services.tag">ASESORÍA A TU MEDIDA</span>
+            <h2 class="section-title" data-i18n="editorial.servicesTitle">Tu proyecto. Mi compromiso.</h2>
+            <p class="section-subtitle-clean" data-i18n="services.subtitle">Acompañamiento personal en cada decisión inmobiliaria.</p>
           </div>
           <a href="/servicios.html" class="section-link-more" data-i18n="services.viewAll">
             Ver todos los servicios & metodología &rarr;
@@ -189,7 +184,7 @@
               <div class="service-number">01</div>
               <h3 class="service-clean-title" data-i18n="services.s1Title">Personal Shopper Inmobiliario</h3>
               <p class="service-clean-desc" data-i18n="services.s1Desc">
-                Búsqueda a medida de tu residencia ideal y acceso a carteras privadas off-market.
+                Definimos lo que necesitas, comparamos alternativas y te acompaño en la búsqueda y la negociación de tu próximo hogar.
               </p>
             </div>
             <a href="/servicios.html" class="service-clean-link">Descubrir &rarr;</a>
@@ -201,7 +196,7 @@
               <div class="service-number">02</div>
               <h3 class="service-clean-title" data-i18n="services.s2Title">Inversión Patrimonial</h3>
               <p class="service-clean-desc" data-i18n="services.s2Desc">
-                Identificación de activos de alto rendimiento, análisis financiero y asesoría Golden Visa.
+                Análisis de oportunidades, riesgos y escenarios para tomar decisiones patrimoniales informadas.
               </p>
             </div>
             <a href="/servicios.html" class="service-clean-link">Descubrir &rarr;</a>
@@ -211,9 +206,9 @@
           <div class="service-clean-card">
             <div>
               <div class="service-number">03</div>
-              <h3 class="service-clean-title" data-i18n="services.s3Title">Venta Discreta & Off-Market</h3>
+              <h3 class="service-clean-title" data-i18n="services.s3Title">Asesoría para Propietarios</h3>
               <p class="service-clean-desc" data-i18n="services.s3Desc">
-                Posicionamiento editorial de propiedades ante compradores cualificados con total reserva.
+                Te ayudo a entender el valor de tu inmueble, preparar una estrategia y afrontar una venta con orden y discreción.
               </p>
             </div>
             <a href="/servicios.html" class="service-clean-link">Descubrir &rarr;</a>
@@ -223,9 +218,9 @@
           <div class="service-clean-card">
             <div>
               <div class="service-number">04</div>
-              <h3 class="service-clean-title" data-i18n="services.s4Title">Relocation & Expat Concierge</h3>
+              <h3 class="service-clean-title" data-i18n="services.s4Title">Relocation & Nueva Etapa</h3>
               <p class="service-clean-desc" data-i18n="services.s4Desc">
-                Servicio integral de aterrizaje familiar y profesional en Málaga y Costa del Sol.
+                Una llegada más sencilla a Málaga: orientación sobre zonas, vida cotidiana y los pasos que requiere tu traslado.
               </p>
             </div>
             <a href="/servicios.html" class="service-clean-link">Descubrir &rarr;</a>
@@ -234,12 +229,39 @@
       </div>
     </section>
 
+    <section class="films-section" aria-labelledby="films-title">
+      <div class="container">
+        <div class="section-header-clean"><div><span class="section-kicker" data-i18n="editorial.filmsTag">EL VALOR DE ESTAR A TU LADO</span><h2 class="section-title" id="films-title" data-i18n="editorial.filmsTitle">Una decisión. Todo un nuevo capítulo.</h2></div></div>
+        <div class="films-grid">
+          <article class="film-card">
+            <div class="film-frame">
+              <img src="/images/personal-advisory.webp" alt="" loading="lazy" width="1280" height="720" />
+              <video id="advisory-film" data-ambient-video muted loop playsinline preload="none" poster="/images/personal-advisory.webp" aria-hidden="true"><source data-src="/videos/personal-advisory.mp4" type="video/mp4" /></video>
+              <button type="button" class="video-toggle" data-video-toggle="advisory-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span></button>
+            </div>
+            <div class="film-caption"><span class="section-kicker" data-i18n="editorial.film1Tag">01 / ESCUCHAR & ORIENTAR</span><h3 data-i18n="editorial.film1Title">Primero, entender lo que importa.</h3><p data-i18n="editorial.film1Desc">Tus objetivos, tus dudas y tu momento de vida. La asesoría empieza con una conversación, no con una lista de propiedades.</p></div>
+          </article>
+          <article class="film-card">
+            <div class="film-frame">
+              <img src="/images/a-new-chapter.webp" alt="" loading="lazy" width="1280" height="720" />
+              <video id="chapter-film" data-ambient-video muted loop playsinline preload="none" poster="/images/a-new-chapter.webp" aria-hidden="true"><source data-src="/videos/a-new-chapter.mp4" type="video/mp4" /></video>
+              <button type="button" class="video-toggle" data-video-toggle="chapter-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span></button>
+            </div>
+            <div class="film-caption"><span class="section-kicker" data-i18n="editorial.film2Tag">02 / ACOMPAÑAR & CUIDAR</span><h3 data-i18n="editorial.film2Title">Tu siguiente paso, con confianza.</h3><p data-i18n="editorial.film2Desc">Cambiar de hogar, invertir o empezar una vida en el sur. Te acompaño para que el proceso sea tan importante como el destino.</p></div>
+          </article>
+        </div>
+        <p class="media-note" data-i18n="editorial.mediaNote">Imágenes de ambiente que ilustran la asesoría y el estilo de vida junto al mar; no representan clientes ni inmuebles en oferta.</p>
+      </div>
+    </section>
+
     <!-- Zonas de Málaga / Territorio de Actividad (Enclaves) -->
     <section class="destinations-section" id="zonas-malaga">
       <div class="container">
         <div class="section-header-clean">
           <div>
-            <h2 class="section-title" data-i18n="locations.title">Zonas de Málaga</h2>
+            <span class="section-kicker" data-i18n="locations.tag">CONOCIMIENTO LOCAL</span>
+            <h2 class="section-title" data-i18n="editorial.locationsTitle">Conocer el lugar. Entender tu vida.</h2>
+            <p class="section-subtitle-clean" data-i18n="locations.subtitle">Te ayudo a entender qué zona encaja contigo, más allá de una dirección.</p>
           </div>
           <a href="/zonas.html" class="section-link-more" data-i18n="locations.viewAll">
             Explorar todas las zonas &rarr;
@@ -249,7 +271,7 @@
         <div class="destinations-grid">
           <!-- Enclave 1: Centro Histórico -->
           <a href="/zonas.html" class="destination-card">
-            <img src="/images/malaga-centro.jpg" alt="Centro Histórico de Málaga" class="destination-bg" loading="lazy" />
+            <img src="/images/malaga-centro.webp" alt="Ambiente urbano mediterráneo" class="destination-bg" loading="lazy" />
             <div class="destination-overlay"></div>
             <div class="destination-content">
               <h3 class="destination-name" data-i18n="locations.loc1Name">Centro Histórico</h3>
@@ -260,7 +282,7 @@
 
           <!-- Enclave 2: El Limonar -->
           <a href="/zonas.html" class="destination-card">
-            <img src="/images/hero-villa.jpg" alt="El Limonar y Pedregalejo" class="destination-bg" loading="lazy" />
+            <img src="/images/hero-villa.webp" alt="Arquitectura residencial mediterránea" class="destination-bg" loading="lazy" />
             <div class="destination-overlay"></div>
             <div class="destination-content">
               <h3 class="destination-name" data-i18n="locations.loc2Name">El Limonar & Pedregalejo</h3>
@@ -271,7 +293,7 @@
 
           <!-- Enclave 3: La Malagueta -->
           <a href="/zonas.html" class="destination-card">
-            <img src="/images/prop-atico-malagueta.jpg" alt="La Malagueta" class="destination-bg" loading="lazy" />
+            <img src="/images/prop-atico-malagueta.webp" alt="Estilo de vida residencial junto al mar" class="destination-bg" loading="lazy" />
             <div class="destination-overlay"></div>
             <div class="destination-content">
               <h3 class="destination-name" data-i18n="locations.loc3Name">La Malagueta</h3>
@@ -282,7 +304,7 @@
 
           <!-- Enclave 4: Costa del Sol Prime -->
           <a href="/zonas.html" class="destination-card">
-            <img src="/images/prop-villa-marbella.jpg" alt="Costa del Sol Prime" class="destination-bg" loading="lazy" />
+            <img src="/images/prop-villa-marbella.webp" alt="Arquitectura contemporánea de inspiración costera" class="destination-bg" loading="lazy" />
             <div class="destination-overlay"></div>
             <div class="destination-content">
               <h3 class="destination-name" data-i18n="locations.loc4Name">Costa del Sol Prime</h3>
@@ -294,47 +316,18 @@
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section" id="testimonios">
+    <!-- Methodology replaces unverified social proof. -->
+    <section class="method-section" id="metodologia">
       <div class="container">
-        <div class="section-header-clean center">
-          <span class="section-kicker" data-i18n="testimonials.tag">TESTIMONIOS</span>
-          <h2 class="section-title" data-i18n="testimonials.title">Experiencias</h2>
+        <div class="method-intro">
+          <div><span class="section-kicker" data-i18n="method.tag">ASÍ TRABAJAMOS JUNTOS</span><h2 class="section-title" data-i18n="method.title">Cercanía en el trato.<br />Rigor en cada paso.</h2></div>
+          <p data-i18n="method.intro">Un proceso claro, a tu ritmo y con comunicación directa. Para que sepas qué estamos haciendo, por qué y cuál es el siguiente paso.</p>
         </div>
-
-        <div class="testimonials-grid">
-          <!-- Testimonial 1 -->
-          <div class="testimonial-item">
-            <p class="testimonial-body" data-i18n="testimonials.t1Text">
-              «Humberto nos ahorró meses de búsqueda desde Londres. Su honestidad al advertirnos de problemas en propiedades fue impagable. Vivimos en la casa de nuestros sueños en El Limonar.»
-            </p>
-            <div class="testimonial-client">
-              <span class="client-name" data-i18n="testimonials.t1Author">James & Sophie M.</span>
-              <span class="client-location" data-i18n="testimonials.t1Origin">Londres, Reino Unido</span>
-            </div>
-          </div>
-
-          <!-- Testimonial 2 -->
-          <div class="testimonial-item">
-            <p class="testimonial-body" data-i18n="testimonials.t2Text">
-              «Como inversor extranjero buscaba seguridad y rentabilidad clara. Su análisis financiero fue impecable y coordinó todo el proceso legal con solvencia total.»
-            </p>
-            <div class="testimonial-client">
-              <span class="client-name" data-i18n="testimonials.t2Author">Dr. Markus Weber</span>
-              <span class="client-location" data-i18n="testimonials.t2Origin">Múnich, Alemania</span>
-            </div>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="testimonial-item">
-            <p class="testimonial-body" data-i18n="testimonials.t3Text">
-              «Gestionó la venta de nuestro ático en Málaga Centro con una discreción admirable. Encontró al comprador adecuado en menos de 45 días sin publicarlo en portales masivos.»
-            </p>
-            <div class="testimonial-client">
-              <span class="client-name" data-i18n="testimonials.t3Author">Carmen R. de la Vega</span>
-              <span class="client-location" data-i18n="testimonials.t3Origin">Málaga, España</span>
-            </div>
-          </div>
+        <div class="services-list-grid">
+          <article class="service-clean-card"><span class="service-number">01</span><h3 class="service-clean-title" data-i18n="method.step1">Nos conocemos</h3><p class="service-clean-desc" data-i18n="method.desc1">Escucho lo que necesitas y definimos juntos objetivos, prioridades y alcance de la asesoría.</p></article>
+          <article class="service-clean-card"><span class="service-number">02</span><h3 class="service-clean-title" data-i18n="method.step2">Trazamos un plan</h3><p class="service-clean-desc" data-i18n="method.desc2">Analizo el contexto, las zonas y las alternativas. Te explico las oportunidades y también los riesgos.</p></article>
+          <article class="service-clean-card"><span class="service-number">03</span><h3 class="service-clean-title" data-i18n="method.step3">Decides con criterio</h3><p class="service-clean-desc" data-i18n="method.desc3">Comparación, revisión y negociación. Cuentas con información clara, sin prisas ni presión.</p></article>
+          <article class="service-clean-card"><span class="service-number">04</span><h3 class="service-clean-title" data-i18n="method.step4">Sigo a tu lado</h3><p class="service-clean-desc" data-i18n="method.desc4">Coordino los siguientes pasos y a los profesionales necesarios. El acompañamiento no termina en una firma.</p></article>
         </div>
       </div>
     </section>
@@ -342,8 +335,9 @@
     <!-- Consultation Action Banner -->
     <section class="consultation-banner">
       <div class="container consultation-inner">
-        <h2 class="consultation-title">
-          Planifiquemos su próximo proyecto <em>en Málaga</em>
+        <span class="section-kicker" style="color: #d3c6ad;" data-i18n="editorial.ctaTag">TODO EMPIEZA CON UNA CONVERSACIÓN</span>
+        <h2 class="consultation-title" data-i18n="editorial.ctaTitle">
+          Tu siguiente paso merece un buen compañero.
         </h2>
         <p class="consultation-subtitle" data-i18n="contact.subtitle">
           Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
@@ -374,6 +368,7 @@
         </div>
       </div>
     </section>
+    </main>
 
     <!-- Site Footer (Architectural Kretz Style) -->
     <footer class="site-footer">

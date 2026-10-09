@@ -2,7 +2,11 @@
 
 Sitio web editorial de marca personal y asesoría inmobiliaria de lujo para **Humberto Machacón**, especializado en el mercado de **Málaga y Costa del Sol, España**.
 
-Inspirado en la estética *"Quiet Luxury"* de portales de referencia como **Drumelia** (tipografía editorial, fotografía arquitectónica de alto nivel, paleta de colores neutros cálidos y bronce/oro, bilingüe y optimizado para conversión).
+Renovación editorial inspirada en **Kretz**, centrada en la persona y el acompañamiento de Humberto: no es un catálogo ni un portal de venta de inmuebles. Se conservan las opciones originales del navbar.
+
+El análisis del proyecto, los cambios y las tareas pendientes de publicación están en [`docs/UI-UX-UPGRADE.md`](docs/UI-UX-UPGRADE.md). Los créditos de los nuevos vídeos están en [`public/videos/CREDITS.md`](public/videos/CREDITS.md).
+
+> **Antes de publicar:** el teléfono actual es de ejemplo. El formulario prepara un correo en la aplicación del visitante; no hay backend de envío. Confirma los datos en `src/config.js`.
 
 ---
 
@@ -10,19 +14,20 @@ Inspirado en la estética *"Quiet Luxury"* de portales de referencia como **Drum
 
 - **Arquitectura Multi-Página (5 Páginas Independientes):**
   - **Inicio (`/`):** Portada editorial, propuesta de valor, resumen del asesor, adelanto de servicios, enclaves destacados y llamadas a la acción.
-  - **Sobre Mí (`/sobre-mi.html`):** Biografía detallada, valores, por qué un asesor personal, testimonios y nota de acreditación profesional.
+  - **Sobre Mí (`/sobre-mi.html`):** Presentación del asesor, retratos, valores y compromiso personal.
   - **Servicios (`/servicios.html`):** Los 4 servicios boutique en profundidad, metodología de trabajo en 4 fases y sección de FAQ.
   - **Zonas de Málaga (`/zonas.html`):** Guía visual y de inversión en el Centro Histórico, El Limonar, La Malagueta y Costa del Sol Prime.
   - **Contacto (`/contacto.html`):** Canales directos, WhatsApp oficial y formulario privado de agendamiento.
 - **100% Bilingüe (Español / Inglés):** Selector de idioma fluido (`ES | EN`) compartido en todas las páginas con guardado automático en `localStorage`.
 - **Cabecera Rediseñada "Quiet Luxury":**
-  - Navegación espaciosa y equilibrada de 5 enlaces con indicador visual de página activa.
-  - Selector de idioma y botón *"Agendar Cita"* milimétricamente alineados con altura idéntica (34px) y estilo minimalista.
+   - Opciones originales conservadas: Sobre Mí, Servicios (con Servicios de Asesoramiento y Zonas de Málaga), Contacto y Agendar Cita.
+   - Selector ES/EN, adaptación móvil/tablet y navegación por teclado.
 - **Canales de Conversión Inmediata:**
   - Botón directo de **WhatsApp** con saludo personalizado según idioma.
   - Botón flotante de WhatsApp siempre accesible.
-  - Formulario de contacto validado.
-  - Modales con textos legales redactados conforme a la normativa española y europea (Aviso Legal LSSI-CE, Privacidad RGPD y Política de Cookies).
+   - Formulario validado que prepara una consulta por correo, sin simular un envío exitoso.
+   - Modales legales accesibles; textos pendientes de revisión profesional antes de publicar.
+   - Tres vídeos locales optimizados, carga diferida, pausa manual y respeto a movimiento reducido.
 
 ---
 
@@ -41,7 +46,12 @@ Inspirado en la estética *"Quiet Luxury"* de portales de referencia como **Drum
 
 3. Compilar para producción:
    ```bash
-   npm run build
+    npm run build
+    ```
+
+4. Ejecutar comprobaciones de estructura, traducciones, navegación y recursos:
+   ```bash
+   npm test
    ```
 
 ---
