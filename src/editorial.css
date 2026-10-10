@@ -17,6 +17,7 @@
 
 ::selection { background: #d8ccba; color: #252923; }
 :focus-visible { outline: 2px solid var(--accent-gold-dark); outline-offset: 5px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 [hidden] { display: none !important; }
 section[id], main { scroll-margin-top: 100px; }
 .container { padding-inline: clamp(1.5rem, 5.5vw, 5.5rem); }
@@ -205,7 +206,13 @@ section[id], main { scroll-margin-top: 100px; }
 .method-section .service-clean-card { border-color: #d4c8c0; }
 .method-section .services-list-grid { border-color: #d4c8c0; }
 
-.consultation-banner { padding: clamp(4rem, 8vw, 8rem) 0; background: #29372c; }
+.consultation-banner { padding: clamp(2.5rem, 5vw, 4rem) 0; background: #29372c; }
+.consultation-inner { max-width: 960px; }
+.consultation-buttons .btn-secondary { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; }
+.consultation-socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.75rem; }
+.consultation-socials a { display: inline-flex; align-items: center; justify-content: center; width: 44px; min-height: 44px; border: 1px solid rgb(211 198 173 / 35%); border-radius: 50%; color: #d3c6ad; }
+.consultation-socials a:hover { background: rgb(255 255 255 / 8%); border-color: #d3c6ad; }
+.consultation-socials a:focus-visible { outline: 2px solid #d3c6ad; outline-offset: 4px; }
 .consultation-title { font-size: clamp(2.8rem, 5vw, 4.6rem); max-width: 800px; margin: 0 auto 1.5rem; }
 .consultation-subtitle { font-size: .88rem; max-width: 520px; margin: 0 auto 2rem; line-height: 1.9; }
 .consultation-advisor-badge { padding: 0; background: none; border: none; backdrop-filter: none; gap: .8rem; }
@@ -216,10 +223,78 @@ section[id], main { scroll-margin-top: 100px; }
 .site-footer { background: var(--bg-dark); padding: 5rem 0 2rem; }
 .footer-main-grid { gap: 2.5rem; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; }
 .footer-bio-text, .footer-nav-link, .footer-contact-item { font-size: .76rem; line-height: 1.8; }
+.footer-nav-link { text-transform: none; }
 .footer-contact-item a { overflow-wrap: anywhere; }
 .footer-col-title { font-size: 1.5rem; }
 .footer-bottom-row, .footer-legal-btn { font-size: .65rem; }
 .footer-legal-links { flex-wrap: wrap; justify-content: center; }
+
+/* Costa del Sol: portrait films, restrained typography and native horizontal browsing. */
+.coast-intro { padding: calc(var(--header-height) + 2.5rem) 0 3.5rem; background: var(--bg-body); }
+.coast-intro .breadcrumbs-clean { justify-content: flex-start; margin-bottom: 2.5rem; }
+.coast-intro-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 4rem; align-items: end; }
+.coast-intro h1 { font-family: var(--font-serif); font-size: clamp(3.2rem, 5.8vw, 5.6rem); font-weight: 400; line-height: 1.02; letter-spacing: -.035em; }
+.coast-intro h1 em { color: var(--accent-gold-dark); font-weight: 400; }
+.coast-intro-note { max-width: 390px; padding-bottom: .35rem; }
+.coast-intro-note p, .coast-guidance p { color: var(--text-muted); font-size: .88rem; line-height: 1.9; }
+.coast-text-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.25rem; min-height: 44px; padding-block: .6rem; color: var(--text-main); font-size: .74rem; border-bottom: 1px solid var(--accent-gold); }
+.coast-text-link:hover { color: var(--accent-gold-dark); border-color: currentColor; }
+.coast-intro-note .coast-text-link { margin-top: 1.15rem; }
+.coast-showcase { padding: 3rem 0 3.5rem; background: var(--bg-alt); border-top: 1px solid var(--border-light); }
+.coast-gallery-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 1.75rem; }
+.coast-gallery-heading h2, .coast-guidance h2 { font-family: var(--font-serif); font-size: clamp(2.2rem, 3.6vw, 3.4rem); font-weight: 400; line-height: 1.1; }
+.coast-gallery-heading .section-kicker { margin-bottom: .8rem; }
+.coast-gallery-controls { display: flex; align-items: center; gap: .65rem; flex-shrink: 0; }
+.coast-counter { font-size: .72rem; font-variant-numeric: tabular-nums; margin-right: .7rem; }
+.coast-counter-divider { margin-inline: .65rem; color: var(--text-muted); }
+.coast-gallery-controls button { width: 44px; height: 44px; border: 1px solid #c4c6bb; background: transparent; color: var(--text-main); border-radius: 50%; font-size: 1.1rem; cursor: pointer; }
+.coast-gallery-controls button:hover:not(:disabled) { background: var(--bg-dark); color: white; border-color: var(--bg-dark); }
+.coast-gallery-controls button:disabled { opacity: .3; cursor: default; }
+.coast-selector { display: flex; flex-wrap: wrap; gap: .25rem 1.6rem; margin-bottom: 1.5rem; }
+.coast-selector a { display: inline-flex; align-items: center; min-height: 44px; font-size: .76rem; color: var(--text-muted); border-bottom: 1px solid transparent; }
+.coast-selector a:hover, .coast-selector a.is-visible { color: var(--text-main); border-color: var(--accent-gold-dark); }
+.coast-track { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--accent-gold) transparent; padding-bottom: 1.5rem; }
+.coast-track::-webkit-scrollbar { height: 3px; }
+.coast-track::-webkit-scrollbar-thumb { background: var(--accent-gold); }
+.coast-card { flex: 0 0 calc((100% - 3rem) / 3); min-width: 0; scroll-snap-align: start; scroll-margin-top: 110px; }
+.coast-film { position: relative; aspect-ratio: 9 / 16; overflow: hidden; isolation: isolate; background: #343b32; }
+.coast-film > img, .coast-film > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.coast-film > video { opacity: 0; transition: opacity .5s ease; }
+.coast-film > video.is-playing { opacity: 1; }
+.coast-film::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #0003 0%, transparent 30%, #0002 48%, #000b 100%); pointer-events: none; z-index: 1; }
+.coast-card-number { position: absolute; left: 1.5rem; top: 1.5rem; z-index: 2; color: white; font-size: .72rem; letter-spacing: .13em; }
+.coast-film-caption { position: absolute; left: 1.5rem; right: 1.5rem; bottom: 5.5rem; z-index: 2; color: white; }
+.coast-film-caption > span { display: block; font-size: .59rem; letter-spacing: .13em; margin-bottom: .7rem; }
+.coast-film-caption h3 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.15rem, 3vw, 3rem); line-height: 1; }
+.coast-film .video-toggle { position: absolute; left: 1.5rem; right: auto; bottom: 1.5rem; z-index: 3; min-height: 44px; padding: .5rem .7rem; font-size: .6rem; background: #172019a6; border-color: #ffffff50; }
+.coast-photo-label { position: absolute; bottom: 1.75rem; left: 1.5rem; right: 1rem; z-index: 2; font-size: .6rem; color: #f2eadb; }
+.coast-card-copy { display: flex; flex-direction: column; align-items: start; padding-top: 1.35rem; }
+.coast-card-copy p { color: var(--text-muted); font-size: .78rem; line-height: 1.85; }
+.coast-guidance { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+.coast-guidance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.coast-guidance h2 { max-width: 470px; }
+.coast-guidance .btn-dark { margin-top: 1.75rem; display: inline-flex; justify-content: space-between; align-items: center; }
+@media (max-width: 1100px) {
+  .coast-intro-grid { grid-template-columns: 1.4fr 1fr; gap: 2rem; }
+  .coast-card { flex-basis: calc((100% - 1.5rem) / 2.2); }
+  .coast-guidance-grid { gap: 3rem; }
+}
+@media (max-width: 700px) {
+  .coast-intro { padding-bottom: 2.5rem; }
+  .coast-intro-grid, .coast-guidance-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+  .coast-intro h1 { font-size: clamp(2.65rem, 9.5vw, 4rem); }
+  .coast-intro-note { max-width: none; }
+  .coast-gallery-heading { align-items: start; flex-direction: column; gap: 1.25rem; }
+  .coast-gallery-controls { align-self: flex-end; }
+  .coast-selector { gap: .15rem 1.25rem; }
+  .coast-card { flex-basis: 86%; }
+  .coast-track { gap: 1rem; }
+  .coast-film-caption h3 { font-size: clamp(2.15rem, 7vw, 3rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .coast-film > video { transition: none; }
+  .coast-page { scroll-behavior: auto; }
+}
 
 /* Inner pages share the same visual system without reducing navbar contrast. */
 .page-hero-banner-clean { padding: calc(var(--header-height) + 5rem) 0 4rem; background: #f2e9e3; border: none; }

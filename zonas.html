@@ -3,22 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zonas de Málaga | Humberto Machacón - Asesor Inmobiliario</title>
-    <meta name="description" content="Guía inmobiliaria de los enclaves más cotizados: Centro Histórico, El Limonar, La Malagueta y Costa del Sol Prime." />
+    <title>Málaga y Costa del Sol | Zonas de asesoría — Humberto Machacón</title>
+    <meta name="description" content="Descubre Málaga, Torremolinos, Benalmádena, Fuengirola, Mijas, Marbella y Estepona. Una mirada local para elegir dónde vivir o invertir con Humberto Machacón." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body>
+  <body class="coast-page">
     <a href="#main-content" class="skip-link" data-i18n="ui.skip">Saltar al contenido</a>
     <!-- Site Header -->
     <header class="site-header" id="site-header">
       <div class="container nav-container">
         <a href="/" class="brand-logo" id="brand-logo">
-          <div class="brand-monogram">HM</div>
           <div class="brand-info">
             <span class="brand-name">Humberto Machacón</span>
-            <span class="brand-subtitle">Málaga · Real Estate</span>
+            <span class="brand-subtitle">Real Estate Advisor</span>
           </div>
         </a>
 
@@ -47,133 +46,125 @@
     </header>
 
     <main id="main-content" tabindex="-1">
-    <!-- Page Hero Banner -->
-    <section class="page-hero-banner-clean">
+    <section class="coast-intro">
       <div class="container">
         <div class="breadcrumbs-clean">
           <a href="/" data-i18n="nav.home">Inicio</a>
           <span>/</span>
-          <span data-i18n="nav.locations">Zonas de Málaga</span>
+          <span data-i18n="nav.locations">Zonas</span>
         </div>
-        <h1 class="section-title" data-i18n="locations.title">Zonas de Málaga</h1>
-        <p class="section-subtitle-clean" style="margin: 0.5rem auto 0;" data-i18n="locations.subtitle">
-          Los enclaves más codiciados donde desarrollo mi actividad asesora personal.
-        </p>
+        <div class="coast-intro-grid">
+          <div>
+            <span class="section-kicker" data-i18n="coast.kicker">MÁLAGA · COSTA DEL SOL</span>
+            <h1><span data-i18n="coast.title">Un lugar para vivir.</span><br /><em data-i18n="coast.titleAccent">Una forma de sentir.</em></h1>
+          </div>
+          <div class="coast-intro-note">
+            <p data-i18n="coast.intro">Siete destinos, muchas maneras de empezar una nueva etapa. Descubre su carácter; te ayudo a encontrar el que encaja con tu vida y tu proyecto.</p>
+            <a href="#coast-gallery" class="coast-text-link"><span data-i18n="coast.explore">Explora la costa</span><span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Detailed Prime Locations Showcase -->
-    <section class="properties-section" style="padding-top: 4.5rem;">
+    <section class="coast-showcase" aria-labelledby="coast-gallery-title" data-zone-gallery>
       <div class="container">
-        <div class="properties-grid">
-          <!-- Enclave 1: Centro Histórico -->
-          <article class="property-card">
-            <div class="property-image-wrap">
-              <img src="/images/malaga-centro.webp" alt="Ambiente urbano mediterráneo" class="property-image" loading="lazy" />
-              <span class="property-tag-badge">Málaga Capital</span>
+        <div class="coast-gallery-heading">
+          <div><span class="section-kicker" data-i18n="coast.galleryKicker">DE ESTE A OESTE · UNA MIRADA LOCAL</span><h2 id="coast-gallery-title" data-i18n="coast.galleryTitle">Encuentra tu lugar en la costa.</h2></div>
+          <div class="coast-gallery-controls" hidden>
+            <span class="coast-counter"><span data-zone-current>01</span><span class="coast-counter-divider">/</span>07</span>
+            <button type="button" data-zone-previous aria-controls="coast-gallery"><span aria-hidden="true">←</span><span class="sr-only" data-i18n="coast.previous">Zona anterior</span></button>
+            <button type="button" data-zone-next aria-controls="coast-gallery"><span aria-hidden="true">→</span><span class="sr-only" data-i18n="coast.next">Zona siguiente</span></button>
+          </div>
+        </div>
+        <nav class="coast-selector" aria-label="Elegir una zona" data-i18n-aria-label="coast.selectArea">
+          <a href="#zona-malaga">Málaga</a><a href="#zona-torremolinos">Torremolinos</a><a href="#zona-benalmadena">Benalmádena</a><a href="#zona-fuengirola">Fuengirola</a><a href="#zona-mijas">Mijas</a><a href="#zona-marbella">Marbella</a><a href="#zona-estepona">Estepona</a>
+        </nav>
+        <div class="coast-track" id="coast-gallery" tabindex="0" role="region" aria-labelledby="coast-gallery-title">
+          <article class="coast-card" id="zona-malaga" aria-labelledby="malaga-title">
+            <div class="coast-film">
+              <img src="/images/zone-malaga.webp" alt="" width="540" height="960" fetchpriority="high" />
+              <video id="malaga-film" data-ambient-video muted loop playsinline preload="none" poster="/images/zone-malaga.webp" aria-hidden="true"><source data-src="/videos/zone-malaga.mp4" type="video/mp4" /></video>
+              <span class="coast-card-number" aria-hidden="true">01</span>
+              <div class="coast-film-caption"><span data-i18n="coast.malaga.tag">Ciudad & Mediterráneo</span><h3 id="malaga-title">Málaga</h3></div>
+              <button type="button" class="video-toggle" data-video-toggle="malaga-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Málaga</span></button>
             </div>
-            <div class="property-details">
-              <span class="property-location" data-i18n="locations.loc1Highlight">Residencial de prestigio urbano</span>
-              <h2 class="property-title" data-i18n="locations.loc1Name">Málaga Centro Histórico</h2>
-              <p class="property-specs" data-i18n="locations.loc1Desc">
-                Palacetes señoriales, vida cultural y museos (Picasso, Pompidou), gastronomía estelar y arquitectura andaluza para quienes aprecian el pulso cosmopolita.
-              </p>
-              <div class="property-footer-row">
-                <a href="/contacto.html" class="property-action-link">
-                  Consultar asesoramiento en este enclave &rarr;
-                </a>
-              </div>
-            </div>
+            <div class="coast-card-copy"><p data-i18n="coast.malaga.description">Cultura, barrios con identidad y vida junto al mar. Para quienes quieren combinar el pulso de la ciudad con el Mediterráneo.</p></div>
           </article>
-
-          <!-- Enclave 2: El Limonar -->
-          <article class="property-card">
-            <div class="property-image-wrap">
-              <img src="/images/hero-villa.webp" alt="Arquitectura residencial mediterránea" class="property-image" loading="lazy" />
-              <span class="property-tag-badge">Málaga Este</span>
+          <article class="coast-card" id="zona-torremolinos" aria-labelledby="torremolinos-title">
+            <div class="coast-film">
+              <img src="/images/zone-torremolinos.webp" alt="" width="540" height="960" loading="lazy" />
+              <video id="torremolinos-film" data-ambient-video muted loop playsinline preload="none" poster="/images/zone-torremolinos.webp" aria-hidden="true"><source data-src="/videos/zone-torremolinos.mp4" type="video/mp4" /></video>
+              <span class="coast-card-number" aria-hidden="true">02</span>
+              <div class="coast-film-caption"><span data-i18n="coast.torremolinos.tag">Mar & movimiento</span><h3 id="torremolinos-title">Torremolinos</h3></div>
+              <button type="button" class="video-toggle" data-video-toggle="torremolinos-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Torremolinos</span></button>
             </div>
-            <div class="property-details">
-              <span class="property-location" data-i18n="locations.loc2Highlight">Villas y residencias familiares</span>
-              <h2 class="property-title" data-i18n="locations.loc2Name">El Limonar & Pedregalejo</h2>
-              <p class="property-specs" data-i18n="locations.loc2Desc">
-                La zona residencial noble tradicional. Mansiones con jardines mediterráneos, colegios internacionales y máxima tranquilidad con vistas a la bahía.
-              </p>
-              <div class="property-footer-row">
-                <a href="/contacto.html" class="property-action-link">
-                  Consultar asesoramiento en este enclave &rarr;
-                </a>
-              </div>
-            </div>
+            <div class="coast-card-copy"><p data-i18n="coast.torremolinos.description">Paseos frente al mar, vida cotidiana y conexión con Málaga. Una opción para disfrutar de la costa sin renunciar al movimiento.</p></div>
           </article>
-
-          <!-- Enclave 3: La Malagueta -->
-          <article class="property-card">
-            <div class="property-image-wrap">
-              <img src="/images/prop-atico-malagueta.webp" alt="Estilo de vida residencial junto al mar" class="property-image" loading="lazy" />
-              <span class="property-tag-badge">Costa Urbana</span>
+          <article class="coast-card" id="zona-benalmadena" aria-labelledby="benalmadena-title">
+            <div class="coast-film">
+              <img src="/images/zone-benalmadena.webp" alt="" width="540" height="960" loading="lazy" />
+              <video id="benalmadena-film" data-ambient-video muted loop playsinline preload="none" poster="/images/zone-benalmadena.webp" aria-hidden="true"><source data-src="/videos/zone-benalmadena.mp4" type="video/mp4" /></video>
+              <span class="coast-card-number" aria-hidden="true">03</span>
+              <div class="coast-film-caption"><span data-i18n="coast.benalmadena.tag">Perspectivas & contrastes</span><h3 id="benalmadena-title">Benalmádena</h3></div>
+              <button type="button" class="video-toggle" data-video-toggle="benalmadena-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Benalmádena</span></button>
             </div>
-            <div class="property-details">
-              <span class="property-location" data-i18n="locations.loc3Highlight">Áticos y vistas panorámicas</span>
-              <h2 class="property-title" data-i18n="locations.loc3Name">La Malagueta & Paseo Marítimo</h2>
-              <p class="property-specs" data-i18n="locations.loc3Desc">
-                Vivir frente al mar a corta distancia a pie del centro histórico. Vistas abiertas al Mediterráneo, Muelle Uno y estilo de vida náutico.
-              </p>
-              <div class="property-footer-row">
-                <a href="/contacto.html" class="property-action-link">
-                  Consultar asesoramiento en este enclave &rarr;
-                </a>
-              </div>
-            </div>
+            <div class="coast-card-copy"><p data-i18n="coast.benalmadena.description">Del pueblo a la marina, con barrios residenciales entre ambos. Distintas maneras de vivir la costa en un mismo municipio.</p></div>
           </article>
-
-          <!-- Enclave 4: Costa del Sol Prime -->
-          <article class="property-card">
-            <div class="property-image-wrap">
-              <img src="/images/prop-villa-marbella.webp" alt="Arquitectura contemporánea de inspiración costera" class="property-image" loading="lazy" />
-              <span class="property-tag-badge">Costa del Sol</span>
+          <article class="coast-card" id="zona-fuengirola" aria-labelledby="fuengirola-title">
+            <div class="coast-film">
+              <img src="/images/zone-fuengirola.webp" alt="" width="540" height="960" loading="lazy" />
+              <video id="fuengirola-film" data-ambient-video muted loop playsinline preload="none" poster="/images/zone-fuengirola.webp" aria-hidden="true"><source data-src="/videos/zone-fuengirola.mp4" type="video/mp4" /></video>
+              <span class="coast-card-number" aria-hidden="true">04</span>
+              <div class="coast-film-caption"><span data-i18n="coast.fuengirola.tag">Vida cotidiana & costa</span><h3 id="fuengirola-title">Fuengirola</h3></div>
+              <button type="button" class="video-toggle" data-video-toggle="fuengirola-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Fuengirola</span></button>
             </div>
-            <div class="property-details">
-              <span class="property-location" data-i18n="locations.loc4Highlight">Retiros de lujo y bienestar</span>
-              <h2 class="property-title" data-i18n="locations.loc4Name">Costa del Sol Prime (Marbella & Costa)</h2>
-              <p class="property-specs" data-i18n="locations.loc4Desc">
-                Villas contemporáneas con piscina infinita, campos de golf de prestigio internacional y puertos deportivos de primer nivel.
-              </p>
-              <div class="property-footer-row">
-                <a href="/contacto.html" class="property-action-link">
-                  Consultar asesoramiento en este enclave &rarr;
-                </a>
-              </div>
+            <div class="coast-card-copy"><p data-i18n="coast.fuengirola.description">Comercio local, puerto y un largo paseo marítimo. Un entorno urbano costero para quienes valoran tener su día a día cerca.</p></div>
+          </article>
+          <article class="coast-card" id="zona-mijas" aria-labelledby="mijas-title">
+            <div class="coast-film">
+              <img src="/images/zone-mijas.webp" alt="" width="540" height="960" loading="lazy" />
+              <span class="coast-card-number" aria-hidden="true">05</span>
+              <div class="coast-film-caption"><span data-i18n="coast.mijas.tag">Pueblo blanco & horizonte</span><h3 id="mijas-title">Mijas</h3></div>
+              <span class="coast-photo-label" data-i18n="coast.photoPending">Fotografía · vídeo pendiente</span>
             </div>
+            <div class="coast-card-copy"><p data-i18n="coast.mijas.description">El carácter del pueblo blanco y la amplitud de Mijas Costa. Aquí, elegir zona también significa elegir paisaje y ritmo de vida.</p></div>
+          </article>
+          <article class="coast-card" id="zona-marbella" aria-labelledby="marbella-title">
+            <div class="coast-film">
+              <img src="/images/zone-marbella.webp" alt="" width="540" height="960" loading="lazy" />
+              <video id="marbella-film" data-ambient-video muted loop playsinline preload="none" poster="/images/zone-marbella.webp" aria-hidden="true"><source data-src="/videos/zone-marbella.mp4" type="video/mp4" /></video>
+              <span class="coast-card-number" aria-hidden="true">06</span>
+              <div class="coast-film-caption"><span data-i18n="coast.marbella.tag">Carácter & estilo de vida</span><h3 id="marbella-title">Marbella</h3></div>
+              <button type="button" class="video-toggle" data-video-toggle="marbella-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Marbella</span></button>
+            </div>
+            <div class="coast-card-copy"><p data-i18n="coast.marbella.description">Casco antiguo, costa y entornos residenciales diversos. Una mirada más allá del nombre para encontrar el lugar que realmente encaja contigo.</p></div>
+          </article>
+          <article class="coast-card" id="zona-estepona" aria-labelledby="estepona-title">
+            <div class="coast-film">
+              <img src="/images/zone-estepona.webp" alt="" width="540" height="960" loading="lazy" />
+              <video id="estepona-film" data-ambient-video muted loop playsinline preload="none" poster="/images/zone-estepona.webp" aria-hidden="true"><source data-src="/videos/zone-estepona.mp4" type="video/mp4" /></video>
+              <span class="coast-card-number" aria-hidden="true">07</span>
+              <div class="coast-film-caption"><span data-i18n="coast.estepona.tag">Raíces & nuevos comienzos</span><h3 id="estepona-title">Estepona</h3></div>
+              <button type="button" class="video-toggle" data-video-toggle="estepona-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Estepona</span></button>
+            </div>
+            <div class="coast-card-copy"><p data-i18n="coast.estepona.description">Calles con sabor andaluz, paseo marítimo y nuevas áreas residenciales. Tradición y evolución para plantear tu siguiente etapa junto al mar.</p></div>
           </article>
         </div>
-        <p class="media-note" data-i18n="editorial.mediaNote">Imágenes de ambiente que ilustran la asesoría y el estilo de vida junto al mar; no representan clientes ni inmuebles en oferta.</p>
+      </div>
+    </section>
+
+    <section class="coast-guidance" aria-labelledby="coast-guidance-title">
+      <div class="container coast-guidance-grid">
+        <div><span class="section-kicker" data-i18n="coast.guidanceKicker">EL LUGAR IMPORTA. TU VIDA, MÁS.</span><h2 id="coast-guidance-title" data-i18n="coast.guidanceTitle">No se trata solo de elegir una dirección.</h2></div>
+        <div><p data-i18n="coast.guidanceDescription">Tu rutina, tus prioridades y tu presupuesto cambian la manera de mirar una zona. Te acompaño a comparar barrios, conexiones y alternativas con una mirada local, sin prisas ni decisiones a ciegas.</p><a href="/contacto.html#form" class="btn-dark"><span data-i18n="coast.guidanceCta">Encontrar mi zona contigo</span><span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 
     <!-- Consultation Action Banner -->
     <section class="consultation-banner">
       <div class="container consultation-inner">
-        <h2 class="consultation-title" data-i18n="editorial.ctaTitle">
-          Tu siguiente paso merece un buen compañero.
-        </h2>
-        <p class="consultation-subtitle" data-i18n="contact.subtitle">
-          Sin compromiso y con absoluta confidencialidad. Cuéntame qué necesitas y planifiquemos el mejor camino.
-        </p>
-
-        <div class="consultation-advisor-badge">
-          <img 
-            src="/images/humberto-avatar.png" 
-            alt="Humberto Machacón - Asesor Inmobiliario Personal" 
-            class="consultation-avatar-img"
-            loading="lazy"
-          />
-          <div class="consultation-advisor-text">
-            <span class="consultation-advisor-name">Humberto Machacón</span>
-            <span class="consultation-advisor-role">Asesor Inmobiliario Personal · Málaga</span>
-          </div>
-        </div>
-
         <div class="consultation-buttons">
+          <a href="https://wa.me/34681816023?text=Hola%20Humberto%2C%20me%20gustar%C3%ADa%20coordinar%20una%20llamada%20por%20WhatsApp." class="btn-secondary footer-call-link" target="_blank" rel="noopener noreferrer" data-i18n="footer.call">Pedir llamada por WhatsApp</a>
           <a href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large whatsapp-direct-link" id="whatsapp-direct-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
@@ -181,8 +172,12 @@
             <span data-i18n="contact.whatsappBtn">Contactar por WhatsApp</span>
           </a>
           <a href="/contacto.html" class="btn-secondary" data-i18n="nav.cta">
-            Agendar Cita Privada
+            Agendar Cita
           </a>
+        </div>
+        <div class="consultation-socials">
+          <a href="https://linkedin.com" data-social="linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="/images/linkedin.svg" width="24" height="24" alt="" /></a>
+          <a href="https://instagram.com" data-social="instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="/images/instagram.svg" width="24" height="24" alt="" /></a>
         </div>
       </div>
     </section>
@@ -194,10 +189,9 @@
         <div class="footer-main-grid">
           <div class="footer-brand-col">
             <div class="brand-logo">
-              <div class="brand-monogram">HM</div>
               <div class="brand-info">
                 <span class="brand-name" style="color: #ffffff;">Humberto Machacón</span>
-                <span class="brand-subtitle" style="color: rgba(255,255,255,0.6);">MÁLAGA · REAL ESTATE</span>
+                <span class="brand-subtitle" style="color: rgba(255,255,255,0.6);">REAL ESTATE ADVISOR</span>
               </div>
             </div>
             <p class="footer-bio-text" data-i18n="footer.bio">
@@ -206,22 +200,22 @@
           </div>
 
           <div>
-            <h4 class="footer-col-title" data-i18n="footer.destinations">Zonas de Málaga</h4>
+            <h4 class="footer-col-title" data-i18n="footer.servicesList">Servicios</h4>
             <ul class="footer-nav-list">
-              <li><a href="/zonas.html" class="footer-nav-link">Centro Histórico</a></li>
-              <li><a href="/zonas.html" class="footer-nav-link">El Limonar & Pedregalejo</a></li>
-              <li><a href="/zonas.html" class="footer-nav-link">La Malagueta</a></li>
-              <li><a href="/zonas.html" class="footer-nav-link">Costa del Sol Prime</a></li>
+              <li><a href="/contacto.html?servicio=valorar#form" class="footer-nav-link" data-i18n="footer.value">Descubre cuánto vale tu propiedad</a></li>
+              <li><a href="/contacto.html?servicio=comprar#form" class="footer-nav-link" data-i18n="footer.buy">Encuentra tu próximo hogar</a></li>
+              <li><a href="/contacto.html?servicio=invertir#form" class="footer-nav-link" data-i18n="footer.invest">Invierte con criterio</a></li>
+              <li><a href="/contacto.html?servicio=vender#form" class="footer-nav-link" data-i18n="footer.sell">Vende con una buena estrategia</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 class="footer-col-title" data-i18n="footer.servicesList">Servicios</h4>
+            <h4 class="footer-col-title" data-i18n="nav.locations">Zonas</h4>
             <ul class="footer-nav-list">
-              <li><a href="/servicios.html" class="footer-nav-link">Personal Shopper</a></li>
-              <li><a href="/servicios.html" class="footer-nav-link">Inversión Patrimonial</a></li>
-              <li><a href="/servicios.html" class="footer-nav-link">Venta Discreta</a></li>
-              <li><a href="/servicios.html" class="footer-nav-link">Relocation & Concierge</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">Málaga</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">Torremolinos · Benalmádena</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">Fuengirola · Mijas</a></li>
+              <li><a href="/zonas.html" class="footer-nav-link">Marbella · Estepona</a></li>
             </ul>
           </div>
 

@@ -3,6 +3,7 @@ import './editorial.css';
 import { translations } from './translations.js';
 import { siteConfig } from './config.js';
 import { initAmbientVideos } from './media.js';
+import { coastalAreas, initCoastGallery } from './coast.js';
 import { contactInterests, getServiceKey, projectFields, getProjectLines } from './advisory.js';
 
 // Application State
@@ -42,6 +43,10 @@ function renderLanguage(lang) {
   document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
     const value = getTranslation(t, el.dataset.i18nPlaceholder);
     if (value) el.placeholder = value;
+  });
+  document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
+    const value = getTranslation(t, el.dataset.i18nAriaLabel);
+    if (value) el.setAttribute('aria-label', value);
   });
 
   // 2. Update Language Switcher Buttons
@@ -110,6 +115,10 @@ function updateWhatsAppLinks(lang) {
   }[lang]);
 
   const waUrl = `https://wa.me/${number}?text=${greeting}`;
+  const callRequest = encodeURIComponent(translations[lang].footer.callMessage);
+  document.querySelectorAll('.footer-call-link').forEach((link) => {
+    link.href = `https://wa.me/${number}?text=${callRequest}`;
+  });
 
   const directBtns = document.querySelectorAll('.whatsapp-direct-link, #whatsapp-direct-link');
   directBtns.forEach((btn) => {
@@ -127,6 +136,10 @@ function updateWhatsAppLinks(lang) {
 function initSiteConfig() {
   const callLink = document.getElementById('header-call-link');
   if (callLink) callLink.href = `tel:+${siteConfig.contact.whatsappNumber}`;
+  document.querySelectorAll('[data-social]').forEach((link) => {
+    const url = siteConfig.socials[link.dataset.social];
+    if (url) link.href = url;
+  });
   // Bind repeated content outside the navbar without changing navigation options.
   document.querySelectorAll('.service-clean-link').forEach((el) => {
     el.dataset.i18n = el.getAttribute('href') === '/contacto.html' ? 'ui.consultation' : 'ui.discoverService';
@@ -134,11 +147,6 @@ function initSiteConfig() {
   document.querySelectorAll('.destination-explore').forEach((el) => { el.dataset.i18n = 'ui.exploreArea'; });
   document.querySelectorAll('.property-action-link').forEach((el) => { el.dataset.i18n = 'ui.areaAdvice'; });
   document.querySelectorAll('.consultation-advisor-role').forEach((el) => { el.dataset.i18n = 'ui.advisorTitle'; });
-  document.querySelectorAll('.footer-nav-list').forEach((list) => {
-    list.querySelectorAll('a').forEach((link, index) => {
-      link.dataset.i18n = link.getAttribute('href').includes('zonas') ? `locations.loc${index + 1}Name` : `services.s${index + 1}Title`;
-    });
-  });
   document.querySelectorAll('.property-tag-badge').forEach((el, index) => {
     el.dataset.i18n = `locations.zone${index + 1}Tag`;
   });
@@ -264,6 +272,11 @@ function initContactForm() {
 
   const interestSelect = document.getElementById('form-interest');
   const requestedService = new URLSearchParams(window.location.search).get('servicio');
+  const requestedArea = new URLSearchParams(window.location.search).get('zona');
+  const projectLocation = form.elements.namedItem('projectLocation');
+  if (projectLocation && Object.hasOwn(coastalAreas, requestedArea)) {
+    projectLocation.value = coastalAreas[requestedArea];
+  }
   if (interestSelect) {
     if (getServiceKey(requestedService)) {
       interestSelect.value = requestedService;
@@ -490,6 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeaderScroll();
   initMobileMenu();
   initAmbientVideos(() => translations[currentLang].ui);
+  initCoastGallery();
   initContactForm();
   initLegalModals();
   initLanguageSwitcher();
