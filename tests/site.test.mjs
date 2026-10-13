@@ -33,7 +33,7 @@ for (const page of pages) {
     assert.ok(header.includes('data-i18n="nav.locations">Zonas'));
     assert.ok(!header.includes('dropdown'), 'Services and areas are independent links');
 
-    for (const match of html.matchAll(/data-i18n(?:-placeholder|-aria-label)?="([^"]+)"/g)) {
+    for (const match of html.matchAll(/data-i18n(?:-placeholder|-aria-label|-alt)?="([^"]+)"/g)) {
       for (const lang of ['es', 'en', 'de']) {
         assert.equal(typeof resolveKey(translations[lang], match[1]), 'string', `${lang}: missing ${match[1]}`);
       }
@@ -51,16 +51,163 @@ for (const page of pages) {
   });
 }
 
-test('New films are local, compact and poster-first', async () => {
+test('Retained films are compact and the homepage hero stays poster-first', async () => {
   for (const clip of ['coastal-life', 'personal-advisory', 'a-new-chapter']) {
     const metadata = await stat(new URL(`../public/videos/${clip}.mp4`, import.meta.url));
     assert.ok(metadata.size > 100_000 && metadata.size < 2_500_000);
   }
   const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-  assert.equal([...home.matchAll(/data-ambient-video/g)].length, 3);
-  assert.equal([...home.matchAll(/preload="none"/g)].length, 3);
+  assert.equal([...home.matchAll(/data-ambient-video/g)].length, 1);
+  assert.equal([...home.matchAll(/preload="none"/g)].length, 1);
+  assert.ok(home.includes('data-video-toggle="hero-film"'));
+  assert.ok(!home.includes('advisory-film') && !home.includes('chapter-film'));
   assert.ok(!home.includes('/videos/hero-video.mp4'));
   assert.ok(!home.includes('testimonials.t'));
+});
+
+test('Client phrases anchor the hero, service carousel and personal introduction', async () => {
+  const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const hero = home.match(/<section class="hero-section"[\s\S]*?<\/section>/)[0];
+  assert.ok(hero.includes('Te escucho, te guío'));
+  assert.ok(hero.includes('y te acompaño.'));
+  assert.ok(hero.includes('En cada paso, para que tomes la decisión correcta.'));
+  const method = home.match(/<section class="services-section home-methodology"[\s\S]*?<\/section>/)[0];
+  assert.ok(method.includes('Comprar o vender una propiedad trae muchas preguntas. Estoy aquí para ayudarte a resolverlas'));
+  assert.equal(translations.es.aboutPreview.quote, '«Antes de hablar de tu inversión, hablemos de lo que realmente necesitas.»');
+  assert.ok(home.includes(translations.es.aboutPreview.quote));
+  assert.ok(translations.es.serviceActions.invest.formDescription.startsWith('Antes de hablar de tu inversión, hablemos de lo que realmente necesitas.'));
+});
+
+test('Conversational Spanish copy stays consistent without JavaScript', async () => {
+  const updatedKeys = /^(?:hero\.(?:titleStart|titleAccent|subtitle)|aboutPreview\.(?:quote|p1|p2)|aboutPage\..+|method\.(?:title|intro|step3|desc\d)|faq\.[qa]\d|serviceActions\..+|home\.(?:apartmentsDesc|penthousesDesc|villasDesc)|contact\.(?:title|subtitle|personalTitle|personalDesc|advisorNote|formInterest|formMessage|disclaimer)|coast\.(?:intro|guidanceTitle|guidanceDescription|\w+\.description)|footer\.bio|locations\.subtitle|editorial\.locationsTitle)$/;
+  const decode = text => text.replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&lt;', '<').replaceAll('&gt;', '>');
+  for (const page of pages) {
+    const html = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
+    for (const match of html.matchAll(/<([a-z][\w-]*)\b[^>]*\bdata-i18n="([^"]+)"[^>]*>([^<]*)<\/\1>/g)) {
+      if (!updatedKeys.test(match[2]) && !match[2].startsWith('homeServices.') && !/^home\.(?:flats|apartments|duplexes|penthouses|chalet|villas|land)(?:Label|Title|Desc|Cta)$/.test(match[2])) continue;
+      const text = decode(match[3].trim());
+      assert.equal(text, resolveKey(translations.es, match[2]), `${page}: ${match[2]} fallback`);
+      assert.ok(!/\b(?:usted|asesorarle|confíenos|estime su|en qué desea|sus datos|su búsqueda)\b/i.test(text), `${page}: ${match[2]} uses a personal tone`);
+    }
+  }
+  const contact = await readFile(new URL('../contacto.html', import.meta.url), 'utf8');
+  const options = [...contact.matchAll(/<option value="([^"]+)">([^<]+)<\/option>/g)];
+  assert.deepEqual(options.map(match => match[1]), contactInterests);
+  assert.deepEqual(options.map(match => decode(match[2])), translations.es.contact.interestOptions);
+  assert.ok(translations.es.contact.formHint.includes('prepara un correo'));
+  assert.ok(translations.es.contact.successDesc.includes('Aún no se ha enviado desde esta web'));
+});
+
+test('Homepage has four advisory services, seven areas and property guidance', async () => {
+  const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const about = await readFile(new URL('../sobre-mi.html', import.meta.url), 'utf8');
+  const hero = home.match(/<section class="hero-section"[\s\S]*?<\/section>/)[0];
+  assert.ok(!hero.includes('humberto-suit') && !hero.includes('hero-advisor-link'));
+  const advisor = home.match(/<section class="about-section"[\s\S]*?<\/section>/)[0];
+  assert.ok(!advisor.includes('aboutPreview.tag'));
+  assert.ok(advisor.includes('data-i18n="aboutPreview.title"'));
+  for (const anchor of ['mi-historia', 'mi-experiencia']) {
+    assert.ok(advisor.includes(`href="/sobre-mi.html#${anchor}"`));
+    assert.ok(about.includes(`id="${anchor}"`));
+  }
+  const method = home.match(/<section class="services-section home-methodology"[\s\S]*?<\/section>/)[0];
+  assert.equal([...method.matchAll(/data-gallery-card/g)].length, 4);
+  assert.ok(method.includes('data-gallery-single'));
+  assert.ok(method.includes('data-gallery-autoplay="6500"'));
+  assert.ok(method.includes('data-gallery-playback'));
+  assert.ok(method.includes('data-i18n="homeServices.title"'));
+  assert.ok(!method.includes('data-i18n="method.step') && !method.includes('data-i18n="method.desc'));
+  assert.ok(!method.includes('Cuatro etapas'));
+  const services = await readFile(new URL('../servicios.html', import.meta.url), 'utf8');
+  for (const [service, key] of [['comprar', 'buy'], ['vender', 'sell'], ['invertir', 'invest'], ['valorar', 'value']]) {
+    assert.ok(method.includes(`data-gallery-service="${service}"`));
+    assert.ok(method.includes(`data-i18n="homeServices.${key}Title"`));
+    assert.ok(method.includes(`href="/servicios.html#${service}"`));
+    assert.ok(services.includes(`id="${service}" data-service="${service}"`));
+  }
+  for (let stage = 1; stage <= 4; stage++) assert.ok(services.includes(`data-i18n="method.step${stage}"`), 'The separate service-page methodology remains intact');
+  assert.deepEqual([...method.matchAll(/data-gallery-service="([^"]+)"/g)].map(match => match[1]), ['comprar', 'vender', 'invertir', 'valorar']);
+  assert.ok(method.includes('no una tasación oficial'));
+  assert.ok(method.includes('sin promesas de rentabilidad'));
+  const zones = home.match(/<section class="destinations-section home-zones"[\s\S]*?<\/section>/)[0];
+  assert.ok(!zones.includes('data-gallery-autoplay'), 'Autoplay is limited to the requested methodology carousel');
+  assert.equal([...zones.matchAll(/data-gallery-card/g)].length, 7);
+  for (const [slug, name] of Object.entries(coastalAreas)) {
+    assert.ok(zones.includes(`href="/zonas.html#zona-${slug}"`), name);
+    assert.ok(zones.includes(`src="/images/zone-${slug}.webp"`), name);
+  }
+  for (const section of [method, zones]) {
+    assert.ok(section.includes('data-gallery-previous') && section.includes('data-gallery-next'));
+    assert.match(section, /data-gallery-track tabindex="0" role="region" aria-label(?:ledby)?=/);
+    assert.ok(!section.includes('<video'));
+  }
+  assert.ok(!home.includes('films-section') && !home.includes('method-section'));
+  assert.ok(home.includes('data-i18n="home.propertyTitle"'));
+  for (const type of ['flats', 'apartments', 'duplexes', 'penthouses', 'chalet', 'villas', 'land']) {
+    assert.ok(home.includes(`data-i18n="home.${type}Title"`));
+    assert.ok(home.includes(`data-i18n="home.${type}Desc"`));
+  }
+  assert.ok(method.includes('data-i18n="homeServices.imageNote"'));
+});
+
+test('Service carousel uses full-width slides with relevant, compact and credited photographs', async () => {
+  const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const method = home.match(/<section class="services-section home-methodology"[\s\S]*?<\/section>/)[0];
+  const credits = await readFile(new URL('../public/videos/CREDITS.md', import.meta.url), 'utf8');
+  const css = await readFile(new URL('../src/editorial.css', import.meta.url), 'utf8');
+  assert.match(css, /\.methodology-card\s*\{[^}]*flex:\s*0 0 100%;/);
+  assert.match(css, /\.methodology-track\s*\{\s*gap:\s*0;/);
+  assert.ok(!css.includes('.methodology-card, .home-zone-card'), 'Mobile zone sizing must not shrink methodology slides');
+  const scenes = [['planning', 2], ['support', 4], ['review', 3], ['listening', 1]];
+  const cards = [...method.matchAll(/<article\b[^>]*data-gallery-card[\s\S]*?<\/article>/g)].map(match => match[0]);
+  for (const [index, [scene, alt]] of scenes.entries()) {
+    const file = `method-${scene}.webp`;
+    assert.ok(cards[index].includes(`src="/images/${file}"`));
+    assert.ok(cards[index].includes(`data-i18n-alt="method.image${alt}Alt"`));
+    const metadata = await stat(new URL(`../public/images/${file}`, import.meta.url));
+    assert.ok(metadata.size > 1000 && metadata.size < 250_000);
+    assert.ok(credits.includes(file));
+  }
+  for (const oldImage of ['malaga-centro', 'hero-villa', 'humberto-suit-navy', 'personal-advisory']) {
+    assert.ok(!method.includes(`/images/${oldImage}.webp`));
+  }
+});
+
+test('Seven property types use a selector above the photo and a description to its right', async () => {
+  const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const section = home.match(/<section class="home-property-types"[\s\S]*?<\/section>/)[0];
+  assert.ok(section.includes('data-property-showcase'));
+  assert.ok(!section.includes('home-property-grid') && !section.includes('home-property-card'));
+  assert.equal([...section.matchAll(/data-property-tab\b/g)].length, 7);
+  assert.equal([...section.matchAll(/data-property-panel\b/g)].length, 7);
+  assert.ok(section.includes('data-i18n-aria-label="home.propertySelect"'));
+  const types = ['flats', 'apartments', 'duplexes', 'penthouses', 'chalet', 'villas', 'land'];
+  assert.deepEqual([...section.matchAll(/data-property-tab data-i18n="home\.([^"]+)Label"/g)].map(match => match[1]), types);
+  assert.deepEqual(types.map(type => translations.es.home[`${type}Label`]), ['Pisos', 'Apartamentos', 'Dúplex', 'Áticos', 'Chalet', 'Villas', 'Terrenos']);
+  for (const type of types) {
+    assert.ok(section.includes(`href="#property-${type}"`));
+    assert.ok(section.includes(`id="property-${type}" data-property-panel aria-labelledby="property-tab-${type}"`));
+    for (const suffix of ['Label', 'Title', 'Desc', 'Cta']) {
+      assert.ok(section.includes(`data-i18n="home.${type}${suffix}"`));
+    }
+  }
+  assert.equal([...section.matchAll(/href="\/contacto.html\?servicio=comprar#form"/g)].length, 7);
+  assert.ok(!section.includes(' hidden'), 'All categories remain available without JavaScript');
+  assert.equal(new Set([...section.matchAll(/src="([^"]+)"/g)].map(match => match[1])).size, 7);
+  assert.ok(section.includes('data-i18n="home.propertyImageNote"'));
+  assert.ok(section.includes('no todo terreno permite construir'));
+  const css = await readFile(new URL('../src/editorial.css', import.meta.url), 'utf8');
+  assert.ok(!css.includes('.property-types-ready .property-types-selector { position: absolute'));
+  assert.ok(!css.includes('padding-top: 164px'));
+  const script = await readFile(new URL('../src/property-types.js', import.meta.url), 'utf8');
+  assert.ok(script.includes("selector.setAttribute('aria-orientation', 'horizontal')"));
+  const credits = await readFile(new URL('../public/videos/CREDITS.md', import.meta.url), 'utf8');
+  for (const type of ['flats', 'apartments', 'duplexes', 'chalet', 'land']) {
+    const filename = `property-${type}.webp`;
+    assert.ok(credits.includes(filename));
+    const metadata = await stat(new URL(`../public/images/${filename}`, import.meta.url));
+    assert.ok(metadata.size > 1000 && metadata.size < 250_000);
+  }
 });
 
 test('Shared footer has three actions, two socials and four advisory pillars', async () => {

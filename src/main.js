@@ -4,6 +4,8 @@ import { translations } from './translations.js';
 import { siteConfig } from './config.js';
 import { initAmbientVideos } from './media.js';
 import { coastalAreas, initCoastGallery } from './coast.js';
+import { initImageGalleries } from './gallery.js';
+import { initPropertyTypes } from './property-types.js';
 import { contactInterests, getServiceKey, projectFields, getProjectLines } from './advisory.js';
 
 // Application State
@@ -47,6 +49,10 @@ function renderLanguage(lang) {
   document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
     const value = getTranslation(t, el.dataset.i18nAriaLabel);
     if (value) el.setAttribute('aria-label', value);
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    const value = getTranslation(t, el.dataset.i18nAlt);
+    if (value) el.setAttribute('alt', value);
   });
 
   // 2. Update Language Switcher Buttons
@@ -141,7 +147,7 @@ function initSiteConfig() {
     if (url) link.href = url;
   });
   // Bind repeated content outside the navbar without changing navigation options.
-  document.querySelectorAll('.service-clean-link').forEach((el) => {
+  document.querySelectorAll('.service-clean-link:not([data-i18n])').forEach((el) => {
     el.dataset.i18n = el.getAttribute('href') === '/contacto.html' ? 'ui.consultation' : 'ui.discoverService';
   });
   document.querySelectorAll('.destination-explore').forEach((el) => { el.dataset.i18n = 'ui.exploreArea'; });
@@ -504,6 +510,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initAmbientVideos(() => translations[currentLang].ui);
   initCoastGallery();
+  initImageGalleries();
+  initPropertyTypes();
   initContactForm();
   initLegalModals();
   initLanguageSwitcher();

@@ -50,3 +50,47 @@ Replace Mijas's photograph with confirmed Mijas footage licensed for commercial
 use. Pexels search results included generic Andalusian villages without specific
 location evidence; those were deliberately not used. The Vecteezy Mijas street
 clip 34224183 was excluded because its page says **Editorial Use Only**.
+
+## Homepage advisory service photographs — 13 October 2026
+
+License checked: https://www.pexels.com/license/ — free commercial website use
+and modifications permitted, with no endorsement implied. Each source page
+identifies the photograph as free and links to this license.
+
+| Local photograph | Service / author | Source |
+| --- | --- | --- |
+| `/images/method-planning.webp` | Comprar / Alena Darmel | https://www.pexels.com/photo/a-realtor-presenting-a-blueprint-7642113/ |
+| `/images/method-support.webp` | Vender / Alena Darmel | https://www.pexels.com/photo/giving-keys-to-a-buyer-7642004/ |
+| `/images/method-review.webp` | Invertir / Alena Darmel | https://www.pexels.com/photo/man-in-beige-sweater-standing-beside-a-woman-in-brown-and-white-plaid-coat-7641834/ |
+| `/images/method-listening.webp` | Valorar / Alena Darmel | https://www.pexels.com/photo/a-man-and-a-woman-talking-to-an-agent-7642116/ |
+
+Re-selected at the user's request for a cohesive, warm, natural-light series.
+The carousel now introduces four services rather than consecutive methodology
+stages. Existing filenames are retained; photographs have been reordered to
+illustrate considering a home, a key handover, document review and consultation.
+Local versions: 1600 × 900 centre crops, WebP quality 85, downloaded through the
+Pexels image CDN. These illustrate listening, assessing a floor plan, document
+review and accompaniment through key handover; they do not depict Humberto, his clients, his team
+or properties for sale. This is disclosed beside the carousel and in image alt
+text. No Kretz media were copied.
+
+## Additional property-category images — 13 October 2026
+
+Illustrative stock licensed under https://www.pexels.com/license/.
+Source pages were checked for free downloads and their license links.
+
+| Local file | Category / author | Source |
+| --- | --- | --- |
+| `/images/property-flats.webp` | Pisos / Max Vakhtbovych | https://www.pexels.com/photo/modern-living-room-design-with-corner-sofa-6920439/ |
+| `/images/property-apartments.webp` | Apartamentos / Max Vakhtbovych | https://www.pexels.com/photo/cozy-sofa-and-table-with-chairs-in-contemporary-living-room-6585598/ |
+| `/images/property-duplexes.webp` | Dúplex / Pușcaș Adryan | https://www.pexels.com/photo/modern-luxurious-duplex-living-room-interior-design-28729467/ |
+| `/images/property-chalet.webp` | Chalet / Deniz Gezer | https://www.pexels.com/photo/beach-house-turkey-beautiful-house-beach-houses-14108169/ |
+| `/images/property-land.webp` | Terrenos / Pexels User | https://www.pexels.com/photo/aerial-view-of-trees-in-desert-15422584/ |
+
+Downloaded through the Pexels image CDN, centre-cropped and encoded as WebP:
+flats, apartments and duplexes at 1600 × 900 / quality 82; chalet at
+1200 × 675 / quality 70; land at 1280 × 720 / quality 72.
+These are illustrative interiors, architecture and land, not listings, specific
+Málaga properties or evidence of buildability. The duplex image is an interior
+design illustration, not a verified property. Existing penthouse and villa
+images are reused; their rights still require confirmation before publication.
