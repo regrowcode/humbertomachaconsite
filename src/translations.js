@@ -33,7 +33,7 @@ export const translations = {
       landCta: "Hablemos de tu terreno",
     },
     homeServices: {
-      title: "Cuatro servicios. Un apoyo cercano.",
+      title: "Servicios.",
       intro: "Comprar o vender una propiedad trae muchas preguntas. Estoy aquí para ayudarte a resolverlas y a orientarte si quieres invertir o conocer el valor de tu propiedad.",
       buyTitle: "Comprar", sellTitle: "Vender", investTitle: "Invertir", valueTitle: "Valorar",
       buyCta: "Cómo te ayudo a comprar →", sellCta: "Cómo te ayudo a vender →",
