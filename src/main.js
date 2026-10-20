@@ -339,7 +339,7 @@ function initLegalModals() {
         title: 'Aviso Legal e Información Corporativa',
         body: `
           <h4>1. Identificación</h4>
-          <p>En cumplimiento de la Ley 34/2002 (LSSI-CE), se informa que este sitio web constituye la marca personal y presentación profesional de <strong>Humberto Machacón</strong>, Asesor Inmobiliario operando en Málaga y Costa del Sol, España.</p>
+          <p>En cumplimiento de la Ley 34/2002 (LSSI-CE), se informa que este sitio web constituye la marca personal y presentación profesional de <strong>Humberto Machacón</strong>, Asesor Inmobiliario operando en Costa del Sol, España.</p>
           <h4>2. Objeto</h4>
           <p>La web tiene un carácter exclusivamente informativo y de asesoramiento personal independiente.</p>
           <h4>3. Propiedad Intelectual</h4>
@@ -350,7 +350,7 @@ function initLegalModals() {
         title: 'Legal Notice',
         body: `
           <h4>1. Identification</h4>
-          <p>In accordance with Spanish Law 34/2002 (LSSI-CE), this website represents the personal brand and advisory practice of <strong>Humberto Machacón</strong>, Senior Real Estate Advisor based in Málaga and Costa del Sol, Spain.</p>
+          <p>In accordance with Spanish Law 34/2002 (LSSI-CE), this website represents the personal brand and advisory practice of <strong>Humberto Machacón</strong>, Senior Real Estate Advisor based on the Costa del Sol, Spain.</p>
           <h4>2. Scope</h4>
           <p>This website serves solely for professional presentation and bespoke real estate advisory.</p>
           <h4>3. Intellectual Property</h4>
@@ -361,7 +361,7 @@ function initLegalModals() {
         title: 'Rechtliche Hinweise',
         body: `
           <h4>1. Identifikation</h4>
-          <p>Gemäß dem spanischen Gesetz 34/2002 (LSSI-CE) stellt diese Website die persönliche Marke und berufliche Tätigkeit von <strong>Humberto Machacón</strong>, Immobilienberater in Málaga und an der Costa del Sol, Spanien, vor.</p>
+          <p>Gemäß dem spanischen Gesetz 34/2002 (LSSI-CE) stellt diese Website die persönliche Marke und berufliche Tätigkeit von <strong>Humberto Machacón</strong>, Immobilienberater an der Costa del Sol, Spanien, vor.</p>
           <h4>2. Zweck</h4>
           <p>Diese Website dient ausschließlich der Information und der unabhängigen persönlichen Beratung.</p>
           <h4>3. Geistiges Eigentum</h4>

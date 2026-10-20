@@ -4,6 +4,7 @@ import { readFile, stat } from 'node:fs/promises';
 import { translations } from '../src/translations.js';
 import { contactInterests, getServiceKey, projectFields, getProjectLines } from '../src/advisory.js';
 import { coastalAreas } from '../src/coast.js';
+import { siteConfig } from '../src/config.js';
 
 const pages = ['index.html', 'sobre-mi.html', 'servicios.html', 'zonas.html', 'contacto.html'];
 const resolveKey = (object, key) => key.split('.').reduce((value, part) => value?.[part], object);
@@ -179,6 +180,43 @@ test('Homepage has four advisory services, seven areas and property guidance', a
   assert.ok(method.includes('data-i18n="homeServices.imageNote"'));
 });
 
+test('sobre-mi.html: large section titles, personal story and five commitments', async () => {
+  const html = await readFile(new URL('../sobre-mi.html', import.meta.url), 'utf8');
+  const story = html.match(/<section\b[^>]*id="mi-historia"[\s\S]*?<\/section>/)[0];
+  assert.match(story, /<h2 class="section-title" data-i18n="aboutPage.commitmentTag2">Mi historia<\/h2>/);
+  assert.ok(story.indexOf('aboutPage.commitmentTag2') < story.indexOf('class="about-portrait-wrap"'));
+  assert.ok(story.includes('data-i18n="aboutPage.storyQuote"'));
+  assert.ok(!story.includes('data-i18n="aboutPreview.quote"'), 'The homepage keeps its separate quote');
+  assert.equal(translations.es.aboutPage.storyQuote, 'Detrás de mi forma de asesorar hay una historia. Esta es la mía.');
+
+  const experience = html.match(/<section\b[^>]*id="mi-experiencia"[\s\S]*?<\/section>/)[0];
+  assert.match(experience, /<h2 class="section-title" data-i18n="aboutPage.commitmentTag">Mi experiencia<\/h2>/);
+  assert.match(experience, /<p class="section-subtitle-clean" data-i18n="aboutPage.commitmentTitle">Todo lo que he aprendido hoy está a tu servicio\.<\/p>/);
+  assert.ok(!experience.includes('<a '), 'There is no appointment button in the experience section');
+
+  const approach = html.match(/<section\b[^>]*id="mi-forma-de-asesorar"[\s\S]*?<\/section>/)[0];
+  assert.match(approach, /<h2 class="section-title" data-i18n="aboutPage.tag">Mi forma de asesorar<\/h2>/);
+  assert.match(approach, /<p class="section-subtitle-clean" data-i18n="aboutPage.title">Así trabajaremos juntos\.<\/p>/);
+  const cards = [...approach.matchAll(/<div class="service-clean-card">[\s\S]*?<\/p>/g)].map(match => match[0]);
+  assert.equal(cards.length, 5);
+  assert.deepEqual([1, 2, 3, 4, 5].map(number => translations.es.aboutPage[`p${number}Title`]), [
+    'Mi compromiso contigo', 'Hablarte claro', 'Respetar tus tiempos', 'Estar presente', 'Ser proactivo',
+  ]);
+  assert.deepEqual([1, 2, 3, 4, 5].map(number => translations.es.aboutPage[`p${number}Desc`]), [
+    'Que sepas con quién cuentas, desde el primer día.',
+    'Tendrás información clara y honesta aunque incomode, pero quiero apoyarte a tomar la mejor decisión.',
+    'Te daré el espacio que necesites para decidir, sin presiones y con toda la información a tu alcance.',
+    'Mantendré el contacto contigo, resolveré tus dudas y te informaré de cómo avanza cada paso y proceso.',
+    'Me anticiparé, buscaré soluciones y te propondré pasos para evitar desilusiones.',
+  ]);
+  cards.forEach((card, index) => {
+    const number = index + 1;
+    assert.ok(card.includes(`<div class="service-number">0${number}</div>`));
+    assert.ok(card.includes(`data-i18n="aboutPage.p${number}Title"`));
+    assert.ok(card.includes(`data-i18n="aboutPage.p${number}Desc"`));
+  });
+});
+
 test('Service carousel uses full-width slides with relevant, compact and credited photographs', async () => {
   const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const method = home.match(/<section class="services-section home-methodology"[\s\S]*?<\/section>/)[0];
@@ -251,13 +289,27 @@ test('Shared footer has three actions, two socials and four advisory pillars', a
     const call = buttons.match(/<a\b[^>]*class="[^"]*footer-call-link[^"]*"[^>]*>/)?.[0];
     assert.match(call, /href="https:\/\/wa\.me\/34681816023\?text=/);
     assert.ok(call.includes('target="_blank"'));
+    const callButton = buttons.match(/<a\b[^>]*class="[^"]*footer-call-link[^"]*"[^>]*>[\s\S]*?<\/a>/)[0];
+    const messageButton = buttons.match(/<a\b[^>]*class="[^"]*whatsapp-direct-link[^"]*"[^>]*>[\s\S]*?<\/a>/)[0];
+    for (const [button, key, label] of [[callButton, 'call', 'Llamada'], [messageButton, 'message', 'Mensaje']]) {
+      assert.ok(button.includes('<svg ') && button.includes('aria-hidden="true"'), `${page}: ${key} icon`);
+      assert.ok(button.includes(`<span data-i18n="footer.${key}">${label}</span>`));
+      assert.ok(!/^<a\b[^>]*\sdata-i18n=/.test(button), 'Translating a label must not remove its icon');
+      assert.match(button, /data-i18n-aria-label="[^"]+"/);
+    }
     assert.ok(buttons.includes('whatsapp-direct-link'));
-    assert.ok(buttons.includes('data-i18n="nav.cta"'));
+    const appointment = buttons.match(/<a\b[^>]*href="\/contacto\.html(?:#form)?"[^>]*>[\s\S]*?<\/a>/)?.[0];
+    assert.ok(appointment?.includes('<svg ') && appointment.includes('aria-hidden="true"'), `${page}: appointment calendar icon`);
+    assert.ok(appointment.includes('<span data-i18n="nav.cta">Agendar Cita</span>'));
+    assert.ok(!/^<a\b[^>]*\sdata-i18n=/.test(appointment), 'Language changes preserve the calendar icon');
     assert.deepEqual([...banner.matchAll(/data-social="([^"]+)"/g)].map((match) => match[1]), ['linkedin', 'instagram']);
     for (const [social, label] of Object.entries({ linkedin: 'LinkedIn', instagram: 'Instagram' })) {
       const link = banner.match(new RegExp(`<a[^>]*data-social="${social}"[^>]*>[\\s\\S]*?<\\/a>`))?.[0];
       assert.ok(link.includes(`aria-label="${label}"`));
       assert.ok(link.includes(`src="/images/${social}.svg"`));
+      const href = link.match(/href="([^"]+)"/)[1].replaceAll('&amp;', '&');
+      assert.equal(href, siteConfig.socials[social], `${page}: ${social} profile matches configuration`);
+      assert.ok(link.includes('target="_blank"') && link.includes('rel="noopener noreferrer"'));
     }
     const footer = html.match(/<footer\b[\s\S]*?<\/footer>/)?.[0];
     assert.ok(!footer.includes('brand-monogram'), 'Footer shows the advisor name without the HM monogram');
@@ -278,6 +330,29 @@ test('Shared footer has three actions, two socials and four advisory pillars', a
       assert.ok(footer.includes(area), `${page}: ${area}`);
     }
   }
+});
+
+test('Service area uses only Costa del Sol in contact details and combined descriptions', async () => {
+  assert.equal(siteConfig.advisor.location, 'Costa del Sol, España');
+  assert.equal(translations.es.contact.location, 'Costa del Sol, España');
+  assert.equal(translations.en.contact.location, 'Costa del Sol, Spain');
+  assert.equal(translations.de.contact.location, 'Costa del Sol, Spanien');
+  assert.equal(translations.es.footer.call, 'Llamada');
+  assert.equal(translations.es.footer.message, 'Mensaje');
+  const combinedArea = /Málaga(?: Capital| Stadt)?\s+(?:y|and|und an der|&(?:amp;)?)\s+Costa del Sol/i;
+  for (const lang of ['es', 'en', 'de']) {
+    assert.doesNotMatch(JSON.stringify(translations[lang]), combinedArea, lang);
+  }
+  for (const page of pages) {
+    const html = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
+    assert.doesNotMatch(html, combinedArea, page);
+    assert.ok(html.includes('<span id="contact-location-display">Costa del Sol, España</span>'));
+    if (page === 'contacto.html') {
+      assert.ok(html.includes('<div class="channel-val contact-location-val">Costa del Sol, España</div>'));
+    }
+  }
+  const main = await readFile(new URL('../src/main.js', import.meta.url), 'utf8');
+  assert.doesNotMatch(main, combinedArea, 'Legal copy');
 });
 
 test('Navbar uses concise independent area labels in all three languages', () => {
@@ -320,6 +395,14 @@ test('Costa del Sol gallery covers seven real areas with lazy portrait films', a
 test('zonas.html: client introduction, seven local descriptions and closing advice', async () => {
   const html = await readFile(new URL('../zonas.html', import.meta.url), 'utf8');
   const coast = translations.es.coast;
+  assert.equal(coast.kicker, 'COSTA DEL SOL');
+  const intro = html.match(/<section class="coast-intro">[\s\S]*?<\/section>/)[0];
+  assert.ok(!intro.includes('MÁLAGA') && !intro.includes('<em '));
+  assert.match(intro, /<h1><span data-i18n="coast.title">Un lugar para vivir\.<\/span><br \/><span data-i18n="coast.titleAccent">Una forma de sentir\.<\/span><\/h1>/);
+  assert.equal(coast.galleryKicker, 'Una mirada local');
+  assert.match(html, /<h2 id="coast-gallery-title" data-i18n="coast.galleryKicker">Una mirada local<\/h2><p class="section-subtitle-clean" data-i18n="coast.galleryTitle">Encuentra tu lugar en la costa\.<\/p>/);
+  assert.ok(!html.includes('DE ESTE A OESTE'));
+  assert.equal(coast.guidanceKicker, 'El lugar importa. Tu estilo de vida, más.');
   assert.equal(coast.intro, 'Vivir cerca de la playa está bien, pero también importa tener a mano tiendas, restaurantes y los servicios que tú necesitas. Explora estas zonas y cuéntame qué te gustaría tener cerca de tu próxima casa.');
   assert.equal(coast.guidanceTitle, 'Conocer la costa es una cosa. Vivir aquí es otra.');
   assert.equal(coast.guidanceDescription, 'Puedes preguntarle a ChatGPT por el clima, las playas o los mejores restaurantes. Pero para elegir dónde vivir, también necesitas conocer lo que pasa en cada barrio, cómo cambia en verano y cómo sería tu día a día allí.');
@@ -336,22 +419,36 @@ test('zonas.html: client introduction, seven local descriptions and closing advi
     for (const feature of features) assert.ok(coast[slug].description.includes(feature), `${slug}: ${feature}`);
     assert.ok(html.includes(`data-i18n="coast.${slug}.description"`));
   }
-  const keys = [...html.matchAll(/<([a-z][\w-]*)\b[^>]*data-i18n="(coast\.(?:intro|guidanceTitle|guidanceDescription|guidanceFollowup|\w+\.description))"[^>]*>([^<]*)<\/\1>/g)];
-  assert.equal(keys.length, 11);
+  const keys = [...html.matchAll(/<([a-z][\w-]*)\b[^>]*data-i18n="(coast\.(?:kicker|title|titleAccent|intro|galleryKicker|galleryTitle|guidanceKicker|guidanceTitle|guidanceQuestion|guidanceDescription|guidanceFollowup|guidanceCta|\w+\.description))"[^>]*>([^<]*)<\/\1>/g)];
+  assert.equal(keys.length, 19);
   for (const [, , key, text] of keys) {
     assert.equal(text.trim(), resolveKey(translations.es, key), `${key}: Spanish fallback`);
     for (const lang of ['es', 'en', 'de']) assert.ok(resolveKey(translations[lang], key)?.trim(), `${lang}: ${key}`);
   }
   const closing = html.match(/<section class="coast-guidance"[\s\S]*?<\/section>/)[0];
+  assert.match(closing, /<span class="coast-guidance-label" data-i18n="coast.guidanceKicker">El lugar importa\. Tu estilo de vida, más\.<\/span>\s*<h2 id="coast-guidance-title" data-i18n="coast.guidanceQuestion">¿Cómo te gustaría vivir aquí\?<\/h2>/);
+  assert.match(closing, /<h3 class="coast-guidance-context" data-i18n="coast.guidanceTitle">[^<]+<\/h3>\s*<p data-i18n="coast.guidanceDescription">/);
   assert.equal([...closing.matchAll(/<p\b/g)].length, 2);
-  assert.ok(closing.indexOf('coast.guidanceFollowup') < closing.indexOf('coast.guidanceCta'));
+  assert.ok(closing.indexOf('coast.guidanceFollowup') < closing.indexOf('<a href="/contacto.html#form"'));
   assert.ok(closing.includes('href="/contacto.html#form"'));
+  assert.equal(coast.guidanceQuestion, '¿Cómo te gustaría vivir aquí?');
   assert.equal(coast.guidanceCta, 'Encontrar mi zona contigo');
 });
 
 test('Four advisory actions link to the correct inquiry context', async () => {
   const html = await readFile(new URL('../servicios.html', import.meta.url), 'utf8');
   assert.equal([...html.matchAll(/class="advisory-action"/g)].length, 4);
+  const hero = html.match(/<section class="page-hero-banner-clean">[\s\S]*?<\/section>/)[0];
+  assert.ok(!hero.includes('<p ') && !hero.includes('serviceActions.intro'), 'The services title has no introductory phrase');
+  const intro = html.match(/<div class="advisory-actions-intro">[\s\S]*?<\/div>/)[0];
+  assert.match(intro, /<h2 id="advisory-actions-title">Humberto Machacón<\/h2>\s*<p data-i18n="serviceActions.advisorRole">Asesor inmobiliario<\/p>/);
+  assert.ok(!intro.includes('serviceActions.title') && !intro.includes('serviceActions.description'));
+  const actions = [...html.matchAll(/<a\b[^>]*class="advisory-action"[^>]*>[\s\S]*?<\/a>/g)].map(match => match[0]);
+  assert.deepEqual(actions.map(action => action.match(/data-service="([^"]+)"/)[1]), ['vender', 'comprar', 'invertir', 'valorar']);
+  for (const [index, [key, title]] of Object.entries({ sell: 'Vender', buy: 'Comprar', invest: 'Invertir', value: 'Valorar' }).entries()) {
+    assert.ok(actions[index].includes(`<h3 data-i18n="serviceActions.pageTitles.${key}">${title}</h3>`));
+    assert.ok(!actions[index].includes('advisory-action-category'), 'Each service has a single prominent title');
+  }
   for (const service of ['valorar', 'comprar', 'invertir', 'vender']) {
     assert.ok(html.includes(`href="/contacto.html?servicio=${service}#form"`));
     const key = getServiceKey(service);
@@ -411,6 +508,27 @@ test('servicios.html: client descriptions, four methodology steps and three comp
       assert.ok(resolveKey(translations[lang], match[2])?.trim(), `${lang}: ${match[2]}`);
     }
   }
+});
+
+test('contacto.html: personal plan introduction and prominent direct-contact heading', async () => {
+  const html = await readFile(new URL('../contacto.html', import.meta.url), 'utf8');
+  const copy = {
+    title: 'Hablemos de tu plan',
+    subtitle: 'Quizá quieres comprar, vender o simplemente saber qué opciones tienes. No necesitas tenerlo todo claro: cuéntame en qué punto estás y vemos juntos cómo dar el siguiente paso.',
+    channels: 'Trato directo',
+    personalTitle: 'Cuéntame, te escucho.',
+    personalDesc: 'No hace falta que sepas por dónde empezar. Dime qué estás pensando o qué te preocupa y lo hablamos con calma.',
+  };
+  for (const [key, text] of Object.entries(copy)) {
+    assert.equal(translations.es.contact[key], text);
+    assert.ok(html.includes(`data-i18n="contact.${key}"`));
+    assert.ok(html.includes(text), `${key}: Spanish fallback`);
+    for (const lang of ['es', 'en', 'de']) assert.ok(translations[lang].contact[key]?.trim());
+  }
+  assert.match(html, /<h1 class="section-title" id="contact-page-title" data-i18n="contact.title">Hablemos de tu plan<\/h1>/);
+  assert.match(html, /<h2 class="section-title" data-i18n="contact.channels">Trato directo<\/h2>\s*<p class="contact-personal-subtitle" id="contact-project-title" data-i18n="contact.personalTitle">Cuéntame, te escucho\.<\/p>\s*<p[^>]*id="contact-project-description"/);
+  assert.ok(html.includes('data-i18n="contact.formHint"'));
+  assert.ok(html.includes('data-i18n="contact.formSubmit"'));
 });
 
 test('Inquiry includes only populated fields relevant to the selected action', () => {

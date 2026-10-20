@@ -13,7 +13,7 @@ export const siteConfig = {
       en: "Senior Real Estate Advisor",
       de: "Senior-Immobilienberater",
     },
-    location: "Málaga & Costa del Sol, España",
+    location: "Costa del Sol, España",
     // Nombre de la agencia con la que colabora (puede cambiarse cuando lo deseen)
     partnerAgency: "Firma Inmobiliaria Colaboradora",
   },
@@ -33,8 +33,8 @@ export const siteConfig = {
 
   // Redes sociales profesionales
   socials: {
-    linkedin: "https://linkedin.com",
-    instagram: "https://instagram.com",
+    linkedin: "https://www.linkedin.com/in/humberto-machacon-475b4bb5/",
+    instagram: "https://www.instagram.com/elmacha7?vrfl=cDZheW93YmR1ZWw0&utm_source=qr",
     whatsapp: "https://wa.me/34600000000",
   },
 
