@@ -55,15 +55,14 @@ function renderLanguage(lang) {
     if (value) el.setAttribute('alt', value);
   });
 
-  // 2. Update Language Switcher Buttons
-  document.querySelectorAll('.lang-btn[data-lang]').forEach((button) => {
-    const active = button.dataset.lang === lang;
-    button.setAttribute('aria-pressed', String(active));
-    button.classList.toggle('active', active);
-  });
-  document.getElementById('lang-switcher')?.setAttribute('aria-label', {
-    es: 'Seleccionar idioma', en: 'Select language', de: 'Sprache auswählen',
-  }[lang]);
+  // 2. Keep the language dropdown in sync with the saved preference
+  const languageSelect = document.getElementById('lang-switcher');
+  if (languageSelect) {
+    languageSelect.value = lang;
+    languageSelect.setAttribute('aria-label', {
+      es: 'Seleccionar idioma', en: 'Select language', de: 'Sprache auswählen',
+    }[lang]);
+  }
 
   // 3. Update Service Points Lists (if on services page)
   ['s1', 's2', 's3', 's4'].forEach((serviceKey) => {
@@ -471,11 +470,11 @@ function initLegalModals() {
 }
 
 /**
- * Language switcher click listeners
+ * Language dropdown change listener
  */
 function initLanguageSwitcher() {
-  document.querySelectorAll('.lang-btn[data-lang]').forEach((button) => {
-    button.addEventListener('click', () => renderLanguage(button.dataset.lang));
+  document.getElementById('lang-switcher')?.addEventListener('change', (event) => {
+    renderLanguage(event.target.value);
   });
 }
 

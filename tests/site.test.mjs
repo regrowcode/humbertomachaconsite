@@ -38,10 +38,6 @@ for (const page of pages) {
         assert.equal(typeof resolveKey(translations[lang], match[1]), 'string', `${lang}: missing ${match[1]}`);
       }
     }
-    for (const [lang, label] of Object.entries({ es: 'Español', en: 'English', de: 'Deutsch' })) {
-      assert.match(header, new RegExp(`data-lang="${lang}"[^>]*aria-label="${label}"`));
-      assert.ok(header.includes(`/images/flags/${lang}.svg`));
-    }
     const assets = [...html.matchAll(/(?:src|data-src|poster|href)="(\/[^"?#]+)"/g)].map((match) => match[1]);
     for (const asset of new Set(assets)) {
       if (asset === '/') continue;
@@ -51,8 +47,24 @@ for (const page of pages) {
   });
 }
 
+test('Every header has a flag-free language dropdown with Spanish selected by default', async () => {
+  for (const page of pages) {
+    const html = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
+    const header = html.match(/<header\b[\s\S]*?<\/header>/)[0];
+    const languageSelect = header.match(/<select\b[^>]*id="lang-switcher"[^>]*>[\s\S]*?<\/select>/)?.[0];
+    assert.ok(languageSelect?.includes('aria-label="Seleccionar idioma"'), page);
+    assert.deepEqual([...languageSelect.matchAll(/<option value="([^"]+)"/g)].map(match => match[1]), ['es', 'en', 'de']);
+    assert.match(languageSelect, /<option value="es" lang="es" selected>Español<\/option>/);
+    assert.equal([...languageSelect.matchAll(/\bselected\b/g)].length, 1);
+    for (const [lang, label] of Object.entries({ es: 'Español', en: 'English', de: 'Deutsch' })) {
+      assert.match(languageSelect, new RegExp(`<option value="${lang}" lang="${lang}"[^>]*>${label}</option>`));
+    }
+    assert.ok(!header.includes('/images/flags/') && !header.includes('lang-btn'), 'Language options have no flags or toggle buttons');
+  }
+});
+
 test('Retained films are compact and the homepage hero stays poster-first', async () => {
-  for (const clip of ['coastal-life', 'personal-advisory', 'a-new-chapter']) {
+  for (const clip of ['coastal-life', 'personal-advisory', 'a-new-chapter', 'home-advisory', 'home-architecture']) {
     const metadata = await stat(new URL(`../public/videos/${clip}.mp4`, import.meta.url));
     assert.ok(metadata.size > 100_000 && metadata.size < 2_500_000);
   }
@@ -62,6 +74,22 @@ test('Retained films are compact and the homepage hero stays poster-first', asyn
   assert.ok(home.includes('data-video-toggle="hero-film"'));
   assert.ok(!home.includes('advisory-film') && !home.includes('chapter-film'));
   assert.ok(!home.includes('/videos/hero-video.mp4'));
+  assert.ok(!home.includes('/videos/coastal-life.mp4'));
+  assert.ok(!home.includes('/videos/home-advisory.mp4'));
+  assert.ok(home.includes('src="/images/home-architecture.webp"'));
+  const heroVideo = home.match(/<video\b[^>]*id="hero-film"[^>]*>[\s\S]*?<\/video>/)[0];
+  assert.match(heroVideo, /data-ambient-video muted loop playsinline/);
+  assert.ok(heroVideo.includes('poster="/images/home-architecture.webp"'));
+  assert.ok(heroVideo.includes('data-src="/videos/home-architecture.mp4"'));
+  assert.ok(!heroVideo.includes('<source src='), 'The hero film stays lazy-loaded');
+  assert.ok(home.includes('data-i18n="ui.heroVideoNote"'));
+  for (const lang of ['es', 'en', 'de']) assert.ok(translations[lang].ui.heroVideoNote);
+  const poster = await stat(new URL('../public/images/home-architecture.webp', import.meta.url));
+  assert.ok(poster.size > 1000 && poster.size < 250_000);
+  const credits = await readFile(new URL('../public/videos/CREDITS.md', import.meta.url), 'utf8');
+  assert.ok(credits.includes('home-architecture.mp4') && credits.includes('34874524'));
+  assert.equal(translations.es.ui.heroVideoNote, 'Interior ilustrativo. No es una propiedad en venta.');
+  assert.ok(home.includes(translations.es.ui.heroVideoNote));
   assert.ok(!home.includes('testimonials.t'));
 });
 
@@ -91,7 +119,8 @@ test('Conversational Spanish copy stays consistent without JavaScript', async ()
     }
   }
   const contact = await readFile(new URL('../contacto.html', import.meta.url), 'utf8');
-  const options = [...contact.matchAll(/<option value="([^"]+)">([^<]+)<\/option>/g)];
+  const interestSelect = contact.match(/<select\b[^>]*id="form-interest"[^>]*>[\s\S]*?<\/select>/)[0];
+  const options = [...interestSelect.matchAll(/<option value="([^"]+)">([^<]+)<\/option>/g)];
   assert.deepEqual(options.map(match => match[1]), contactInterests);
   assert.deepEqual(options.map(match => decode(match[2])), translations.es.contact.interestOptions);
   assert.ok(translations.es.contact.formHint.includes('prepara un correo'));
@@ -288,6 +317,38 @@ test('Costa del Sol gallery covers seven real areas with lazy portrait films', a
   }
 });
 
+test('zonas.html: client introduction, seven local descriptions and closing advice', async () => {
+  const html = await readFile(new URL('../zonas.html', import.meta.url), 'utf8');
+  const coast = translations.es.coast;
+  assert.equal(coast.intro, 'Vivir cerca de la playa está bien, pero también importa tener a mano tiendas, restaurantes y los servicios que tú necesitas. Explora estas zonas y cuéntame qué te gustaría tener cerca de tu próxima casa.');
+  assert.equal(coast.guidanceTitle, 'Conocer la costa es una cosa. Vivir aquí es otra.');
+  assert.equal(coast.guidanceDescription, 'Puedes preguntarle a ChatGPT por el clima, las playas o los mejores restaurantes. Pero para elegir dónde vivir, también necesitas conocer lo que pasa en cada barrio, cómo cambia en verano y cómo sería tu día a día allí.');
+  assert.equal(coast.guidanceFollowup, 'Cuéntame qué estilo de vida buscas y, como asesor local, te ayudo a encontrar la zona que encaja contigo.');
+  for (const [slug, features] of Object.entries({
+    malaga: ['La Alcazaba', 'el Teatro Romano', 'Muelle Uno'],
+    torremolinos: ['Aqualand', 'Jardín Botánico Molino de Inca', 'Miguel Ángel Jiménez'],
+    benalmadena: ['Parque de la Paloma', 'teleférico', 'acuario'],
+    fuengirola: ['mercados', 'Bioparc', 'Castillo Sohail'],
+    mijas: ['pueblo blanco en la sierra', 'senda litoral', 'golf'],
+    marbella: ['casco antiguo', 'clubes de playa', 'piscinas privadas o comunitarias'],
+    estepona: ['calles blancas y flores', 'campos de golf', 'dependen de cada complejo'],
+  })) {
+    for (const feature of features) assert.ok(coast[slug].description.includes(feature), `${slug}: ${feature}`);
+    assert.ok(html.includes(`data-i18n="coast.${slug}.description"`));
+  }
+  const keys = [...html.matchAll(/<([a-z][\w-]*)\b[^>]*data-i18n="(coast\.(?:intro|guidanceTitle|guidanceDescription|guidanceFollowup|\w+\.description))"[^>]*>([^<]*)<\/\1>/g)];
+  assert.equal(keys.length, 11);
+  for (const [, , key, text] of keys) {
+    assert.equal(text.trim(), resolveKey(translations.es, key), `${key}: Spanish fallback`);
+    for (const lang of ['es', 'en', 'de']) assert.ok(resolveKey(translations[lang], key)?.trim(), `${lang}: ${key}`);
+  }
+  const closing = html.match(/<section class="coast-guidance"[\s\S]*?<\/section>/)[0];
+  assert.equal([...closing.matchAll(/<p\b/g)].length, 2);
+  assert.ok(closing.indexOf('coast.guidanceFollowup') < closing.indexOf('coast.guidanceCta'));
+  assert.ok(closing.includes('href="/contacto.html#form"'));
+  assert.equal(coast.guidanceCta, 'Encontrar mi zona contigo');
+});
+
 test('Four advisory actions link to the correct inquiry context', async () => {
   const html = await readFile(new URL('../servicios.html', import.meta.url), 'utf8');
   assert.equal([...html.matchAll(/class="advisory-action"/g)].length, 4);
@@ -304,6 +365,52 @@ test('Four advisory actions link to the correct inquiry context', async () => {
     }
   }
   for (const invalid of ['unknown', '__proto__', 'toString', null]) assert.equal(getServiceKey(invalid), null);
+});
+
+test('servicios.html: client descriptions, four methodology steps and three complete FAQs', async () => {
+  const html = await readFile(new URL('../servicios.html', import.meta.url), 'utf8');
+  const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const descriptions = {
+    sell: '¿Quieres vender, pero no sabes en quién confiar? ¿O ya has publicado tu casa y solo recibes llamadas de agencias? Cuéntame qué está pasando y vemos juntos por dónde empezar.',
+    buy: '¿Llevas tiempo buscando y no encuentras lo que necesitas, o no sabes si el precio es correcto? Cuéntame qué te está costando encontrar y buscamos juntos.',
+    invest: 'Dime en qué quieres invertir y así analizaremos las opciones según tus objetivos, teniendo en cuenta los gastos, los riesgos y la rentabilidad que buscas.',
+    value: 'Te ayudo a conocer el valor de tu propiedad según sus características y el mercado de tu zona, para que decidas con una base clara.',
+  };
+  assert.deepEqual(translations.es.serviceActions.pageDescriptions, descriptions);
+  for (const key of Object.keys(descriptions)) {
+    assert.ok(html.includes(`data-i18n="serviceActions.pageDescriptions.${key}"`));
+  }
+  assert.ok(!home.includes('serviceActions.pageDescriptions.'), 'The services-page copy does not replace homepage descriptions');
+  assert.deepEqual([1, 2, 3, 4].map(step => translations.es.method[`step${step}`]), ['Escuchándote', 'Entendiéndote', 'Orientándote', 'Actuando']);
+  const cards = [...html.matchAll(/<div class="service-clean-card">[\s\S]*?<\/p>\s*<\/div>/g)];
+  assert.equal(cards.length, 4);
+  cards.forEach(([card], index) => {
+    const step = index + 1;
+    assert.ok(card.includes(`<div class="service-number">0${step}</div>`));
+    assert.ok(card.includes(`data-i18n="method.step${step}"`));
+    assert.ok(card.includes(`data-i18n="method.desc${step}"`));
+  });
+  const questions = [
+    '¿Cómo sé si estoy pagando de más?',
+    '¿Por qué mi casa no se vende si otras se anuncian al mismo precio?',
+    '¿Es buen momento para comprar o vender, o me conviene esperar?',
+  ];
+  const faqs = [...html.matchAll(/<details>([\s\S]*?)<\/details>/g)];
+  assert.equal(faqs.length, 3);
+  faqs.forEach(([faq], index) => {
+    const number = index + 1;
+    assert.equal(translations.es.faq[`q${number}`], questions[index]);
+    assert.ok(faq.includes(`data-i18n="faq.q${number}"`));
+    assert.ok(faq.includes(`data-i18n="faq.a${number}"`));
+    assert.ok(faq.includes(`data-i18n="faq.a${number}Followup"`));
+    assert.equal([...faq.matchAll(/<p\b/g)].length, 2, 'Each complete answer preserves its paragraph break');
+  });
+  for (const match of html.matchAll(/<([a-z][\w-]*)\b[^>]*\bdata-i18n="((?:serviceActions\.pageDescriptions\.|method\.(?:step|desc)|faq\.)[^"]*)"[^>]*>([^<]*)<\/\1>/g)) {
+    assert.equal(match[3].trim(), resolveKey(translations.es, match[2]), `${match[2]}: Spanish fallback`);
+    for (const lang of ['es', 'en', 'de']) {
+      assert.ok(resolveKey(translations[lang], match[2])?.trim(), `${lang}: ${match[2]}`);
+    }
+  }
 });
 
 test('Inquiry includes only populated fields relevant to the selected action', () => {

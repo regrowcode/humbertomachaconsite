@@ -32,10 +32,12 @@
         </nav>
 
         <div class="nav-actions">
-          <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language selection">
-            <button type="button" class="lang-btn active" id="lang-btn-es" data-lang="es" lang="es" aria-label="Español" title="Español" aria-pressed="true"><img src="/images/flags/es.svg" width="21" height="14" alt="" />ES</button>
-            <button type="button" class="lang-btn" id="lang-btn-en" data-lang="en" lang="en" aria-label="English" title="English" aria-pressed="false"><img src="/images/flags/en.svg" width="21" height="14" alt="" />EN</button>
-            <button type="button" class="lang-btn" id="lang-btn-de" data-lang="de" lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false"><img src="/images/flags/de.svg" width="21" height="14" alt="" />DE</button>
+          <div class="lang-switcher">
+            <select class="lang-select" id="lang-switcher" aria-label="Seleccionar idioma">
+              <option value="es" lang="es" selected>Español</option>
+              <option value="en" lang="en">English</option>
+              <option value="de" lang="de">Deutsch</option>
+            </select>
           </div>
           <a href="tel:+34600000000" class="header-call-link" id="header-call-link" aria-label="Llamar a Humberto" title="Llamar a Humberto">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.35 1.9.69 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.57 2.79.69A2 2 0 0 1 22 16.92z"/></svg>
@@ -59,7 +61,7 @@
             <h1><span data-i18n="coast.title">Un lugar para vivir.</span><br /><em data-i18n="coast.titleAccent">Una forma de sentir.</em></h1>
           </div>
           <div class="coast-intro-note">
-            <p data-i18n="coast.intro">¿Te imaginas cerca del mar, en el centro o en un lugar más tranquilo? Recorre estas siete zonas y cuéntame cómo te gustaría vivir. Te ayudo a comparar lo que cada una puede ofrecerte.</p>
+            <p data-i18n="coast.intro">Vivir cerca de la playa está bien, pero también importa tener a mano tiendas, restaurantes y los servicios que tú necesitas. Explora estas zonas y cuéntame qué te gustaría tener cerca de tu próxima casa.</p>
             <a href="#coast-gallery" class="coast-text-link"><span data-i18n="coast.explore">Explora la costa</span><span aria-hidden="true">↓</span></a>
           </div>
         </div>
@@ -88,7 +90,7 @@
               <div class="coast-film-caption"><span data-i18n="coast.malaga.tag">Ciudad & Mediterráneo</span><h3 id="malaga-title">Málaga</h3></div>
               <button type="button" class="video-toggle" data-video-toggle="malaga-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Málaga</span></button>
             </div>
-            <div class="coast-card-copy"><p data-i18n="coast.malaga.description">Si te gusta tener planes culturales, barrios con vida y el mar cerca, Málaga puede interesarte. Hablemos de qué parte de la ciudad encaja con tu rutina.</p></div>
+            <div class="coast-card-copy"><p data-i18n="coast.malaga.description">Combina vida de ciudad y mar, con museos, comercios, terrazas y playas urbanas. La Alcazaba, el Teatro Romano y Muelle Uno forman parte de sus principales atractivos. Su carácter es urbano y cultural, con entornos residenciales distintos según la ubicación.</p></div>
           </article>
           <article class="coast-card" id="zona-torremolinos" aria-labelledby="torremolinos-title">
             <div class="coast-film">
@@ -98,7 +100,7 @@
               <div class="coast-film-caption"><span data-i18n="coast.torremolinos.tag">Mar & movimiento</span><h3 id="torremolinos-title">Torremolinos</h3></div>
               <button type="button" class="video-toggle" data-video-toggle="torremolinos-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Torremolinos</span></button>
             </div>
-            <div class="coast-card-copy"><p data-i18n="coast.torremolinos.description">¿Te ves paseando junto al mar sin alejarte de Málaga? Torremolinos combina vida cotidiana y costa. Vemos juntos qué zona responde a lo que buscas.</p></div>
+            <div class="coast-card-copy"><p data-i18n="coast.torremolinos.description">Destaca por sus playas, el paseo marítimo, los chiringuitos y una animada oferta de restaurantes y ocio. Aqualand, el Jardín Botánico Molino de Inca y la academia de golf Miguel Ángel Jiménez amplían los planes más allá del mar. El ambiente cambia según la zona y la temporada.</p></div>
           </article>
           <article class="coast-card" id="zona-benalmadena" aria-labelledby="benalmadena-title">
             <div class="coast-film">
@@ -108,7 +110,7 @@
               <div class="coast-film-caption"><span data-i18n="coast.benalmadena.tag">Perspectivas & contrastes</span><h3 id="benalmadena-title">Benalmádena</h3></div>
               <button type="button" class="video-toggle" data-video-toggle="benalmadena-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Benalmádena</span></button>
             </div>
-            <div class="coast-card-copy"><p data-i18n="coast.benalmadena.description">Quizá prefieres el ambiente del pueblo, la marina o un barrio residencial. Benalmádena ofrece distintos ritmos; te ayudo a comparar cuál va más contigo.</p></div>
+            <div class="coast-card-copy"><p data-i18n="coast.benalmadena.description">Reúne calles de pueblo, playas y un puerto deportivo con restaurantes y ocio. El Parque de la Paloma, el teleférico y el acuario ofrecen planes para disfrutar en familia, mientras que sus instalaciones de golf permiten iniciarse o practicar. Cada parte del municipio ofrece un entorno diferente.</p></div>
           </article>
           <article class="coast-card" id="zona-fuengirola" aria-labelledby="fuengirola-title">
             <div class="coast-film">
@@ -118,7 +120,7 @@
               <div class="coast-film-caption"><span data-i18n="coast.fuengirola.tag">Vida cotidiana & costa</span><h3 id="fuengirola-title">Fuengirola</h3></div>
               <button type="button" class="video-toggle" data-video-toggle="fuengirola-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Fuengirola</span></button>
             </div>
-            <div class="coast-card-copy"><p data-i18n="coast.fuengirola.description">Si valoras el comercio de barrio y los paseos junto al mar, puedes empezar por Fuengirola. Cuéntame qué quieres tener cerca y miramos sus distintas zonas.</p></div>
+            <div class="coast-card-copy"><p data-i18n="coast.fuengirola.description">Su largo paseo marítimo, las playas y los comercios marcan buena parte de la vida cotidiana. Cuenta con mercados, restaurantes, puerto deportivo y atractivos como Bioparc y el Castillo Sohail. Su carácter urbano permite combinar actividades junto al mar con servicios y compras.</p></div>
           </article>
           <article class="coast-card" id="zona-mijas" aria-labelledby="mijas-title">
             <div class="coast-film">
@@ -127,7 +129,7 @@
               <div class="coast-film-caption"><span data-i18n="coast.mijas.tag">Pueblo blanco & horizonte</span><h3 id="mijas-title">Mijas</h3></div>
               <span class="coast-photo-label" data-i18n="coast.photoPending">Fotografía · vídeo pendiente</span>
             </div>
-            <div class="coast-card-copy"><p data-i18n="coast.mijas.description">¿Te atrae el pueblo blanco o te imaginas en Mijas Costa? Son maneras distintas de vivir. Te ayudo a comparar paisajes, distancias y lo que necesitas en tu día a día.</p></div>
+            <div class="coast-card-copy"><p data-i18n="coast.mijas.description">Combina el paisaje de un pueblo blanco en la sierra con zonas urbanas, playas y paseos por la senda litoral. El golf tiene un protagonismo especial, con campos y complejos dedicados a este deporte. La distancia al mar y a los servicios cambia mucho dentro del municipio.</p></div>
           </article>
           <article class="coast-card" id="zona-marbella" aria-labelledby="marbella-title">
             <div class="coast-film">
@@ -137,7 +139,7 @@
               <div class="coast-film-caption"><span data-i18n="coast.marbella.tag">Carácter & estilo de vida</span><h3 id="marbella-title">Marbella</h3></div>
               <button type="button" class="video-toggle" data-video-toggle="marbella-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Marbella</span></button>
             </div>
-            <div class="coast-card-copy"><p data-i18n="coast.marbella.description">Más allá del nombre, Marbella tiene un casco antiguo, costa y barrios muy distintos. Hablemos de tu forma de vivir para mirar las opciones que tienen sentido para ti.</p></div>
+            <div class="coast-card-copy"><p data-i18n="coast.marbella.description">Ofrece playas, gastronomía, comercios, puertos deportivos y una amplia oferta de golf. El casco antiguo y sus plazas conviven con hoteles, clubes de playa y entornos residenciales donde destacan los jardines y, según la propiedad, las piscinas privadas o comunitarias. El ambiente varía entre zonas de actividad social y otras de mayor privacidad.</p></div>
           </article>
           <article class="coast-card" id="zona-estepona" aria-labelledby="estepona-title">
             <div class="coast-film">
@@ -147,7 +149,7 @@
               <div class="coast-film-caption"><span data-i18n="coast.estepona.tag">Raíces & nuevos comienzos</span><h3 id="estepona-title">Estepona</h3></div>
               <button type="button" class="video-toggle" data-video-toggle="estepona-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span><span class="sr-only"> · Estepona</span></button>
             </div>
-            <div class="coast-card-copy"><p data-i18n="coast.estepona.description">Calles andaluzas, paseos junto al mar y nuevas zonas residenciales. Si te imaginas empezando una etapa en Estepona, vemos juntos qué entorno encaja con tus planes.</p></div>
+            <div class="coast-card-copy"><p data-i18n="coast.estepona.description">Su casco antiguo de calles blancas y flores, las plazas y el paseo marítimo definen su imagen más reconocible. El puerto, las playas y los campos de golf amplían las opciones de ocio. A lo largo de la costa también encontrarás urbanizaciones con jardines y piscinas, cuyas instalaciones y cercanía a los servicios dependen de cada complejo.</p></div>
           </article>
         </div>
       </div>
@@ -155,8 +157,12 @@
 
     <section class="coast-guidance" aria-labelledby="coast-guidance-title">
       <div class="container coast-guidance-grid">
-        <div><span class="section-kicker" data-i18n="coast.guidanceKicker">EL LUGAR IMPORTA. TU VIDA, MÁS.</span><h2 id="coast-guidance-title" data-i18n="coast.guidanceTitle">Busquemos un lugar que se sienta tuyo.</h2></div>
-        <div><p data-i18n="coast.guidanceDescription">¿Qué te gustaría tener cerca? ¿Cómo sería un día a gusto en tu nuevo hogar? Hablemos de tu rutina, de tu presupuesto y de lo que te importa. Te ayudo a comparar barrios y conexiones para que no tengas que elegir solo por una foto.</p><a href="/contacto.html#form" class="btn-dark"><span data-i18n="coast.guidanceCta">Encontrar mi zona contigo</span><span aria-hidden="true">↗</span></a></div>
+        <div><span class="section-kicker" data-i18n="coast.guidanceKicker">EL LUGAR IMPORTA. TU VIDA, MÁS.</span><h2 id="coast-guidance-title" data-i18n="coast.guidanceTitle">Conocer la costa es una cosa. Vivir aquí es otra.</h2></div>
+        <div>
+          <p data-i18n="coast.guidanceDescription">Puedes preguntarle a ChatGPT por el clima, las playas o los mejores restaurantes. Pero para elegir dónde vivir, también necesitas conocer lo que pasa en cada barrio, cómo cambia en verano y cómo sería tu día a día allí.</p>
+          <p data-i18n="coast.guidanceFollowup">Cuéntame qué estilo de vida buscas y, como asesor local, te ayudo a encontrar la zona que encaja contigo.</p>
+          <a href="/contacto.html#form" class="btn-dark"><span data-i18n="coast.guidanceCta">Encontrar mi zona contigo</span><span aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </section>
 

@@ -46,10 +46,12 @@
 
         <!-- Header Actions: Language Switcher & Direct Call -->
         <div class="nav-actions">
-          <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language selection">
-            <button type="button" class="lang-btn active" id="lang-btn-es" data-lang="es" lang="es" aria-label="Español" title="Español" aria-pressed="true"><img src="/images/flags/es.svg" width="21" height="14" alt="" />ES</button>
-            <button type="button" class="lang-btn" id="lang-btn-en" data-lang="en" lang="en" aria-label="English" title="English" aria-pressed="false"><img src="/images/flags/en.svg" width="21" height="14" alt="" />EN</button>
-            <button type="button" class="lang-btn" id="lang-btn-de" data-lang="de" lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false"><img src="/images/flags/de.svg" width="21" height="14" alt="" />DE</button>
+          <div class="lang-switcher">
+            <select class="lang-select" id="lang-switcher" aria-label="Seleccionar idioma">
+              <option value="es" lang="es" selected>Español</option>
+              <option value="en" lang="en">English</option>
+              <option value="de" lang="de">Deutsch</option>
+            </select>
           </div>
           <a href="tel:+34600000000" class="header-call-link" id="header-call-link" aria-label="Llamar a Humberto" title="Llamar a Humberto">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.35 1.9.69 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.57 2.79.69A2 2 0 0 1 22 16.92z"/></svg>
@@ -63,9 +65,9 @@
     <!-- Cinematic personal-brand introduction -->
     <section class="hero-section" id="hero">
       <div class="hero-bg-container">
-        <img src="/images/coastal-life.webp" alt="" class="hero-bg-image" fetchpriority="high" />
-        <video class="hero-bg-video" id="hero-film" data-ambient-video muted loop playsinline poster="/images/coastal-life.webp" preload="none" aria-hidden="true">
-          <source data-src="/videos/coastal-life.mp4" type="video/mp4" />
+        <img src="/images/home-architecture.webp" alt="" class="hero-bg-image" fetchpriority="high" />
+        <video class="hero-bg-video" id="hero-film" data-ambient-video muted loop playsinline poster="/images/home-architecture.webp" preload="none" aria-hidden="true">
+          <source data-src="/videos/home-architecture.mp4" type="video/mp4" />
         </video>
         <div class="hero-overlay"></div>
       </div>
@@ -91,7 +93,10 @@
       </div>
       <div class="container hero-bottom">
         <a href="#el-asesor" class="scroll-cue"><span class="scroll-arrow" aria-hidden="true">↓</span><span data-i18n="ui.discover">Una forma más personal de asesorarte</span></a>
-        <button type="button" class="video-toggle" data-video-toggle="hero-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span></button>
+        <div class="hero-media-controls">
+          <span class="hero-media-note" data-i18n="ui.heroVideoNote">Interior ilustrativo. No es una propiedad en venta.</span>
+          <button type="button" class="video-toggle" data-video-toggle="hero-film" hidden><span data-video-icon aria-hidden="true">Ⅱ</span><span data-video-label>Pausar vídeo</span></button>
+        </div>
       </div>
     </section>
 

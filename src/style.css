@@ -419,7 +419,7 @@ button {
   flex-shrink: 0;
 }
 
-/* Lang Switcher - Minimalist text toggle */
+/* Language selector */
 .lang-switcher {
   display: inline-flex;
   align-items: center;
@@ -432,26 +432,6 @@ button {
 
 .site-header.scrolled .lang-switcher {
   color: var(--text-muted);
-}
-
-.lang-btn {
-  background: transparent;
-  color: inherit;
-  padding: 0.2rem 0.4rem;
-  font-weight: 500;
-  transition: var(--transition-smooth);
-  border-radius: var(--radius-xs);
-}
-
-.lang-btn.active {
-  color: #ffffff;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.site-header.scrolled .lang-btn.active {
-  color: var(--text-main);
 }
 
 /* Minimal Header CTA Button */

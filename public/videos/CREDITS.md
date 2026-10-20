@@ -94,3 +94,48 @@ These are illustrative interiors, architecture and land, not listings, specific
 Málaga properties or evidence of buildability. The duplex image is an interior
 design illustration, not a verified property. Existing penthouse and villa
 images are reused; their rights still require confirmation before publication.
+
+## Homepage advisory hero — 18 October 2026
+
+| Local film / poster | Author | Source |
+| --- | --- | --- |
+| `home-advisory.mp4` / `/images/home-advisory.webp` | Alena Darmel | https://www.pexels.com/video/realtor-talking-to-a-couple-7646607/ |
+
+Source page and https://www.pexels.com/license/ checked on 18 October 2026.
+The page identifies the clip as free and its structured data explicitly links
+to the Pexels license. Commercial website use and modifications are permitted;
+no endorsement is implied.
+
+Downloaded source: https://videos.pexels.com/video-files/7646607/7646607-hd_1920_1080_25fps.mp4
+Local edit: first 9 seconds, 1280 × 720, 24 fps, H.264 (CRF 25), no audio,
+YUV 4:2:0 and web fast-start. WebP poster extracted from the first encoded frame.
+The scene illustrates a personal property consultation, matching the homepage's
+advisory focus and service photography. It does not depict Humberto, his clients,
+his team, a listed property or a verified Málaga location. A translated note in
+the hero identifies it as illustrative. The former coastal-life assets remain
+in the repository but are no longer loaded by the homepage.
+
+## Homepage architectural hero — 19 October 2026
+
+Replaces the staged consultation at the user's request for a more professional,
+project-appropriate visual: a single, slow architectural camera move through a
+bright contemporary living room, with natural materials and no actors.
+
+| Local film / poster | Author | Source |
+| --- | --- | --- |
+| `home-architecture.mp4` / `/images/home-architecture.webp` | Rene Strgar | https://www.pexels.com/video/modern-minimalist-villa-living-room-interior-34874524/ |
+
+Source page and https://www.pexels.com/license/ checked on 19 October 2026.
+The source identifies the video as free and its VideoObject structured data
+explicitly links to the Pexels license. Commercial website use and modifications
+are permitted; no endorsement is implied.
+
+Downloaded source: https://videos.pexels.com/video-files/34874524/14777096_1920_1080_25fps.mp4
+Local edit: first 10 seconds, with a 0.75-second tail-to-head dissolve for a
+9.25-second loop; 1280 × 720, 24 fps, H.264 (CRF 23), no audio, YUV 4:2:0,
+web fast-start. WebP poster extracted from the first encoded frame.
+
+This is illustrative architecture, not a property listing, a verified Málaga
+location or evidence of Humberto's projects. The hero discloses this in ES/EN/DE.
+The prior `home-advisory` film and poster are retained but no longer loaded by
+the homepage.

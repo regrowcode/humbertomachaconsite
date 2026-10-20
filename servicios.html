@@ -32,10 +32,12 @@
         </nav>
 
         <div class="nav-actions">
-          <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language selection">
-            <button type="button" class="lang-btn active" id="lang-btn-es" data-lang="es" lang="es" aria-label="Español" title="Español" aria-pressed="true"><img src="/images/flags/es.svg" width="21" height="14" alt="" />ES</button>
-            <button type="button" class="lang-btn" id="lang-btn-en" data-lang="en" lang="en" aria-label="English" title="English" aria-pressed="false"><img src="/images/flags/en.svg" width="21" height="14" alt="" />EN</button>
-            <button type="button" class="lang-btn" id="lang-btn-de" data-lang="de" lang="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false"><img src="/images/flags/de.svg" width="21" height="14" alt="" />DE</button>
+          <div class="lang-switcher">
+            <select class="lang-select" id="lang-switcher" aria-label="Seleccionar idioma">
+              <option value="es" lang="es" selected>Español</option>
+              <option value="en" lang="en">English</option>
+              <option value="de" lang="de">Deutsch</option>
+            </select>
           </div>
           <a href="tel:+34600000000" class="header-call-link" id="header-call-link" aria-label="Llamar a Humberto" title="Llamar a Humberto">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.35 1.9.69 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.57 2.79.69A2 2 0 0 1 22 16.92z"/></svg>
@@ -72,19 +74,19 @@
         </div>
         <div class="advisory-actions-list">
           <a href="/contacto.html?servicio=valorar#form" class="advisory-action" id="valorar" data-service="valorar">
-            <div><span class="advisory-action-category" data-i18n="serviceActions.value.category">VALORAR</span><h3 data-i18n="serviceActions.value.label">¿Cuánto puede valer tu propiedad?</h3><p data-i18n="serviceActions.value.description">Si estás pensando en vender o quieres orientarte, lo vemos juntos. Te ayudo a entender qué influye en el valor de tu propiedad y qué conviene revisar.</p></div>
+            <div><span class="advisory-action-category" data-i18n="serviceActions.value.category">VALORAR</span><h3 data-i18n="serviceActions.value.label">¿Cuánto puede valer tu propiedad?</h3><p data-i18n="serviceActions.pageDescriptions.value">Te ayudo a conocer el valor de tu propiedad según sus características y el mercado de tu zona, para que decidas con una base clara.</p></div>
             <span class="advisory-action-arrow" aria-hidden="true">→</span>
           </a>
           <a href="/contacto.html?servicio=comprar#form" class="advisory-action" id="comprar" data-service="comprar">
-            <div><span class="advisory-action-category" data-i18n="serviceActions.buy.category">COMPRAR</span><h3 data-i18n="serviceActions.buy.label">Confianos tu compra</h3><p data-i18n="serviceActions.buy.description">Cuéntame dónde te imaginas viviendo y qué es importante para ti. Te acompaño a comparar opciones, resolver dudas y preparar la negociación.</p></div>
+            <div><span class="advisory-action-category" data-i18n="serviceActions.buy.category">COMPRAR</span><h3 data-i18n="serviceActions.buy.label">Confianos tu compra</h3><p data-i18n="serviceActions.pageDescriptions.buy">¿Llevas tiempo buscando y no encuentras lo que necesitas, o no sabes si el precio es correcto? Cuéntame qué te está costando encontrar y buscamos juntos.</p></div>
             <span class="advisory-action-arrow" aria-hidden="true">→</span>
           </a>
           <a href="/contacto.html?servicio=invertir#form" class="advisory-action" id="invertir" data-service="invertir">
-            <div><span class="advisory-action-category" data-i18n="serviceActions.invest.category">INVERTIR</span><h3 data-i18n="serviceActions.invest.label">¿Qué quieres conseguir con tu inversión?</h3><p data-i18n="serviceActions.invest.description">Antes de mirar oportunidades, quiero entender tus planes. Hablamos de tus objetivos, tu presupuesto y los riesgos que necesitas conocer, sin promesas de rentabilidad.</p></div>
+            <div><span class="advisory-action-category" data-i18n="serviceActions.invest.category">INVERTIR</span><h3 data-i18n="serviceActions.invest.label">¿Qué quieres conseguir con tu inversión?</h3><p data-i18n="serviceActions.pageDescriptions.invest">Dime en qué quieres invertir y así analizaremos las opciones según tus objetivos, teniendo en cuenta los gastos, los riesgos y la rentabilidad que buscas.</p></div>
             <span class="advisory-action-arrow" aria-hidden="true">→</span>
           </a>
           <a href="/contacto.html?servicio=vender#form" class="advisory-action" id="vender" data-service="vender">
-            <div><span class="advisory-action-category" data-i18n="serviceActions.sell.category">VENDER</span><h3 data-i18n="serviceActions.sell.label">¿Estas pensando en vender?</h3><p data-i18n="serviceActions.sell.description">Vender también es dar un paso importante. Te escucho y te ayudo a preparar la documentación, pensar una estrategia y valorar las propuestas con calma.</p></div>
+            <div><span class="advisory-action-category" data-i18n="serviceActions.sell.category">VENDER</span><h3 data-i18n="serviceActions.sell.label">¿Estas pensando en vender?</h3><p data-i18n="serviceActions.pageDescriptions.sell">¿Quieres vender, pero no sabes en quién confiar? ¿O ya has publicado tu casa y solo recibes llamadas de agencias? Cuéntame qué está pasando y vemos juntos por dónde empezar.</p></div>
             <span class="advisory-action-arrow" aria-hidden="true">→</span>
           </a>
         </div>
@@ -102,33 +104,33 @@
         <div class="services-list-grid">
           <div class="service-clean-card">
             <div class="service-number">01</div>
-            <h3 class="service-clean-title" data-i18n="method.step1">Nos conocemos</h3>
+            <h3 class="service-clean-title" data-i18n="method.step1">Escuchándote</h3>
             <p class="service-clean-desc" data-i18n="method.desc1">
-              Cuéntame qué tienes en mente, qué te ilusiona y qué te preocupa. Te escucho y acordamos qué ayuda necesitas y cómo vamos a trabajar juntos.
+              Cada detalle de tu decisión de compra o de venta es relevante. Por eso, escucharte y conocerte es el primer paso para un excelente asesoramiento.
             </p>
           </div>
 
           <div class="service-clean-card">
             <div class="service-number">02</div>
-            <h3 class="service-clean-title" data-i18n="method.step2">Trazamos un plan</h3>
+            <h3 class="service-clean-title" data-i18n="method.step2">Entendiéndote</h3>
             <p class="service-clean-desc" data-i18n="method.desc2">
-              Vemos qué opciones encajan contigo y con tu presupuesto. Te explico las posibilidades y los riesgos con claridad, y preparamos juntos el camino.
+              Tu objetivo, tus prioridades y tus tiempos marcarán la estrategia que seguiremos juntos.
             </p>
           </div>
 
           <div class="service-clean-card">
             <div class="service-number">03</div>
-            <h3 class="service-clean-title" data-i18n="method.step3">Decides con confianza</h3>
+            <h3 class="service-clean-title" data-i18n="method.step3">Orientándote</h3>
             <p class="service-clean-desc" data-i18n="method.desc3">
-              Comparamos, revisamos y hablamos de tus dudas antes de negociar. Tendrás espacio para pensarlo: la decisión es tuya, sin prisas ni presión.
+              Explicarte las opciones con claridad, teniendo en cuenta sus ventajas y sus riesgos, será la guía para que decidas con plena seguridad.
             </p>
           </div>
 
           <div class="service-clean-card">
             <div class="service-number">04</div>
-            <h3 class="service-clean-title" data-i18n="method.step4">Sigo a tu lado</h3>
+            <h3 class="service-clean-title" data-i18n="method.step4">Actuando</h3>
             <p class="service-clean-desc" data-i18n="method.desc4">
-              Te ayudo a coordinar los siguientes pasos y a contar con los profesionales que necesitas. Seguimos en contacto: el acompañamiento no acaba en una firma.
+              Con una decisión bien fundamentada, organizaremos los siguientes pasos y el acompañamiento durante todo el proceso de compraventa y postventa.
             </p>
           </div>
         </div>
@@ -139,9 +141,21 @@
       <div class="container">
         <div class="section-header-clean center"><span class="section-kicker" data-i18n="faq.tag">ANTES DE EMPEZAR</span><h2 class="section-title" id="faq-title" data-i18n="faq.title">Resolvamos tus primeras dudas.</h2></div>
         <div class="faq-list">
-          <details><summary data-i18n="faq.q1">¿Aquí puedo ver propiedades en venta?</summary><p data-i18n="faq.a1">Esta web no es un catálogo de inmuebles. Es un lugar para que me conozcas y me cuentes qué necesitas. Si quieres comprar o vender, podemos hablar de cómo acompañarte.</p></details>
-          <details><summary data-i18n="faq.q2">¿Por dónde empezamos?</summary><p data-i18n="faq.a2">Por escucharte. Me cuentas tu situación y tus dudas; no hace falta que lo tengas todo decidido. Antes de trabajar juntos acordamos qué ayuda necesitas, las condiciones y los siguientes pasos.</p></details>
-          <details><summary data-i18n="faq.q3">¿Puedo hablar contigo aunque aún tenga dudas?</summary><p data-i18n="faq.a3">Claro. No necesitas haber tomado una decisión. Podemos comparar opciones, hablar de una zona o ver si ahora es un buen momento para ti. También está bien esperar.</p></details>
+          <details>
+            <summary data-i18n="faq.q1">¿Cómo sé si estoy pagando de más?</summary>
+            <p data-i18n="faq.a1">Habría que hacerte una valoración como si tú fueras el vendedor o la vendedora. No basta con comparar anuncios. Hay que conocer la zona, revisar viviendas similares y entender qué justifica el precio. Un buen análisis te ayuda a negociar con criterio y detectar gastos o detalles que habías pasado por alto.</p>
+            <p data-i18n="faq.a1Followup">Antes de elegir quién te asesora, pregunta a quién representa, cómo cobra y si recibe alguna comisión por la operación. Mereces saber qué hay detrás de cada intermediación y contar con alguien que también te diga cuándo una compra no te conviene.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q2">¿Por qué mi casa no se vende si otras se anuncian al mismo precio?</summary>
+            <p data-i18n="faq.a2">Porque anunciarse al mismo precio no significa tener el mismo valor ni estar encontrando comprador. La ubicación, el estado, los gastos y la presentación pueden hacer que una vivienda resulte más atractiva que otra.</p>
+            <p data-i18n="faq.a2Followup">Si apenas recibes consultas, conviene revisar el precio y la visibilidad del anuncio. Si hay visitas pero no ofertas, toca averiguar qué está frenando a los compradores. Antes de recomendarte una estrategia, contáctanos y analizaremos contigo qué está pasando.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q3">¿Es buen momento para comprar o vender, o me conviene esperar?</summary>
+            <p data-i18n="faq.a3">En la Costa del Sol, los precios anunciados pueden hacerte dudar: como comprador, te preocupa pagar de más; como propietario, vender por debajo de lo que vale tu casa. Pero el momento adecuado también depende de tus necesidades, tus plazos y tu dinero.</p>
+            <p data-i18n="faq.a3Followup">Puede ser tu momento, o quizá te convenga esperar. Todo partirá de tu situación y, para ayudarte a decidir, puedes contactarme y te diré con total confianza si es el momento o la propiedad correcta para ti.</p>
+          </details>
         </div>
       </div>
     </section>
