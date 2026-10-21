@@ -77,16 +77,16 @@
         
         <h1 class="hero-title" id="hero-title">
           <span data-i18n="hero.titleStart">Te escucho, te guío</span><br />
-          <em data-i18n="hero.titleAccent">y te acompaño.</em>
+          <span data-i18n="hero.titleAccent">y te acompaño.</span>
         </h1>
         
         <p class="hero-subtitle" data-i18n="hero.subtitle">
-          En cada paso, para que tomes la decisión correcta.
+          Humberto Machacón · Asesor inmobiliario
         </p>
 
         <div class="hero-actions">
           <a href="/servicios.html" class="btn-primary" id="btn-hero-secondary" data-i18n="hero.ctaSecondary">
-             Cómo puedo ayudarte
+             Servicios
           </a>
         </div>
 
@@ -104,24 +104,20 @@
     <section class="about-section" id="el-asesor">
       <div class="container about-split-grid">
         <figure>
-        <div class="about-portrait-wrap">
-          <img 
-            src="/images/humberto-suit-beige.webp"
-            alt="Humberto Machacón - Asesor Inmobiliario Personal en Málaga" 
-            class="about-portrait-img" 
-            id="advisor-portrait-img"
-            loading="lazy"
-          />
-        </div>
+          <h2 class="section-title" style="margin-bottom: 1rem;" data-i18n="home.story">Mi historia</h2>
+          <p class="about-story-lead" data-i18n="aboutPreview.storyLead">Detrás de cada casa hay una historia, esta es la mía.</p>
+          <div class="about-portrait-wrap">
+            <img 
+              src="/images/humberto-suit-beige.webp"
+              alt="Humberto Machacón - Asesor Inmobiliario Personal en Málaga" 
+              class="about-portrait-img" 
+              id="advisor-portrait-img"
+              loading="lazy"
+            />
+          </div>
         </figure>
 
         <div class="about-text-content">
-          <h2 class="section-title" style="margin-bottom: 1.5rem;" data-i18n="aboutPreview.title">Humberto Machacón</h2>
-          
-          <blockquote class="about-quote" data-i18n="aboutPreview.quote">
-            «Antes de hablar de tu inversión, hablemos de lo que realmente necesitas.»
-          </blockquote>
-
           <div class="about-paragraphs">
             <p data-i18n="aboutPreview.p1">
               Soy Humberto Machacón y quiero conocerte antes de hablar de propiedades. Cuéntame qué cambio estás preparando, qué te ilusiona y qué te hace dudar. No necesitas tenerlo todo claro: podemos empezar por una conversación.
@@ -139,48 +135,37 @@
       </div>
     </section>
 
-    <!-- Four advisory services with optional, pausable automatic playback. -->
-    <section class="services-section home-methodology" id="servicios" aria-labelledby="methodology-title" data-image-gallery data-gallery-single data-gallery-autoplay="6500">
+    <!-- Four advisory services, presented with the question that starts each conversation. -->
+    <section class="services-section home-services" id="servicios" aria-labelledby="services-title">
       <div class="container">
         <div class="section-header-clean">
           <div>
-            <span class="section-kicker" data-i18n="services.tag">ASESORÍA A TU MEDIDA</span>
-            <h2 class="section-title" id="methodology-title" data-i18n="homeServices.title">Servicios.</h2>
-            <p class="section-subtitle-clean" data-i18n="homeServices.intro">Comprar o vender una propiedad trae muchas preguntas. Estoy aquí para ayudarte a resolverlas y a orientarte si quieres invertir o conocer el valor de tu propiedad.</p>
+            <h2 class="section-title" id="services-title" data-i18n="homeServices.title">Servicios</h2>
+            <p class="section-subtitle-clean" data-i18n="homeServices.intro">Comprar o vender una propiedad trae muchas preguntas. Estoy aquí no solo para resolverlas, sino también para darte la seguridad que necesitas.</p>
           </div>
           <a href="/servicios.html" class="section-link-more" data-i18n="services.viewAll">
             Descubrir mi asesoría &rarr;
           </a>
         </div>
 
-        <div class="image-gallery-toolbar">
-          <p class="gallery-hint" data-i18n="home.galleryHint">Desliza o usa las flechas para explorar.</p>
-          <div class="image-gallery-controls" data-gallery-controls hidden>
-            <span class="gallery-counter"><span data-gallery-current>01</span> / 04</span>
-            <button type="button" data-gallery-playback aria-controls="methodology-gallery" aria-label="Pausar avance automático" data-i18n-aria-label="method.pauseGallery"><span aria-hidden="true">Ⅱ</span></button>
-            <button type="button" data-gallery-previous aria-controls="methodology-gallery" aria-label="Servicio anterior" data-i18n-aria-label="homeServices.previous">←</button>
-            <button type="button" data-gallery-next aria-controls="methodology-gallery" aria-label="Servicio siguiente" data-i18n-aria-label="homeServices.next">→</button>
-          </div>
+        <div class="advisory-actions-list">
+          <a href="/contacto.html?servicio=vender#form" class="advisory-action" data-service="vender">
+            <div><h3 data-i18n="serviceActions.pageTitles.sell">Vender</h3><p data-i18n="serviceActions.pageDescriptions.sell">¿Quieres vender, pero no sabes en quién confiar? ¿O ya has publicado tu casa y solo recibes llamadas de agencias? Cuéntame qué está pasando y vemos juntos por dónde empezar.</p></div>
+            <span class="advisory-action-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/contacto.html?servicio=comprar#form" class="advisory-action" data-service="comprar">
+            <div><h3 data-i18n="serviceActions.pageTitles.buy">Comprar</h3><p data-i18n="serviceActions.pageDescriptions.buy">¿Llevas tiempo buscando y no encuentras lo que necesitas, o no sabes si el precio es correcto? Cuéntame qué te está costando encontrar y buscamos juntos.</p></div>
+            <span class="advisory-action-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/contacto.html?servicio=invertir#form" class="advisory-action" data-service="invertir">
+            <div><h3 data-i18n="serviceActions.pageTitles.invest">Invertir</h3><p data-i18n="serviceActions.pageDescriptions.invest">Dime en qué quieres invertir y así analizaremos las opciones según tus objetivos, teniendo en cuenta los gastos, los riesgos y la rentabilidad que buscas.</p></div>
+            <span class="advisory-action-arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="/contacto.html?servicio=valorar#form" class="advisory-action" data-service="valorar">
+            <div><h3 data-i18n="serviceActions.pageTitles.value">Valorar</h3><p data-i18n="serviceActions.pageDescriptions.value">Te ayudo a conocer el valor de tu propiedad según sus características y el mercado de tu zona, para que decidas con una base clara.</p></div>
+            <span class="advisory-action-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
-        <div class="image-gallery-track methodology-track" id="methodology-gallery" data-gallery-track tabindex="0" role="region" aria-label="Servicios de asesoría personal" data-i18n-aria-label="homeServices.galleryLabel">
-          <article class="methodology-card" data-gallery-card data-gallery-service="comprar">
-            <div class="methodology-image"><img src="/images/method-planning.webp" alt="Escena ilustrativa de una asesora explicando un plano para valorar opciones de vivienda." data-i18n-alt="method.image2Alt" loading="lazy" width="1600" height="900" /><span class="methodology-number" aria-hidden="true">01</span></div>
-            <div class="methodology-copy"><h3 data-i18n="homeServices.buyTitle">Comprar</h3><p data-i18n="serviceActions.buy.description">Cuéntame dónde te imaginas viviendo y qué es importante para ti. Te acompaño a comparar opciones, resolver dudas y preparar la negociación.</p><a href="/servicios.html#comprar" class="service-clean-link" data-i18n="homeServices.buyCta">Cómo te ayudo a comprar →</a></div>
-          </article>
-          <article class="methodology-card" data-gallery-card data-gallery-service="vender">
-            <div class="methodology-image"><img src="/images/method-support.webp" alt="Escena ilustrativa de una entrega de llaves durante el acompañamiento a una nueva vivienda." data-i18n-alt="method.image4Alt" loading="lazy" width="1600" height="900" /><span class="methodology-number" aria-hidden="true">02</span></div>
-            <div class="methodology-copy"><h3 data-i18n="homeServices.sellTitle">Vender</h3><p data-i18n="serviceActions.sell.description">Vender también es dar un paso importante. Te escucho y te ayudo a preparar la documentación, pensar una estrategia y valorar las propuestas con calma.</p><a href="/servicios.html#vender" class="service-clean-link" data-i18n="homeServices.sellCta">Cómo te ayudo a vender →</a></div>
-          </article>
-          <article class="methodology-card" data-gallery-card data-gallery-service="invertir">
-            <div class="methodology-image"><img src="/images/method-review.webp" alt="Escena ilustrativa de una pareja revisando documentos con un asesor antes de decidir." data-i18n-alt="method.image3Alt" loading="lazy" width="1600" height="900" /><span class="methodology-number" aria-hidden="true">03</span></div>
-            <div class="methodology-copy"><h3 data-i18n="homeServices.investTitle">Invertir</h3><p data-i18n="serviceActions.invest.description">Antes de mirar oportunidades, quiero entender tus planes. Hablamos de tus objetivos, tu presupuesto y los riesgos que necesitas conocer, sin promesas de rentabilidad.</p><a href="/servicios.html#invertir" class="service-clean-link" data-i18n="homeServices.investCta">Hablemos de tu inversión →</a></div>
-          </article>
-          <article class="methodology-card" data-gallery-card data-gallery-service="valorar">
-            <div class="methodology-image"><img src="/images/method-listening.webp" alt="Escena ilustrativa de una conversación entre una asesora y una pareja." data-i18n-alt="method.image1Alt" loading="lazy" width="1600" height="900" /><span class="methodology-number" aria-hidden="true">04</span></div>
-            <div class="methodology-copy"><h3 data-i18n="homeServices.valueTitle">Valorar</h3><p data-i18n="homeServices.valueDesc">¿Te preguntas cuánto puede valer tu propiedad? Revisamos juntos su ubicación, características y contexto de mercado. Es una orientación personal, no una tasación oficial.</p><a href="/servicios.html#valorar" class="service-clean-link" data-i18n="homeServices.valueCta">Conozcamos el valor de tu propiedad →</a></div>
-          </article>
-        </div>
-        <p class="media-note" data-i18n="homeServices.imageNote">Escenas ilustrativas de los servicios; no muestran a Humberto, a sus clientes ni inmuebles en oferta.</p>
       </div>
     </section>
 
@@ -189,9 +174,9 @@
       <div class="container">
         <div class="section-header-clean">
           <div>
-            <span class="section-kicker" data-i18n="locations.tag">CONOCIMIENTO LOCAL</span>
-            <h2 class="section-title" id="home-zones-title" data-i18n="editorial.locationsTitle">¿Dónde te imaginas tu próxima etapa?</h2>
-            <p class="section-subtitle-clean" data-i18n="locations.subtitle">Cuéntame cómo te gusta vivir: tus paseos, tu rutina y lo que quieres tener cerca. Te ayudo a descubrir qué zona puede encajar contigo.</p>
+            <span class="section-kicker" data-i18n="locations.tag">Zonas</span>
+            <h2 class="section-title" id="home-zones-title" data-i18n="editorial.locationsTitle">Guía local</h2>
+            <p class="section-subtitle-clean" data-i18n="locations.subtitle">La casa puede ser perfecta, pero el ambiente es lo que la hace aún más especial. Saber elegir tu entorno es elegir tranquilidad.</p>
           </div>
           <a href="/zonas.html" class="section-link-more" data-i18n="locations.viewAll">
             Explorar todas las zonas &rarr;

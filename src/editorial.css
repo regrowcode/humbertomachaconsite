@@ -126,6 +126,7 @@ section[id], main { scroll-margin-top: 100px; }
 .about-split-grid { grid-template-columns: 1fr 1fr; gap: clamp(3rem, 7vw, 7rem); }
 .about-portrait-wrap { border-radius: 2px; box-shadow: none; width: 100%; }
 .about-portrait-img { height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%; }
+.about-story-lead { font: 400 1.05rem/1.6 var(--font-serif); color: var(--text-muted); margin: 0 0 1.75rem; max-width: 34ch; }
 .portrait-caption { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; font-size: .6rem; letter-spacing: .1em; color: var(--text-muted); text-transform: uppercase; }
 .about-quote { border: none; padding: 0; font-size: clamp(1.65rem, 2.5vw, 2.4rem); line-height: 1.25; margin: 1.75rem 0; }
 .about-paragraphs { gap: 1rem; margin-bottom: 2rem; }

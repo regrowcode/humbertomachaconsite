@@ -94,16 +94,15 @@ test('Retained films are compact and the homepage hero stays poster-first', asyn
   assert.ok(!home.includes('testimonials.t'));
 });
 
-test('Client phrases anchor the hero, service carousel and personal introduction', async () => {
+test('Client phrases anchor the hero, service list and personal introduction', async () => {
   const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const hero = home.match(/<section class="hero-section"[\s\S]*?<\/section>/)[0];
   assert.ok(hero.includes('Te escucho, te guío'));
   assert.ok(hero.includes('y te acompaño.'));
-  assert.ok(hero.includes('En cada paso, para que tomes la decisión correcta.'));
-  const method = home.match(/<section class="services-section home-methodology"[\s\S]*?<\/section>/)[0];
-  assert.ok(method.includes('Comprar o vender una propiedad trae muchas preguntas. Estoy aquí para ayudarte a resolverlas'));
-  assert.equal(translations.es.aboutPreview.quote, '«Antes de hablar de tu inversión, hablemos de lo que realmente necesitas.»');
-  assert.ok(home.includes(translations.es.aboutPreview.quote));
+  assert.ok(hero.includes('Humberto Machacón · Asesor inmobiliario'));
+  const services = home.match(/<section class="services-section home-services"[\s\S]*?<\/section>/)[0];
+  assert.ok(services.includes('Comprar o vender una propiedad trae muchas preguntas. Estoy aquí no solo para resolverlas, sino también para darte la seguridad que necesitas.'));
+  assert.ok(home.includes(translations.es.aboutPreview.storyLead));
   assert.ok(translations.es.serviceActions.invest.formDescription.startsWith('Antes de hablar de tu inversión, hablemos de lo que realmente necesitas.'));
 });
 
@@ -135,49 +134,42 @@ test('Homepage has four advisory services, seven areas and property guidance', a
   assert.ok(!hero.includes('humberto-suit') && !hero.includes('hero-advisor-link'));
   const advisor = home.match(/<section class="about-section"[\s\S]*?<\/section>/)[0];
   assert.ok(!advisor.includes('aboutPreview.tag'));
-  assert.ok(advisor.includes('data-i18n="aboutPreview.title"'));
+  assert.ok(advisor.includes('data-i18n="home.story"'));
+  assert.ok(advisor.includes('data-i18n="aboutPreview.storyLead"'));
   for (const anchor of ['mi-historia', 'mi-experiencia']) {
     assert.ok(advisor.includes(`href="/sobre-mi.html#${anchor}"`));
     assert.ok(about.includes(`id="${anchor}"`));
   }
-  const method = home.match(/<section class="services-section home-methodology"[\s\S]*?<\/section>/)[0];
-  assert.equal([...method.matchAll(/data-gallery-card/g)].length, 4);
-  assert.ok(method.includes('data-gallery-single'));
-  assert.ok(method.includes('data-gallery-autoplay="6500"'));
-  assert.ok(method.includes('data-gallery-playback'));
-  assert.ok(method.includes('data-i18n="homeServices.title"'));
-  assert.ok(!method.includes('data-i18n="method.step') && !method.includes('data-i18n="method.desc'));
-  assert.ok(!method.includes('Cuatro etapas'));
-  const services = await readFile(new URL('../servicios.html', import.meta.url), 'utf8');
-  for (const [service, key] of [['comprar', 'buy'], ['vender', 'sell'], ['invertir', 'invest'], ['valorar', 'value']]) {
-    assert.ok(method.includes(`data-gallery-service="${service}"`));
-    assert.ok(method.includes(`data-i18n="homeServices.${key}Title"`));
-    assert.ok(method.includes(`href="/servicios.html#${service}"`));
-    assert.ok(services.includes(`id="${service}" data-service="${service}"`));
+  const servicesSection = home.match(/<section class="services-section home-services"[\s\S]*?<\/section>/)[0];
+  assert.ok(servicesSection.includes('data-i18n="homeServices.title"'));
+  assert.equal([...servicesSection.matchAll(/class="advisory-action"/g)].length, 4);
+  assert.ok(!servicesSection.includes('data-gallery-card') && !servicesSection.includes('data-gallery-autoplay'));
+  assert.ok(!servicesSection.includes('data-i18n="method.step') && !servicesSection.includes('data-i18n="method.desc'));
+  assert.ok(!servicesSection.includes('Cuatro etapas'));
+  const servicesPage = await readFile(new URL('../servicios.html', import.meta.url), 'utf8');
+  for (const [service, key] of [['vender', 'sell'], ['comprar', 'buy'], ['invertir', 'invest'], ['valorar', 'value']]) {
+    assert.ok(servicesSection.includes(`data-i18n="serviceActions.pageTitles.${key}"`));
+    assert.ok(servicesSection.includes(`data-i18n="serviceActions.pageDescriptions.${key}"`));
+    assert.ok(servicesSection.includes(`href="/contacto.html?servicio=${service}#form"`));
+    assert.ok(servicesPage.includes(`id="${service}" data-service="${service}"`));
   }
-  for (let stage = 1; stage <= 4; stage++) assert.ok(services.includes(`data-i18n="method.step${stage}"`), 'The separate service-page methodology remains intact');
-  assert.deepEqual([...method.matchAll(/data-gallery-service="([^"]+)"/g)].map(match => match[1]), ['comprar', 'vender', 'invertir', 'valorar']);
-  assert.ok(method.includes('no una tasación oficial'));
-  assert.ok(method.includes('sin promesas de rentabilidad'));
+  for (let stage = 1; stage <= 4; stage++) assert.ok(servicesPage.includes(`data-i18n="method.step${stage}"`), 'The separate service-page methodology remains intact');
   const zones = home.match(/<section class="destinations-section home-zones"[\s\S]*?<\/section>/)[0];
-  assert.ok(!zones.includes('data-gallery-autoplay'), 'Autoplay is limited to the requested methodology carousel');
+  assert.ok(!zones.includes('data-gallery-autoplay'), 'The zones gallery does not autoplay');
   assert.equal([...zones.matchAll(/data-gallery-card/g)].length, 7);
   for (const [slug, name] of Object.entries(coastalAreas)) {
     assert.ok(zones.includes(`href="/zonas.html#zona-${slug}"`), name);
     assert.ok(zones.includes(`src="/images/zone-${slug}.webp"`), name);
   }
-  for (const section of [method, zones]) {
-    assert.ok(section.includes('data-gallery-previous') && section.includes('data-gallery-next'));
-    assert.match(section, /data-gallery-track tabindex="0" role="region" aria-label(?:ledby)?=/);
-    assert.ok(!section.includes('<video'));
-  }
+  assert.ok(zones.includes('data-gallery-previous') && zones.includes('data-gallery-next'));
+  assert.match(zones, /data-gallery-track tabindex="0" role="region" aria-labelledby=/);
+  assert.ok(!zones.includes('<video'));
   assert.ok(!home.includes('films-section') && !home.includes('method-section'));
   assert.ok(home.includes('data-i18n="home.propertyTitle"'));
   for (const type of ['flats', 'apartments', 'duplexes', 'penthouses', 'chalet', 'villas', 'land']) {
     assert.ok(home.includes(`data-i18n="home.${type}Title"`));
     assert.ok(home.includes(`data-i18n="home.${type}Desc"`));
   }
-  assert.ok(method.includes('data-i18n="homeServices.imageNote"'));
 });
 
 test('sobre-mi.html: large section titles, personal story and five commitments', async () => {
@@ -215,29 +207,6 @@ test('sobre-mi.html: large section titles, personal story and five commitments',
     assert.ok(card.includes(`data-i18n="aboutPage.p${number}Title"`));
     assert.ok(card.includes(`data-i18n="aboutPage.p${number}Desc"`));
   });
-});
-
-test('Service carousel uses full-width slides with relevant, compact and credited photographs', async () => {
-  const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
-  const method = home.match(/<section class="services-section home-methodology"[\s\S]*?<\/section>/)[0];
-  const credits = await readFile(new URL('../public/videos/CREDITS.md', import.meta.url), 'utf8');
-  const css = await readFile(new URL('../src/editorial.css', import.meta.url), 'utf8');
-  assert.match(css, /\.methodology-card\s*\{[^}]*flex:\s*0 0 100%;/);
-  assert.match(css, /\.methodology-track\s*\{\s*gap:\s*0;/);
-  assert.ok(!css.includes('.methodology-card, .home-zone-card'), 'Mobile zone sizing must not shrink methodology slides');
-  const scenes = [['planning', 2], ['support', 4], ['review', 3], ['listening', 1]];
-  const cards = [...method.matchAll(/<article\b[^>]*data-gallery-card[\s\S]*?<\/article>/g)].map(match => match[0]);
-  for (const [index, [scene, alt]] of scenes.entries()) {
-    const file = `method-${scene}.webp`;
-    assert.ok(cards[index].includes(`src="/images/${file}"`));
-    assert.ok(cards[index].includes(`data-i18n-alt="method.image${alt}Alt"`));
-    const metadata = await stat(new URL(`../public/images/${file}`, import.meta.url));
-    assert.ok(metadata.size > 1000 && metadata.size < 250_000);
-    assert.ok(credits.includes(file));
-  }
-  for (const oldImage of ['malaga-centro', 'hero-villa', 'humberto-suit-navy', 'personal-advisory']) {
-    assert.ok(!method.includes(`/images/${oldImage}.webp`));
-  }
 });
 
 test('Seven property types use a selector above the photo and a description to its right', async () => {
@@ -356,8 +325,8 @@ test('Service area uses only Costa del Sol in contact details and combined descr
 });
 
 test('Navbar uses concise independent area labels in all three languages', () => {
-  assert.deepEqual(translations.es.nav, { home: 'Inicio', about: 'Sobre Mí', services: 'Servicios', allServices: 'Servicios de Asesoramiento', locations: 'Zonas', contact: 'Contacto', cta: 'Agendar Cita' });
-  assert.deepEqual(translations.en.nav, { home: 'Home', about: 'About Me', services: 'Services', allServices: 'Advisory Services', locations: 'Areas', contact: 'Contact', cta: 'Book Consultation' });
+  assert.deepEqual(translations.es.nav, { home: 'Inicio', about: 'Sobre Mí', services: 'Servicios', allServices: 'Servicios de Asesoramiento', locations: 'Zonas', contact: 'Contacto', cta: 'Agendar Cita', ayuda: '¿Como puedo ayudarte?' });
+  assert.deepEqual(translations.en.nav, { home: 'Home', about: 'About Me', services: 'Services', allServices: 'Advisory Services', locations: 'Areas', contact: 'Contact', cta: 'Book Consultation', ayuda: 'How can I help you?' });
   assert.equal(translations.de.nav.locations, 'Regionen');
 });
 
@@ -466,7 +435,6 @@ test('Four advisory actions link to the correct inquiry context', async () => {
 
 test('servicios.html: client descriptions, four methodology steps and three complete FAQs', async () => {
   const html = await readFile(new URL('../servicios.html', import.meta.url), 'utf8');
-  const home = await readFile(new URL('../index.html', import.meta.url), 'utf8');
   const descriptions = {
     sell: '¿Quieres vender, pero no sabes en quién confiar? ¿O ya has publicado tu casa y solo recibes llamadas de agencias? Cuéntame qué está pasando y vemos juntos por dónde empezar.',
     buy: '¿Llevas tiempo buscando y no encuentras lo que necesitas, o no sabes si el precio es correcto? Cuéntame qué te está costando encontrar y buscamos juntos.',
@@ -477,7 +445,6 @@ test('servicios.html: client descriptions, four methodology steps and three comp
   for (const key of Object.keys(descriptions)) {
     assert.ok(html.includes(`data-i18n="serviceActions.pageDescriptions.${key}"`));
   }
-  assert.ok(!home.includes('serviceActions.pageDescriptions.'), 'The services-page copy does not replace homepage descriptions');
   assert.deepEqual([1, 2, 3, 4].map(step => translations.es.method[`step${step}`]), ['Escuchándote', 'Entendiéndote', 'Orientándote', 'Actuando']);
   const cards = [...html.matchAll(/<div class="service-clean-card">[\s\S]*?<\/p>\s*<\/div>/g)];
   assert.equal(cards.length, 4);
