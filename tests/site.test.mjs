@@ -6,7 +6,7 @@ import { contactInterests, getServiceKey, projectFields, getProjectLines } from 
 import { coastalAreas } from '../src/coast.js';
 import { siteConfig } from '../src/config.js';
 
-const pages = ['index.html', 'sobre-mi.html', 'servicios.html', 'zonas.html', 'contacto.html'];
+const pages = ['index.html', 'sobre-mi.html', 'servicios.html', 'zonas.html', 'temas.html', 'contacto.html'];
 const resolveKey = (object, key) => key.split('.').reduce((value, part) => value?.[part], object);
 
 for (const page of pages) {
@@ -23,7 +23,7 @@ for (const page of pages) {
     assert.ok(header.includes('<span class="brand-name">Humberto Machacón</span>'));
     assert.ok(header.includes('<span class="brand-subtitle">Real Estate Advisor</span>'));
     const destinations = [...header.matchAll(/href="([^"]+)"/g)].map((match) => match[1]).filter((href) => href.startsWith('/'));
-    assert.deepEqual(destinations, ['/', '/sobre-mi.html', '/servicios.html', '/zonas.html', '/contacto.html']);
+    assert.deepEqual(destinations, ['/', '/sobre-mi.html', '/servicios.html', '/zonas.html', '/temas.html', '/contacto.html']);
     assert.ok(!header.includes('btn-header-cta'), 'Appointment CTA is replaced by direct calling');
     const callLink = header.match(/<a\b[^>]*id="header-call-link"[^>]*>[\s\S]*?<\/a>/)?.[0];
     assert.ok(callLink?.includes('aria-label="Llamar a Humberto"'));
@@ -32,6 +32,7 @@ for (const page of pages) {
     assert.ok(header.includes('data-i18n="nav.about">Sobre Mí'));
     assert.ok(header.includes('data-i18n="nav.services">Servicios'));
     assert.ok(header.includes('data-i18n="nav.locations">Zonas'));
+    assert.ok(header.includes('data-i18n="nav.topics">Temas'));
     assert.ok(!header.includes('dropdown'), 'Services and areas are independent links');
 
     for (const match of html.matchAll(/data-i18n(?:-placeholder|-aria-label|-alt)?="([^"]+)"/g)) {
@@ -325,9 +326,67 @@ test('Service area uses only Costa del Sol in contact details and combined descr
 });
 
 test('Navbar uses concise independent area labels in all three languages', () => {
-  assert.deepEqual(translations.es.nav, { home: 'Inicio', about: 'Sobre Mí', services: 'Servicios', allServices: 'Servicios de Asesoramiento', locations: 'Zonas', contact: 'Contacto', cta: 'Agendar Cita', ayuda: '¿Como puedo ayudarte?' });
-  assert.deepEqual(translations.en.nav, { home: 'Home', about: 'About Me', services: 'Services', allServices: 'Advisory Services', locations: 'Areas', contact: 'Contact', cta: 'Book Consultation', ayuda: 'How can I help you?' });
+  assert.deepEqual(translations.es.nav, { home: 'Inicio', about: 'Sobre Mí', services: 'Servicios', allServices: 'Servicios de Asesoramiento', locations: 'Zonas', topics: 'Temas', contact: 'Contacto', cta: 'Agendar Cita', ayuda: '¿Como puedo ayudarte?' });
+  assert.deepEqual(translations.en.nav, { home: 'Home', about: 'About Me', services: 'Services', allServices: 'Advisory Services', locations: 'Areas', topics: 'Topics', contact: 'Contact', cta: 'Book Consultation', ayuda: 'How can I help you?' });
   assert.equal(translations.de.nav.locations, 'Regionen');
+  assert.equal(translations.de.nav.topics, 'Themen');
+});
+
+test('temas.html: journal introduction and truthful empty publications in three languages', async () => {
+  const html = await readFile(new URL('../temas.html', import.meta.url), 'utf8');
+  assert.match(html, /<h1[^>]*data-i18n="topics.title">Temas<\/h1>/);
+  assert.match(html, /href="\/temas.html" class="nav-link active" aria-current="page"/);
+  assert.ok(html.includes('id="publicaciones" aria-labelledby="topics-publications-title"'));
+  assert.ok(html.includes('href="/contacto.html#form"'));
+  assert.ok(html.includes('src="/images/humberto-ideas.webp"'));
+  assert.ok(!/<article\b|<time\b|href="#"[^>]*data-i18n="topics\./.test(html), 'No invented articles, dates or dead article links');
+  for (const key of ['buy', 'sell', 'invest', 'local', 'emptyTitle', 'emptyDescription', 'soon']) {
+    assert.ok(html.includes(`data-i18n="topics.${key}"`));
+  }
+  for (const [, key, text] of html.matchAll(/data-i18n="(topics\.[^"]+)"[^>]*>([^<]*)</g)) {
+    assert.equal(text.trim(), resolveKey(translations.es, key), `${key}: Spanish fallback`);
+    for (const lang of ['es', 'en', 'de']) assert.ok(resolveKey(translations[lang], key)?.trim(), `${lang}: ${key}`);
+  }
+  assert.ok(translations.es.topics.emptyDescription.startsWith('Todavía no hay artículos publicados.'));
+  assert.ok(html.includes('<script type="module" src="/src/main.js"></script>'));
+});
+
+test('User-supplied meeting photographs are landscape, lazy-loaded and described neutrally', async () => {
+  const credits = await readFile(new URL('../public/videos/CREDITS.md', import.meta.url), 'utf8');
+  const css = await readFile(new URL('../src/editorial.css', import.meta.url), 'utf8');
+  for (const [page, sectionId, file, key] of [
+    ['sobre-mi.html', 'mi-experiencia', 'humberto-reunion.webp', 'aboutPage.meetingImageAlt'],
+    ['temas.html', 'topics-intro-title', 'humberto-ideas.webp', 'topics.imageAlt'],
+  ]) {
+    const html = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
+    const section = html.match(new RegExp(`<section[^>]*(?:id|aria-labelledby)="${sectionId}"[\\s\\S]*?<\\/section>`))?.[0];
+    assert.ok(section, `${page}: expected section`);
+    const image = section.match(new RegExp(`<img[^>]*src="/images/${file}"[^>]*>`))?.[0];
+    assert.ok(image, `${page}: expected photograph`);
+    assert.ok(image.includes('width="1290" height="860" loading="lazy"'));
+    assert.ok(image.includes(`data-i18n-alt="${key}"`));
+    assert.ok(image.includes(`alt="${resolveKey(translations.es, key)}"`));
+    for (const lang of ['es', 'en', 'de']) assert.ok(resolveKey(translations[lang], key)?.trim());
+    const metadata = await stat(new URL(`../public/images/${file}`, import.meta.url));
+    assert.ok(metadata.size > 1000 && metadata.size < 150_000);
+    assert.ok(credits.includes(file));
+  }
+  assert.match(css, /\.about-experience-photo img\s*\{[^}]*width: 100%; height: auto;/);
+  assert.match(css, /\.topics-visual img\s*\{[^}]*width: 100%; height: auto;/);
+  for (const page of ['index.html', 'sobre-mi.html']) {
+    const html = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
+    assert.ok(html.includes('src="/images/humberto-suit-beige.webp"'), 'Main personal portraits are preserved');
+  }
+});
+
+test('Every page is registered in the multipage build and clean URL rewrites', async () => {
+  const config = await readFile(new URL('../vite.config.js', import.meta.url), 'utf8');
+  const deployment = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
+  for (const page of pages) {
+    assert.ok(config.includes(`'${page}'`), `${page}: build entry`);
+    if (page === 'index.html') continue;
+    assert.ok(deployment.rewrites.some(rule => rule.source === `/${page.replace('.html', '')}` && rule.destination === `/${page}`), `${page}: clean URL`);
+  }
 });
 
 test('Costa del Sol gallery covers seven real areas with lazy portrait films', async () => {

@@ -9,6 +9,7 @@ export default defineConfig({
         about: resolve(import.meta.dirname, 'sobre-mi.html'),
         services: resolve(import.meta.dirname, 'servicios.html'),
         locations: resolve(import.meta.dirname, 'zonas.html'),
+        topics: resolve(import.meta.dirname, 'temas.html'),
         contact: resolve(import.meta.dirname, 'contacto.html'),
       },
     },

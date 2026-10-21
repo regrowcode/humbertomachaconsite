@@ -4,6 +4,7 @@
     { "source": "/sobre-mi", "destination": "/sobre-mi.html" },
     { "source": "/servicios", "destination": "/servicios.html" },
     { "source": "/zonas", "destination": "/zonas.html" },
+    { "source": "/temas", "destination": "/temas.html" },
     { "source": "/contacto", "destination": "/contacto.html" }
   ]
 }

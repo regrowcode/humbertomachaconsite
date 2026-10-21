@@ -139,3 +139,20 @@ This is illustrative architecture, not a property listing, a verified Málaga
 location or evidence of Humberto's projects. The hero discloses this in ES/EN/DE.
 The prior `home-advisory` film and poster are retained but no longer loaded by
 the homepage.
+
+## User-supplied meeting photographs — 21 October 2026
+
+| Local photograph | Supplied file | Placement |
+| --- | --- | --- |
+| `/images/humberto-reunion.webp` | `humberto 1.webp` | Sobre mí: Mi experiencia |
+| `/images/humberto-ideas.webp` | `humberto 2.webp` | Temas: introduction |
+
+Both WebP files were supplied by the user with an explicit request to use them
+on the website. Copied without re-encoding or cropping, at 1290 × 860 pixels
+(approximately 83 KB and 70 KB). Displayed in their original landscape ratio,
+with lazy loading and neutral, translated alt text.
+
+Authorship, usage rights, location and consent of the people pictured have not
+been independently verified and require confirmation before publication. No
+caption identifies the participants as clients, employees or collaborators,
+or claims that the photographs depict a specific property transaction.
