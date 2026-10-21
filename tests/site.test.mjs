@@ -90,7 +90,6 @@ test('Retained films are compact and the homepage hero stays poster-first', asyn
   assert.ok(poster.size > 1000 && poster.size < 250_000);
   const credits = await readFile(new URL('../public/videos/CREDITS.md', import.meta.url), 'utf8');
   assert.ok(credits.includes('home-architecture.mp4') && credits.includes('34874524'));
-  assert.equal(translations.es.ui.heroVideoNote, 'Interior ilustrativo. No es una propiedad en venta.');
   assert.ok(home.includes(translations.es.ui.heroVideoNote));
   assert.ok(!home.includes('testimonials.t'));
 });

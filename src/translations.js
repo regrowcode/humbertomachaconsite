@@ -43,9 +43,7 @@ export const translations = {
       imageNote: "Escenas ilustrativas de los servicios; no muestran a Humberto, a sus clientes ni inmuebles en oferta.",
     },
     ui: {
-      skip: "Saltar al contenido", advisorRole: "Tu asesor personal en Málaga", callAdvisor: "Llamar a Humberto",
-      discover: "Una forma más personal de asesorarte", letsTalk: "Hablemos ↗",
-      heroVideoNote: "Interior ilustrativo. No es una propiedad en venta.",
+      skip: "Saltar al contenido", advisorRole: "Tu asesor personal en Málaga",
       discoverService: "Descubrir →", exploreArea: "Conocer la zona →", areaAdvice: "Hablemos de esta zona →",
       pauseVideo: "Pausar vídeo", playVideo: "Reproducir vídeo", openMenu: "Abrir menú", closeMenu: "Cerrar menú",
       consultation: "Conversar sobre mi proyecto →", advisorTitle: "Asesor inmobiliario personal · Málaga",
