@@ -172,7 +172,7 @@ test('Homepage has four advisory services, seven areas and property guidance', a
   }
 });
 
-test('sobre-mi.html: large section titles, personal story and five commitments', async () => {
+test('sobre-mi.html: large section titles, personal story and four commitments', async () => {
   const html = await readFile(new URL('../sobre-mi.html', import.meta.url), 'utf8');
   const story = html.match(/<section\b[^>]*id="mi-historia"[\s\S]*?<\/section>/)[0];
   assert.match(story, /<h2 class="section-title" data-i18n="aboutPage.commitmentTag2">Mi historia<\/h2>/);
@@ -187,15 +187,15 @@ test('sobre-mi.html: large section titles, personal story and five commitments',
   assert.ok(!experience.includes('<a '), 'There is no appointment button in the experience section');
 
   const approach = html.match(/<section\b[^>]*id="mi-forma-de-asesorar"[\s\S]*?<\/section>/)[0];
-  assert.match(approach, /<h2 class="section-title" data-i18n="aboutPage.tag">Mi forma de asesorar<\/h2>/);
-  assert.match(approach, /<p class="section-subtitle-clean" data-i18n="aboutPage.title">Así trabajaremos juntos\.<\/p>/);
+  assert.match(approach, /<h2 class="section-title" data-i18n="aboutPage.tag">Mi compromiso contigo<\/h2>/);
+  assert.match(approach, /<p class="section-subtitle-clean" data-i18n="aboutPage.title">Que sepas con quién cuentas, desde el primer día\.<\/p>/);
   const cards = [...approach.matchAll(/<div class="service-clean-card">[\s\S]*?<\/p>/g)].map(match => match[0]);
-  assert.equal(cards.length, 5);
-  assert.deepEqual([1, 2, 3, 4, 5].map(number => translations.es.aboutPage[`p${number}Title`]), [
-    'Mi compromiso contigo', 'Hablarte claro', 'Respetar tus tiempos', 'Estar presente', 'Ser proactivo',
+  assert.equal(cards.length, 4);
+  assert.ok(!approach.includes('aboutPage.p1Title') && !approach.includes('aboutPage.p1Desc'));
+  assert.deepEqual([2, 3, 4, 5].map(number => translations.es.aboutPage[`p${number}Title`]), [
+    'Hablarte claro', 'Respetar tus tiempos', 'Estar presente', 'Ser proactivo',
   ]);
-  assert.deepEqual([1, 2, 3, 4, 5].map(number => translations.es.aboutPage[`p${number}Desc`]), [
-    'Que sepas con quién cuentas, desde el primer día.',
+  assert.deepEqual([2, 3, 4, 5].map(number => translations.es.aboutPage[`p${number}Desc`]), [
     'Tendrás información clara y honesta aunque incomode, pero quiero apoyarte a tomar la mejor decisión.',
     'Te daré el espacio que necesites para decidir, sin presiones y con toda la información a tu alcance.',
     'Mantendré el contacto contigo, resolveré tus dudas y te informaré de cómo avanza cada paso y proceso.',
@@ -204,9 +204,66 @@ test('sobre-mi.html: large section titles, personal story and five commitments',
   cards.forEach((card, index) => {
     const number = index + 1;
     assert.ok(card.includes(`<div class="service-number">0${number}</div>`));
-    assert.ok(card.includes(`data-i18n="aboutPage.p${number}Title"`));
-    assert.ok(card.includes(`data-i18n="aboutPage.p${number}Desc"`));
+    assert.ok(card.includes(`data-i18n="aboutPage.p${number + 1}Title"`));
+    assert.ok(card.includes(`data-i18n="aboutPage.p${number + 1}Desc"`));
   });
+  const css = await readFile(new URL('../src/editorial.css', import.meta.url), 'utf8');
+  assert.match(css, /\.about-commitments-grid\s*\{\s*grid-template-columns: repeat\(4, minmax\(0, 1fr\)\);/);
+  assert.ok(!css.includes('.about-commitments-grid .service-clean-card:last-child { grid-column: 1 / -1; }'));
+});
+
+test('sobre-mi.html: experience preserves all five supplied paragraphs and translations', async () => {
+  const html = await readFile(new URL('../sobre-mi.html', import.meta.url), 'utf8');
+  const experience = html.match(/<section\b[^>]*id="mi-experiencia"[\s\S]*?<\/section>/)[0];
+  const paragraphs = [...experience.matchAll(/<p data-i18n="aboutPage\.(commitment\d)">\s*([^<]*)<\/p>/g)];
+  assert.deepEqual(paragraphs.map(match => match[1]), ['commitment1', 'commitment2', 'commitment3', 'commitment4', 'commitment5']);
+  for (const [, key, text] of paragraphs) {
+    assert.equal(text.trim(), translations.es.aboutPage[key], `${key}: Spanish fallback`);
+    for (const lang of ['es', 'en', 'de']) assert.ok(translations[lang].aboutPage[key]?.trim(), `${lang}: ${key}`);
+  }
+  assert.match(translations.es.aboutPage.commitment1, /^Comencé mi trayectoria inmobiliaria en Berlín/);
+  assert.equal(translations.es.aboutPage.commitment5, 'Mi mayor satisfacción es que, además de alcanzar tu objetivo, te sientas informado y respaldado desde el primer día.');
+  assert.ok(!experience.includes('Detrás de una compra') && !experience.includes('Mi papel es ayudarte'));
+});
+
+test('sobre-mi.html: complete personal story follows the quote in all three languages', async () => {
+  const html = await readFile(new URL('../sobre-mi.html', import.meta.url), 'utf8');
+  const story = html.match(/<section\b[^>]*id="mi-historia"[\s\S]*?<\/section>/)[0];
+  const keys = [
+    'storyFaith', 'storySport', 'storyChildhood', 'storyToday',
+    'storyBerlinTitle', 'storyBerlinStart', 'storyBerlinLearning', 'storyBerlinPeople',
+    'storyCoastTitle', 'storyCoastMove', 'storyCoastAdaptation', 'storyCoastClients',
+    'storyCommitmentTitle', 'storyService', 'storyCommitment', 'storyThanks', 'storyBlessing',
+  ];
+  const elements = [...story.matchAll(/<(p|h3)\b[^>]*data-i18n="aboutPage\.(story\w+)"[^>]*>([^<]*)<\/\1>/g)];
+  assert.deepEqual(elements.map(match => match[2]), keys);
+  assert.ok(story.indexOf('aboutPage.storyQuote') < story.indexOf('aboutPage.storyFaith'));
+  assert.ok(story.indexOf('aboutPage.storyBlessing') < story.indexOf('href="/contacto.html"'));
+  assert.ok(!story.includes('aboutPreview.p1') && !story.includes('aboutPreview.p2'));
+  for (const [, tag, key, text] of elements) {
+    assert.equal(tag, key.endsWith('Title') ? 'h3' : 'p', key);
+    assert.equal(text.trim(), translations.es.aboutPage[key], `${key}: Spanish fallback`);
+    for (const lang of ['es', 'en', 'de']) assert.ok(translations[lang].aboutPage[key]?.trim(), `${lang}: ${key}`);
+  }
+  assert.match(translations.es.aboutPage.storySport, /más de 13 años/);
+  assert.match(translations.es.aboutPage.storyChildhood, /Barranquilla, Colombia/);
+  assert.equal(translations.es.aboutPage.storyBlessing, 'Dios te bendiga.');
+});
+
+test('sobre-mi.html: story has a short introduction and a native accessible disclosure', async () => {
+  const html = await readFile(new URL('../sobre-mi.html', import.meta.url), 'utf8');
+  const story = html.match(/<section\b[^>]*id="mi-historia"[\s\S]*?<\/section>/)[0];
+  const details = story.match(/<details class="about-story-details">[\s\S]*?<\/details>/)?.[0];
+  assert.ok(details, 'The complete story is collapsed by default without requiring JavaScript');
+  const intro = story.slice(0, story.indexOf(details));
+  assert.deepEqual([...intro.matchAll(/<p data-i18n="aboutPage\.(\w+)"/g)].map(match => match[1]), ['storyFaith', 'storySport']);
+  assert.ok(details.includes('<summary>') && !details.includes('role="button"'));
+  assert.ok(details.includes('aboutPage.storyChildhood') && details.includes('aboutPage.storyBlessing'));
+  assert.match(story, /<\/details>[\s\S]*?href="\/contacto.html"/, 'Contact remains available when the story is closed');
+  for (const key of ['storyReadMore', 'storyReadLess']) {
+    assert.ok(details.includes(`data-i18n="aboutPage.${key}">${translations.es.aboutPage[key]}</span>`));
+    for (const lang of ['es', 'en', 'de']) assert.ok(translations[lang].aboutPage[key]?.trim());
+  }
 });
 
 test('Seven property types use a selector above the photo and a description to its right', async () => {
