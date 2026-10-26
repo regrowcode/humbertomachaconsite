@@ -66,7 +66,7 @@ test('Every header has a flag-free language dropdown with Spanish selected by de
 });
 
 test('Retained films are compact and the homepage hero stays poster-first', async () => {
-  for (const clip of ['coastal-life', 'personal-advisory', 'a-new-chapter', 'home-advisory', 'home-architecture']) {
+  for (const clip of ['coastal-life', 'personal-advisory', 'a-new-chapter', 'home-advisory', 'home-architecture', 'home-costa-del-sol']) {
     const metadata = await stat(new URL(`../public/videos/${clip}.mp4`, import.meta.url));
     assert.ok(metadata.size > 100_000 && metadata.size < 2_500_000);
   }
@@ -78,18 +78,21 @@ test('Retained films are compact and the homepage hero stays poster-first', asyn
   assert.ok(!home.includes('/videos/hero-video.mp4'));
   assert.ok(!home.includes('/videos/coastal-life.mp4'));
   assert.ok(!home.includes('/videos/home-advisory.mp4'));
-  assert.ok(home.includes('src="/images/home-architecture.webp"'));
+  assert.ok(!home.includes('/videos/home-architecture.mp4'));
+  assert.ok(home.includes('src="/images/home-costa-del-sol.webp"'));
   const heroVideo = home.match(/<video\b[^>]*id="hero-film"[^>]*>[\s\S]*?<\/video>/)[0];
   assert.match(heroVideo, /data-ambient-video muted loop playsinline/);
-  assert.ok(heroVideo.includes('poster="/images/home-architecture.webp"'));
-  assert.ok(heroVideo.includes('data-src="/videos/home-architecture.mp4"'));
+  assert.ok(heroVideo.includes('poster="/images/home-costa-del-sol.webp"'));
+  assert.ok(heroVideo.includes('data-src="/videos/home-costa-del-sol.mp4"'));
   assert.ok(!heroVideo.includes('<source src='), 'The hero film stays lazy-loaded');
   assert.ok(home.includes('data-i18n="ui.heroVideoNote"'));
   for (const lang of ['es', 'en', 'de']) assert.ok(translations[lang].ui.heroVideoNote);
-  const poster = await stat(new URL('../public/images/home-architecture.webp', import.meta.url));
+  const poster = await stat(new URL('../public/images/home-costa-del-sol.webp', import.meta.url));
   assert.ok(poster.size > 1000 && poster.size < 250_000);
   const credits = await readFile(new URL('../public/videos/CREDITS.md', import.meta.url), 'utf8');
-  assert.ok(credits.includes('home-architecture.mp4') && credits.includes('34874524'));
+  assert.ok(credits.includes('home-costa-del-sol.mp4'));
+  for (const source of ['28356727', '28438876', '19910548']) assert.ok(credits.includes(source));
+  assert.ok(!heroVideo.includes('youtube.com') && !heroVideo.includes('iframe'), 'The hero uses local licensed footage, not a YouTube embed');
   assert.ok(home.includes(translations.es.ui.heroVideoNote));
   assert.ok(!home.includes('testimonials.t'));
 });

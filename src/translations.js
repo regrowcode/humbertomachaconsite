@@ -44,6 +44,7 @@ export const translations = {
     },
     ui: {
       skip: "Saltar al contenido", advisorRole: "Tu asesor personal en Málaga",
+      discover: "Una forma más personal de asesorarte",
       discoverService: "Descubrir →", exploreArea: "Conocer la zona →", areaAdvice: "Hablemos de esta zona →",
       pauseVideo: "Pausar vídeo", playVideo: "Reproducir vídeo", openMenu: "Abrir menú", closeMenu: "Cerrar menú",
       consultation: "Conversar sobre mi proyecto →", advisorTitle: "Asesor inmobiliario personal · Málaga",
@@ -379,7 +380,7 @@ export const translations = {
     ui: {
       skip: "Skip to content", advisorRole: "Your personal advisor in Málaga", callAdvisor: "Call Humberto",
       discover: "A more personal approach to real estate", letsTalk: "Let's talk ↗",
-      heroVideoNote: "Illustrative interior. Not a property listing.",
+      heroVideoNote: "Illustrative coastal and villa footage. Not property listings.",
       discoverService: "Discover →", exploreArea: "Explore the area →", areaAdvice: "Let's discuss this area →",
       pauseVideo: "Pause video", playVideo: "Play video", openMenu: "Open menu", closeMenu: "Close menu",
       consultation: "Discuss my project →", advisorTitle: "Personal real estate advisor · Málaga",
@@ -716,7 +717,7 @@ export const translations = {
     ui: {
       skip: "Zum Inhalt springen", advisorRole: "Dein persönlicher Berater in Málaga", callAdvisor: "Humberto anrufen",
       discover: "Eine persönlichere Art der Immobilienberatung", letsTalk: "Sprechen wir miteinander ↗",
-      heroVideoNote: "Beispielhaftes Interieur. Kein Immobilienangebot.",
+      heroVideoNote: "Illustrative Küsten- und Villenaufnahmen. Keine Immobilienangebote.",
       discoverService: "Entdecken →", exploreArea: "Die Gegend entdecken →", areaAdvice: "Über diese Gegend sprechen →",
       pauseVideo: "Video pausieren", playVideo: "Video abspielen", openMenu: "Menü öffnen", closeMenu: "Menü schließen",
       consultation: "Über mein Projekt sprechen →", advisorTitle: "Persönlicher Immobilienberater · Málaga",

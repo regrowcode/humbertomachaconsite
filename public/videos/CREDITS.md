@@ -1,5 +1,33 @@
 # Audiovisual credits
 
+## Costa del Sol homepage drone montage — 26 October 2026
+
+`home-costa-del-sol.mp4` / `/images/home-costa-del-sol.webp` replace the
+interior film in the homepage hero, following the user's reference for aerial
+city, coast and luxury-villa views. No YouTube footage was downloaded or copied.
+
+Source pages and https://www.pexels.com/license/ checked on 26 October 2026.
+Pexels permits commercial website use and edits, without implying endorsement.
+
+| Shot | Author | Source / location evidence | Downloaded source |
+| --- | --- | --- | --- |
+| Marbella city and coastline | David Pickup | https://www.pexels.com/video/marbella-28356727/ — title and description identify Marbella. | https://videos.pexels.com/video-files/28356727/12366724_1920_1080_30fps.mp4 |
+| Contemporary villa and pool | David Pickup | https://www.pexels.com/video/the-aerial-view-of-a-house-with-a-pool-28438876/ — source keywords identify Marbella; exact address is not independently verified. | https://videos.pexels.com/video-files/28438876/12382832_1920_1080_30fps.mp4 |
+| Torremolinos city and coast | Aaron Hairston | https://www.pexels.com/video/torremolinos-aerial-19910548/ — title and description identify Torremolinos; previously licensed for the area gallery. | https://videos.pexels.com/video-files/19910548/19910548-hd_1920_1080_30fps.mp4 |
+
+Local edit: Marbella 0–5 s, villa 1–6 s, Torremolinos 0–5 s. Two 0.75-second
+dissolves between shots and a 0.75-second tail-to-head dissolve create a
+12.75-second loop. H.264, 1280 × 720, 24 fps, CRF 25, maximum 1250 kbps,
+YUV 4:2:0, no audio, fast-start; approximately 1.96 MB. The WebP poster is
+the first encoded frame. Original downloads were kept outside the repository.
+
+These are illustrative location and architecture shots, not listings, clients,
+or evidence of Humberto's projects. A visible ES/EN/DE hero note states that
+the properties are not on offer. Previous hero assets remain in the repository
+but are no longer loaded by the homepage.
+
+## Original ambient films — 8 October 2026
+
 Selected and downloaded on 8 October 2026. Each source page explicitly linked
 to **Mixkit Stock Video Free License** (`data-license="videoFree"`), rather than
 the Restricted License. License: https://mixkit.co/license/#videoFree
