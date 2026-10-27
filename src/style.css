@@ -1651,7 +1651,8 @@ button {
 /* ==========================================================================
    FLOATING WHATSAPP BUTTON (Minimalist & Crisp)
    ========================================================================== */
-.floating-whatsapp {
+.floating-whatsapp,
+.floating-call {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -1668,7 +1669,8 @@ button {
   transition: var(--transition-smooth);
 }
 
-.floating-whatsapp:hover {
+.floating-whatsapp:hover,
+.floating-call:hover {
   transform: scale(1.08);
   box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
 }

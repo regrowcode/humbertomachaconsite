@@ -98,7 +98,7 @@ function renderLanguage(lang) {
 
   // 6. Update WhatsApp URLs with localized greeting
   updateWhatsAppLinks(lang);
-  const callLink = document.getElementById('header-call-link');
+  const callLink = document.getElementById('floating-call');
   if (callLink) {
     callLink.setAttribute('aria-label', t.ui.callAdvisor);
     callLink.title = `${t.ui.callAdvisor} · ${siteConfig.contact.phoneDisplay}`;
@@ -139,7 +139,7 @@ function updateWhatsAppLinks(lang) {
  * Injects contact numbers and addresses from siteConfig
  */
 function initSiteConfig() {
-  const callLink = document.getElementById('header-call-link');
+  const callLink = document.getElementById('floating-call');
   if (callLink) callLink.href = `tel:+${siteConfig.contact.whatsappNumber}`;
   document.querySelectorAll('[data-social]').forEach((link) => {
     const url = siteConfig.socials[link.dataset.social];

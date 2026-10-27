@@ -24,11 +24,13 @@ for (const page of pages) {
     assert.ok(header.includes('<span class="brand-subtitle">Real Estate Advisor</span>'));
     const destinations = [...header.matchAll(/href="([^"]+)"/g)].map((match) => match[1]).filter((href) => href.startsWith('/'));
     assert.deepEqual(destinations, ['/', '/sobre-mi.html', '/servicios.html', '/zonas.html', '/temas.html', '/contacto.html']);
-    assert.ok(!header.includes('btn-header-cta'), 'Appointment CTA is replaced by direct calling');
-    const callLink = header.match(/<a\b[^>]*id="header-call-link"[^>]*>[\s\S]*?<\/a>/)?.[0];
+    assert.ok(!header.includes('btn-header-cta'));
+    assert.ok(!header.includes('tel:') && !header.includes('header-call-link'), 'Calling is outside the header');
+    const callLink = html.match(/<a\b[^>]*id="floating-call"[^>]*>[\s\S]*?<\/a>/)?.[0];
     assert.ok(callLink?.includes('aria-label="Llamar a Humberto"'));
     assert.ok(callLink?.includes('aria-hidden="true"'));
     assert.match(callLink, /href="tel:\+\d+"/);
+    assert.ok(html.indexOf('id="floating-call"') < html.indexOf('id="floating-whatsapp"'), 'Call action precedes WhatsApp');
     assert.ok(header.includes('data-i18n="nav.about">Sobre Mí'));
     assert.ok(header.includes('data-i18n="nav.services">Servicios'));
     assert.ok(header.includes('data-i18n="nav.locations">Zonas'));
@@ -56,9 +58,9 @@ test('Every header has a flag-free language dropdown with Spanish selected by de
     const languageSelect = header.match(/<select\b[^>]*id="lang-switcher"[^>]*>[\s\S]*?<\/select>/)?.[0];
     assert.ok(languageSelect?.includes('aria-label="Seleccionar idioma"'), page);
     assert.deepEqual([...languageSelect.matchAll(/<option value="([^"]+)"/g)].map(match => match[1]), ['es', 'en', 'de']);
-    assert.match(languageSelect, /<option value="es" lang="es" selected>Español<\/option>/);
+    assert.match(languageSelect, /<option value="es" lang="es" selected>ES<\/option>/);
     assert.equal([...languageSelect.matchAll(/\bselected\b/g)].length, 1);
-    for (const [lang, label] of Object.entries({ es: 'Español', en: 'English', de: 'Deutsch' })) {
+    for (const [lang, label] of Object.entries({ es: 'ES', en: 'EN', de: 'DE' })) {
       assert.match(languageSelect, new RegExp(`<option value="${lang}" lang="${lang}"[^>]*>${label}</option>`));
     }
     assert.ok(!header.includes('/images/flags/') && !header.includes('lang-btn'), 'Language options have no flags or toggle buttons');

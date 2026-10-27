@@ -47,7 +47,7 @@ export const translations = {
       discover: "Una forma más personal de asesorarte",
       discoverService: "Descubrir →", exploreArea: "Conocer la zona →", areaAdvice: "Hablemos de esta zona →",
       pauseVideo: "Pausar vídeo", playVideo: "Reproducir vídeo", openMenu: "Abrir menú", closeMenu: "Cerrar menú",
-      consultation: "Conversar sobre mi proyecto →", advisorTitle: "Asesor inmobiliario personal · Málaga",
+      consultation: "Conversar sobre mi proyecto →", advisorTitle: "Asesor inmobiliario · Costa del sol",
     },
     editorial: {
       introTitle: "Comprar o vender una propiedad trae muchas preguntas.",
@@ -383,7 +383,7 @@ export const translations = {
       heroVideoNote: "Illustrative coastal and villa footage. Not property listings.",
       discoverService: "Discover →", exploreArea: "Explore the area →", areaAdvice: "Let's discuss this area →",
       pauseVideo: "Pause video", playVideo: "Play video", openMenu: "Open menu", closeMenu: "Close menu",
-      consultation: "Discuss my project →", advisorTitle: "Personal real estate advisor · Málaga",
+      consultation: "Discuss my project →", advisorTitle: "Real estate advisor · Costa del sol",
     },
     editorial: {
       introTitle: "Buying or selling a property brings plenty of questions.",
@@ -720,7 +720,7 @@ export const translations = {
       heroVideoNote: "Illustrative Küsten- und Villenaufnahmen. Keine Immobilienangebote.",
       discoverService: "Entdecken →", exploreArea: "Die Gegend entdecken →", areaAdvice: "Über diese Gegend sprechen →",
       pauseVideo: "Video pausieren", playVideo: "Video abspielen", openMenu: "Menü öffnen", closeMenu: "Menü schließen",
-      consultation: "Über mein Projekt sprechen →", advisorTitle: "Persönlicher Immobilienberater · Málaga",
+      consultation: "Über mein Projekt sprechen →", advisorTitle: "Persönlicher Immobilienberater · Costa del sol",
     },
     editorial: {
       introTitle: "Eine Immobilie zu kaufen oder zu verkaufen wirft viele Fragen auf.",
