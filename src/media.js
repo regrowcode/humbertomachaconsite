@@ -10,6 +10,10 @@ export function initAmbientVideos(getLabels) {
   };
   const load = (state) => {
     if (state.loaded) return;
+    // Safari needs the media properties set before sources are attached.
+    state.video.defaultMuted = true;
+    state.video.muted = true;
+    state.video.playsInline = true;
     state.video.querySelectorAll('source[data-src]').forEach((source) => {
       source.src = source.dataset.src;
     });
@@ -18,20 +22,25 @@ export function initAmbientVideos(getLabels) {
   };
   const play = async (state) => {
     load(state);
-    try { await state.video.play(); } catch { /* Autoplay can be blocked; the poster and manual button remain. */ }
+    state.shouldPlay = true;
+    try {
+      await state.video.play();
+      if (!state.shouldPlay) state.video.pause();
+    } catch { /* Low Power Mode may block autoplay; keep the manual play button. */ }
     updateLabel(state);
   };
   const sync = (state) => {
     if (state.visible && !document.hidden && !state.userPaused && !reducedMotion.matches && !saveData) {
       void play(state);
     } else {
+      state.shouldPlay = false;
       state.video.pause();
     }
   };
   document.querySelectorAll('[data-ambient-video]').forEach((video) => {
     const button = document.querySelector(`[data-video-toggle="${video.id}"]`);
     if (!button) return;
-    const state = { video, button, loaded: false, visible: false, userPaused: false };
+    const state = { video, button, loaded: false, visible: false, userPaused: false, shouldPlay: false };
     states.set(video, state);
     button.hidden = false;
     button.setAttribute('aria-controls', video.id);
@@ -43,7 +52,7 @@ export function initAmbientVideos(getLabels) {
     video.addEventListener('pause', () => updateLabel(state));
     video.addEventListener('error', () => {
       video.classList.remove('is-playing');
-      button.hidden = true;
+      updateLabel(state);
     });
     button.addEventListener('click', () => {
       if (video.paused) {
@@ -51,6 +60,7 @@ export function initAmbientVideos(getLabels) {
         void play(state);
       } else {
         state.userPaused = true;
+        state.shouldPlay = false;
         video.pause();
       }
     });
@@ -64,6 +74,11 @@ export function initAmbientVideos(getLabels) {
       });
     }, { threshold: .15 });
     states.forEach((state) => observer.observe(state.video));
+  } else {
+    states.forEach((state) => {
+      state.visible = true;
+      sync(state);
+    });
   }
   document.addEventListener('visibilitychange', () => states.forEach(sync));
   reducedMotion.addEventListener('change', () => states.forEach(sync));
